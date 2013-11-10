@@ -12,6 +12,7 @@ and open the template in the editor.
         yay
         <?php
             echo 'Testing';
+            echo 1+1;
         ?>
     </body>
 </html>
