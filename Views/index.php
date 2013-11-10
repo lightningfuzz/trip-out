@@ -9,10 +9,9 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        yay </br>
-        <p>This is Michael</p>
+        yay
         <?php
-        // put your code here
+            echo 'Testing';
         ?>
     </body>
 </html>
