@@ -4,26 +4,12 @@ class UserDB extends mysqli {
 
     // single instance of self shared among all instances
     private static $instance = null;
-    /*remote personal db connection config vars
-    private $user = "mdiamo";
-    private $pass = "DiamondIce";
-    private $dbName = "student_mdiamo";
-    private $dbHost = "sfsuswe.com";
-    */
-    // remote db connection config vars
     
     private $user = "f13g05";
     private $pass = "pewpew13";
     private $dbName = "student_f13g05";
     private $dbHost = "sfsuswe.com";
-    //local db connection config vars
-    /*
-    private $user = "root";
-    private $pass = "DiamondIce";
-    private $dbName = "mydb";
-    private $dbHost = "127.0.0.1";
-    private $con = null;
-    */
+  
     //This method must be static, and must return an instance of the object if the object
     //does not already exist.
     public static function getInstance() {
