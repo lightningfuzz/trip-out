@@ -6,9 +6,11 @@ and open the template in the editor.
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
+        <title>TripOut</title>
     </head>
     <body>
+        <h1> TripOut* </h1>
+        <h2> Hello! </h2>
         yay
         <?php
             echo 'Testing';
