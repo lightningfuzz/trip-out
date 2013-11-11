@@ -9,8 +9,10 @@
     </head>
     <body>
         <?php
-        $destinations = testDAO::getDestinationsById(1);
-        print $destinations['name'];
+        $destination = testDAO::getDestinationsById(1);
+        print $destination['name'] . "<br>";
+        print $destination['address'] . "<br>";
+        print $destination['city'] . "<br>";
         ?>
     </body>
 </html>
