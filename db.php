@@ -4,7 +4,6 @@ class UserDB extends mysqli {
 
     // single instance of self shared among all instances
     private static $instance = null;
-    
     private $user = "f13g05";
     private $pass = "pewpew13";
     private $dbName = "student_f13g05";
@@ -91,7 +90,6 @@ class UserDB extends mysqli {
     public function delete_review($reviewID) {
         $this->query("DELETE FROM review WHERE review_id = " . $reviewID);
     }
-
 }
 
 ?>

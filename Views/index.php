@@ -20,7 +20,7 @@
 
 <html>
     <head>
-        <title>Vertical Prototype</title>    
+        <title>TRIP OUT!</title>    
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
         <style type ="text/css">
             body{
@@ -31,8 +31,6 @@
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
     </head>
     <body> 
         <script src="../js/jquery.js"></script>
@@ -46,7 +44,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="index.php">TRIP OUT! Vertical Prototype</a>
+                    <a class="brand" href="index.php">TRIP OUT!</a>
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li class="active"><a href="#" id ="homeLink"> <span class="glyphicon glyphicon-home"></span> Home</a></li>
@@ -76,8 +74,11 @@
                                 }
                             ?>
                         </ul>
+                        <!-- code for a button
                         <a class="btn btn-primary pull-right" href ="">button</a>
-                    </div><!--/.nav-collapse -->
+                        -->
+                    </div>
+                    <!--/.nav-collapse -->
                 </div>
             </div>
         </div>
