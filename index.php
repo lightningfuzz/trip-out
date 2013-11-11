@@ -20,7 +20,7 @@
         <div class ="container">
             <div style ="background-color:black;">
                 <img src="media/assets/images/tripOutLogo.jpg"></img>
-                <div class ="pull-right" style="padding-top:20px;">
+                <div class ="pull-right" style="padding-top:20px;color:white;">
                     Login: <input type="text" placeholder="username" name="tag" value="" />
                     <input type="password" placeholder="password" name="tag" value="" />
                     <br>
@@ -41,10 +41,9 @@
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </nav>
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
                 <div class="panel-heading">Plan Your Destination</div>
-                <div class="panel-body">
-                    <form name="citySearch" method ="GET" action="city_search.php">
+                <div class="panel-body" align="center">
                     <label class="checkbox-inline">
                         <input type="checkbox" id="inlineCheckbox1" value="option1"> Attractions
                     </label>
@@ -60,11 +59,16 @@
                     <label class="checkbox-inline">
                         <input type="checkbox" id="inlineCheckbox3" value="option3"> All
                     </label>
-                          <input type="text" class="search-query" placeholder="Enter search keywords" name="tag" value="" />
-                          <button type="submit" class="btn btn-default" value="Go">Search</button>
+                    <form class="form-inline" role="form">
+                        <div class="form-group" style="width:40%;">
+                          <input class="form-control"  placeholder="Enter search keywords">
+                        </div>
+                        <button type="submit" class="btn btn-default">Search Destinations</button>
                     </form>
                 </div>
             </div>
+            Promotions
+
         </div>
     </body>
 </html>
