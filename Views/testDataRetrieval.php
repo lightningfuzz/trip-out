@@ -1,5 +1,5 @@
 
-<?php require_once("../Models/testDAO.php"); ?>
+<?php require_once("../DAOs/testDAO.php"); ?>
 
 <!DOCTYPE html>
 <html>
