@@ -44,21 +44,23 @@
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
                 <div class="panel-heading">Plan Your Destination</div>
                 <div class="panel-body" align="center">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox1" value="option1"> Attractions
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox2" value="option2"> Restaurants
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox3" value="option3"> Hotels
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox3" value="option3"> Events
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox3" value="option3"> All
-                    </label>
+                    <div style="padding-bottom:10px;">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="option1"> Attractions
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="option2"> Restaurants
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox3" value="option3"> Hotels
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox3" value="option3"> Events
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox3" value="option3"> All
+                        </label>
+                    </div>
                     <form class="form-inline" role="form">
                         <div class="form-group" style="width:40%;">
                           <input class="form-control"  placeholder="Enter search keywords">

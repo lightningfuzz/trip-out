@@ -33,8 +33,6 @@
     </head>
 
     <body> 
-        
-        
         <div class ="container">
             <div style ="background-color:black;">
                 <img src="../media/assets/images/tripOutLogo.jpg">
@@ -52,7 +50,7 @@
             </div>
             <nav class="navbar navbar-inverse" role="navigation">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="../index.php">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">Write a Review</a></li>
@@ -74,7 +72,8 @@
             <hr>
             <table align="center" cellpadding="10px">
                 <tr>
-                    <td colspan="5"style="text-align:right;">Showing 1-10 of 200</td>
+                    <td colspan ="4">Shanghai Dumpling King - images</td>
+                    <td colspan="1"style="text-align:right;">Showing 1-10 of 200</td>
                 </tr>
                 <tr>
                     <td>
@@ -129,6 +128,9 @@
                             <img src="../media/images/mv_hp/hp9.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
                         <a>
                     </td>
+                </tr>
+                 <tr>
+                    <td colspan="5"style="text-align:right;"><a href="">Next>></a></td>
                 </tr>
             </table>
         </div>
