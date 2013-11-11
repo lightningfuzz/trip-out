@@ -13,7 +13,7 @@ $(document).ready( function() {
     });
     
     $("#registerButton").on("click", function() {
-        $("#mainContent").load('createNewUser.php');
+        $("#mainContent").load('signUp.php');
     });
     
     $("#editReviewLink").on("click", function() {
