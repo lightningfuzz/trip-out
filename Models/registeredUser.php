@@ -1,6 +1,6 @@
 <?php
 
-class registeredUser {
+class RegisteredUser {
 
     private $userName;
     private $password;
