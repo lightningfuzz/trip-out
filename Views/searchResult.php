@@ -8,19 +8,19 @@
 <html>
     <head>
         <title>TRIP OUT!</title>    
-        <link rel ="stylesheet" type ="text/css" href ="css/bootstrap.css">
-        <link rel ="stylesheet" type ="text/css" href ="css/bootstrap-responsive.css">
+        <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
+        <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel = "stylesheet" type = "text/css" href = "searchResult.css">
+		<link rel = "stylesheet" type = "text/css" href = "../css/searchResult.css">
     </head>
 
     <body> 
-        <script src="js/bootstrap.js"></script>
-        <script src="js/script.js"></script>
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/script.js"></script>
         <div class ="container">
             <div style ="background-color:black;">
-                <img src="media/assets/images/tripOutLogo.jpg"></img>
+                <img src="../media/assets/images/tripOutLogo.jpg"></img>
                 <div class ="pull-right" style="padding-top:20px;color:white;">
                     Login: <input type="text" placeholder="username" name="tag" value="" />
                     <input type="password" placeholder="password" name="tag" value="" />
@@ -85,7 +85,7 @@
 			<h3 style = "color: green"> Results of Search "Attractions" </h3> 
 			<p style = "text-align: right; padding-right: 100px"> Showing 1 - 3 out of 10 </p> <br/>
 			<div class = "destination">
-				<img src = "landmark1.jpg" width = "150" height = "100" style = "float: left">			
+				<img src = "../media/images/landmark1.jpg" width = "150" height = "100" style = "float: left">			
 				<a href = "destinationDetail.php" style = "text-decoration: none"> 			
 					<h4> (1) Marina Bay Sands </h4> 
 				</a>
@@ -97,7 +97,7 @@
 			<br/>
 		
 			<div class = "destination">
-					<img src = "twinTower.jpg" width = "150" height = "100" style = "float: left">			
+					<img src = "../media/images/twinTower.jpg" width = "150" height = "100" style = "float: left">			
 					<a href = "destinationDetail.php" style = "text-decoration: none"> 			
 						<h4> (2) Twin Tower </h4> 
 					</a>
@@ -109,7 +109,7 @@
 			<br/>
 			
 			<div class = "destination">
-					<img src = "landmark5.jpg" width = "150" height = "100" style = "float: left">			
+					<img src = "../media/images/landmark5.jpg" width = "150" height = "100" style = "float: left">			
 					<a href = "destinationDetail.php" style = "text-decoration: none"> 			
 						<h4> (3) Esplanade </h4> 
 					</a>
