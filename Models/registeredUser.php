@@ -64,7 +64,6 @@ class RegisteredUser {
     public function setNumReviews($numReviews) {
         $this->numReviews = $numReviews;
     }
-
 }
 
 ?>
