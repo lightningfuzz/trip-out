@@ -39,7 +39,7 @@ and open the template in the editor.
                 
                 <td>
                     <form name="deleteUser" action="deleteUser.php" method="POST">
-                        <input type="hidden" name="userID" value="<?php echo $id; ?>">
+                        <input type="hidden" name="userId" value="<?php echo $id; ?>">
                         <input type="submit" name="editUser" value="Delete">
                     </form>
                 </td>

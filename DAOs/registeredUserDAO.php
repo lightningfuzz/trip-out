@@ -61,16 +61,26 @@ class RegisteredUserDAO {
 
         $db = dbConnect::getInstance();
         //query
-        $q = "UPDATE registered_user SET  ('user_name' = " . $user->getUserName() . ", 'password' = " . $user->getPassword() 
-            . "'reg_time' =  " . $user->getRegTime() . ", 'last_login_time' = " . $user->getLastLoginTime()
-                . "'email' = " . $user->getEmail() . ", 'num_reviews' = " . $user->getNumReviews()
-                . ") WHERE 'user_id = " . $user->getUserID() . "'";
+        $q = "UPDATE registered_user SET  user_name = '" . $user->getUserName() . "', password = '" . $user->getPassword() 
+            . "', reg_time = '" . $user->getRegTime() . "', last_login_time = '" . $user->getLastLoginTime()
+                . "', email = '" . $user->getEmail() . "', num_reviews = '" . $user->getNumReviews()
+                . "' WHERE user_id = " . $user->getUserID() . "";
 
         if(!$db->query($q)) return null;
 
         return $user;
     }
-
+    
+    public static function delete($reviewId) {
+        $db = dbConnect::getInstance();
+        
+        $q = "DELETE FROM registered_user WHERE user_id = " . $reviewId;
+        
+        if ($db->query($q))
+            return true;
+        else
+            return false;
+    }
 }
 
 ?>
