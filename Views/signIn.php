@@ -1,5 +1,15 @@
-<script src=".../js/script.js"></script>
- <div class="container">
+<html>
+    <head>
+        <title>TRIP OUT!</title>    
+        <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
+        <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/script.js"></script>
+        <script src="../js/jquery.js"></script>
+        <!-- Add jQuery library -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    </head>
+    <div class="container">
      <div class="row">
          <div class="span5">
                 <h3>Sign In</h3>
@@ -26,6 +36,6 @@
                 <p><button type ="button" class="btn btn-primary" id="registerButton">Register Now!</p>
          </div>
      </div>
-</div>
-       
+    </div>
+</html>
 
