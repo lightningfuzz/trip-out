@@ -17,3 +17,7 @@ border-radius:25px;
 textarea {
   resize: none;
 }
+
+body{
+    padding: 30px
+}

@@ -49,6 +49,10 @@ and open the template in the editor.
             </tbody>
         </table>
         
+        <form name="createUser" action="createUser.php">
+                <input class ="btn-primary" type="submit" value="Add User"/>
+            </form>
+        
         <?php
         // put your code here
         ?>
