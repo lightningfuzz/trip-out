@@ -1,13 +1,21 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //add user
-}
-?>
+    require_once("../DAOs/registeredUserDAO.php");
+    require_once("../Models/registeredUser.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $user = new RegisteredUser();
+        $user->setUserName($_POST['userName']);
+        $user->setEmail($_POST['email']);
+        $user->setPassword($_POST['password']);
+        $result = RegisteredUserDAO::create($user);
+        if($result == null){
+            print "entry failed: <br>";
+            print "Username: ".$user->getUserName()."<br>";
+        }
+        else
+            header('Location: listAll.php');
+        exit;
+    }?>
+
 <!DOCTYPE html>
 <html>
     <head>

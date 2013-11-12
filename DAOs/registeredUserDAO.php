@@ -25,7 +25,7 @@ class RegisteredUserDAO {
                 . $user->getRegTime() . "', '" . $user->getLastLoginTime() . "', '"
                 . $user->getEmail() . "', '" . $user->getNumReviews() . "')";
 
-        $db->query($q);
+        if (!$db->query($q)) return null;
         $user->setUserID($db->insert_id);
 
         return $user;

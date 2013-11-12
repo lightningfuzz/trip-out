@@ -22,7 +22,7 @@ and open the template in the editor.
                 </tr>
             </thead>
             <tbody>
-                <?php require_once("../DAOs/registeredUserDAO.php"); 
+                <?php
                 $users = dbConnect::getInstance()->query("SELECT * FROM registered_user");
                 while($row = mysqli_fetch_array($users)):
                     echo "<tr><td>".$row['user_name']."</td>";
@@ -49,7 +49,7 @@ and open the template in the editor.
             </tbody>
         </table>
         
-        <form name="createUser" action="createUser.php">
+        <form name="createUser" action="createUser.php" method="GET">
                 <input class ="btn-primary" type="submit" value="Add User"/>
             </form>
         
