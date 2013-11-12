@@ -7,7 +7,7 @@
 ?>
 <html>
     <head>
-        <title>TRIP OUT!</title>    
+        <title>TRIP OUT! Search Restaurants</title>    
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
         <meta charset="utf-8">
@@ -56,10 +56,10 @@
                             <input type="checkbox" id="inlineCheckbox3" value="option3"> Hotels
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox3" value="option3"> Events
+                            <input type="checkbox" id="inlineCheckbox4" value="option4"> Events
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox3" value="option3"> All
+                            <input type="checkbox" id="inlineCheckbox5" value="option5"> All
                         </label>
                     </div>
                     <form class="form-inline" role="form">
@@ -71,51 +71,52 @@
                 </div>
             </div>
             <div class = "left_pane">
-			<h4> Filter By Attractions: </h4>			
+			<h4> Filter By Restaurants: </h4>			
 				
-			<input type = "checkbox" name = "filter" value = "Landmarks"> Landmarks <br/>
-			<input type = "checkbox" name = "filter" value = "Museums"> Museums <br/>
-			<input type = "checkbox" name = "filter" value = "Parks"> Parks <br/>
-			<input type = "checkbox" name = "filter" value = "Beach"> Beach <br/>
-			<input type = "checkbox" name = "filter" value = "Shopping"> Shopping <br/>
+			<input type = "checkbox" name = "filter" value = "American Food"> American Food <br/>
+			<input type = "checkbox" name = "filter" value = "Chinese Food"> Chinese Food <br/>
+			<input type = "checkbox" name = "filter" value = "Mexican Food"> Mexican Food <br/>
+			<input type = "checkbox" name = "filter" value = "Japanese Food"> Japanese Food <br/>
+			<input type = "checkbox" name = "filter" value = "Thai Food"> Thai Food <br/>
+                        <input type = "checkbox" name = "filter" value = "Fast Food"> Fast Food <br/>
 					
 		</div>
 		
 		<div class = "content">
-			<h3 style = "color: green"> Results of Search "Attractions" </h3> 
+			<h3 style = "color: green"> Results of Search "Restaurants" </h3> 
 			<p style = "text-align: right; padding-right: 100px"> Showing 1 - 3 out of 10 </p> <br/>
 			<div class = "destination">
-				<img src = "../media/images/landmark1.jpg" width = "150" height = "100" style = "float: left">			
+				<img src = "../media/images/dumplingking.jpg" width = "150" height = "100" style = "float: left">			
 				<a href = "destinationDetail.php" style = "text-decoration: none"> 			
-					<h4> (1) Marina Bay Sands </h4> 
+					<h4> (1) Dumpling King </h4> 
 				</a>
-				&nbsp; Landmarks
+				&nbsp; Chinese Food
 				<p style = "float: left; clear: both">
-					Marina Bay Sands is newly built last three years ago and became one of the landmarks of Singapore! 
+					One of the best chinese restaurants in town! 
 				</p>					
 			</div>
 			<br/>
 		
 			<div class = "destination">
-					<img src = "../media/images/twinTower.jpg" width = "150" height = "100" style = "float: left">			
+					<img src = "../media/images/mcdonalds.png" width = "150" height = "100" style = "float: left">			
 					<a href = "destinationDetail.php" style = "text-decoration: none"> 			
-						<h4> (2) Twin Tower </h4> 
+						<h4> (2) Mc Donalds </h4> 
 					</a>
-					&nbsp; Landmarks
+					&nbsp; Fast Food
 					<p style = "float: left; clear: both">
-						Twin Tower is one of the most famous landmarks in Malaysia! 
+					destination	Mcdonalds....... fast food! 
 					</p>			
 			</div>
 			<br/>
 			
 			<div class = "destination">
-					<img src = "../media/images/landmark5.jpg" width = "150" height = "100" style = "float: left">			
+					<img src = "../media/images/hp9.jpg" width = "150" height = "100" style = "float: left">			
 					<a href = "destinationDetail.php" style = "text-decoration: none"> 			
-						<h4> (3) Esplanade </h4> 
+						<h4> (3) Dumplings </h4> 
 					</a>
-					&nbsp; Landmarks
+					&nbsp; Chinese Food
 					<p style = "float: left; clear: both">
-						Esplanade is situated in downtown area of Singapore! 
+						Dumplings! 
 					</p>			
 			</div>
 			<br/>
