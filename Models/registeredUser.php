@@ -10,12 +10,7 @@ class RegisteredUser {
     private $numReviews; //number of reviews posted by the user
     
     public function _construct(){
-        $username = "a";
-        $password = "a";
-        $regtime = "a";
-        $lastLoginTime = "a";
-        $email = "a";
-        $numReviews = 0;  
+        
     }
 
     public function getUserID() {

@@ -19,8 +19,8 @@ class RegisteredUserDAO {
 
         $db = dbConnect::getInstance();
         //query
-        $q = "INSERT INTO registered_user ('user_name', 'password', 'reg_time', "
-                . "'last_login_time', 'email', 'num_reviews') VALUES ('"
+        $q = "INSERT INTO registered_user (user_name, password, reg_time, "
+                . "last_login_time, email, num_reviews) VALUES ('"
                 . $user->getUserName() . "', '" . $user->getPassword() . "', '"
                 . $user->getRegTime() . "', '" . $user->getLastLoginTime() . "', '"
                 . $user->getEmail() . "', '" . $user->getNumReviews() . "')";

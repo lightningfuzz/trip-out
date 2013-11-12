@@ -6,6 +6,7 @@
         $user->setUserName($_POST['userName']);
         $user->setEmail($_POST['email']);
         $user->setPassword($_POST['password']);
+        $user->setNumReviews(0);
         $result = RegisteredUserDAO::create($user);
         if($result == null){
             print "entry failed: <br>";
