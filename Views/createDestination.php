@@ -18,7 +18,9 @@ and open the template in the editor.
     </head>
     <body>
         <h2 align="center">Create a Destination</h2>
-        <div align="center" >
+        <div align="center">
+             <div style="border:2px solid; border-radius:25px; display: block;
+               text-align: center; float: center; width: 50%; height: 50%">
         <p>Enter a Destination</p>
 
         <form class="create_dest_form" method="post" action="">
@@ -50,6 +52,7 @@ and open the template in the editor.
         <?php
         // put your code here
         ?>
+            </div>
         </div>
     </body>
 </html>
