@@ -40,6 +40,7 @@ and open the template in the editor.
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </nav>
+        <br><br>
         <h2 align="center">Create a Destination</h2>
         <div align="center">
              <div style="border:2px solid; border-radius:25px; display: block;
