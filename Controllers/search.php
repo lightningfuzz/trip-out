@@ -8,6 +8,7 @@ class Search {
         $this->searchString = $string;
     }
     
+    //Returns an array of sorted destination objects sorted by relevence
     public function run(){
         
         //initialize array of destination ids
