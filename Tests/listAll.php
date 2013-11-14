@@ -14,6 +14,8 @@ and open the template in the editor.
         <title></title>
     </head>
     <body padding-left="30px">
+        
+        <!-- Registered Users CRUD Table -->
         <h2>Users</h2>
         <table class="table-bordered">
             <thead>
@@ -54,8 +56,49 @@ and open the template in the editor.
                 <input class ="btn-primary" type="submit" value="Add User"/>
             </form>
         
-        <?php
-        // put your code here
-        ?>
+        <!-- Reviews CRUD Table -->
+        <h2>Reviews</h2>
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th>Destination</th>
+                    <th>Rating</th>
+                    <th>Comment</th>
+                    <th>User Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $reviews = dbConnect::getInstance()->query("SELECT * FROM review");
+                while($row = mysqli_fetch_array($reviews)):
+                    echo "<tr><td>".$row['dest_id']."</td>";
+                    echo "<td>". $row['rating'] . "</td>";
+                    echo "<td>". $row['comment'] . "</td>";
+                    echo "<td>". $row['user_id'] . "</td>";
+                    $id = $row['review_id'];
+                ?>
+                
+                <td>
+                    <form name="editReview" action="editReview.php" method="GET">
+                        <input type="hidden" name="reviewId" value="<?php echo $id; ?>">
+                        <input type="submit" name="editReivew" value="Edit">
+                    </form>
+                </td>
+                
+                <td>
+                    <form name="deleteReview" action="deleteReview.php" method="POST">
+                        <input type="hidden" name="reviewId" value="<?php echo $id; ?>">
+                        <input type="submit" name="deleteReview" value="Delete">
+                    </form>
+                </td>
+                <?php 
+                echo "</tr>";
+                endwhile; ?>
+            </tbody>
+        </table>
+        
+        <form name="createReview" action="createReview.php" method="GET">
+                <input class ="btn-primary" type="submit" value="Write Review"/>
+            </form>
     </body>
 </html>
