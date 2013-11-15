@@ -20,6 +20,8 @@ class Destination {
     private $numImage;
     private $numVideo;
     private $description;
+    private $imageUrl;
+    private $numReviews;
     
     public function setDestId($destId){
         $this->destId = $destId;
@@ -38,15 +40,21 @@ class Destination {
     public function setAvgRating($avgRating){
         $this ->avgRating = $avgRating;
     }
-    public function setNumImage($numImage){
+    public function setNumImages($numImage){
         $this->numImage = $numImage;
         
     }
-    public function setNumVideo($numVideo){
+    public function setNumVideos($numVideo){
         $this->numVideo = $numVideo;
     }
     public function setDescirption($description){
         $this->description = $description;
+    }
+    public function setImageUrl($imageUrl){
+        $this->imageUrl = $imageUrl;
+    }
+    public function setNumReviews($numReviews){
+        $this->numReviews = $numReviews;
     }
     
     public function getDestId(){
@@ -64,14 +72,20 @@ class Destination {
     public function getAvgRating(){
         return $this->avgRating;
     }
-    public function getNumImage(){
+    public function getNumImages(){
         return $this->numImage;
     }
-    public function getNumVideo(){
+    public function getNumVideos(){
         return $this->numVideo;
     }
     public function getDescription(){
         return $this->description;
+    }
+    public function getImageUrl(){
+        return $this->imageUrl;
+    }
+    public function getNumReviews(){
+        return $this->numReviews;
     }
     //put your code here
     
