@@ -11,7 +11,9 @@
  * @author Jung Hwan Kim
  */
 class Image extends Media{
-    //put your code here
+    
+   
+    
 }
 
 ?>

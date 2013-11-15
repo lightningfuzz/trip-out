@@ -69,7 +69,7 @@ class RegisteredUser {
         $this->numReviews = $numReviews;
     }
 
-    function __toString() {
+    public function __toString() {
         $s = "";
         $s .= "<table>\n";
         $s .= "<tr><td colspan=2><hr></td></tr>\n";
