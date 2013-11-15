@@ -149,11 +149,11 @@ class RegisteredUserDAO {
         return $user;
     }
     
-    public static function delete($reviewId) {
+    public static function delete($id) {
         
         $db = dbConnect::getInstance();
         
-        $q = "DELETE FROM registered_user WHERE user_id = " . $reviewId;
+        $q = "DELETE FROM registered_user WHERE user_id = " . $id;
         
         if ($db->query($q))
             return true;
