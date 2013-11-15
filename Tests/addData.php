@@ -2,6 +2,10 @@
 
 require_once '../Models/destination.php';
 require_once '../DAOs/destinationDAO.php';
+require_once '../Models/keyword.php';
+require_once '../DAOs/keywordDAO.php';
+require_once '../Models/tag.php';
+require_once '../DAOs/tagDAO.php';
 
 //$dest = new Destination();
 //$dest->setAddress("555 Jingle St.");
@@ -70,9 +74,213 @@ require_once '../DAOs/destinationDAO.php';
 //if(DestinationDAO::create($dest) == null)
 //        echo "error! <br>";
 
-$dest = DestinationDAO::getByID(23);
-if($dest == null) echo "error";
-echo $dest;
+//$dest = DestinationDAO::getByID(23);
+//if($dest == null) echo "error";
+//echo $dest;
+
+//add keywords
+//$key = new Keyword();
+//$key->setWord("san");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("francisco");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("oakland");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("food");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("hut");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("los");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("gatos");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("greatest");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("hotel");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("very");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("green");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("park");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("fun");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("time");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("event");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("bay");
+//if(KeywordDAO::create($key) == null) echo "error";
+//
+//$key = new Keyword();
+//$key->setWord("area");
+//if(KeywordDAO::create($key) == null) echo "error";
+
+//if(!$key = KeywordDAO::getByWord("francisco")) echo "error";
+//echo $key;
+
+//$tag = new Tag();
+//$tag->setDestId(22);
+//$tag->setKeywordId(1);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(22);
+//$tag->setKeywordId(2);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(22);
+//$tag->setKeywordId(4);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(22);
+//$tag->setKeywordId(5);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(22);
+//$tag->setKeywordId(16);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(22);
+//$tag->setKeywordId(17);
+//TagDAO::create($tag);
+//
+////
+//$tag = new Tag();
+//$tag->setDestId(23);
+//$tag->setKeywordId(8);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(23);
+//$tag->setKeywordId(9);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(23);
+//$tag->setKeywordId(16);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(23);
+//$tag->setKeywordId(17);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(24);
+//$tag->setKeywordId(1);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(24);
+//$tag->setKeywordId(2);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(24);
+//$tag->setKeywordId(10);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(24);
+//$tag->setKeywordId(11);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(24);
+//$tag->setKeywordId(12);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(24);
+//$tag->setKeywordId(16);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(24);
+//$tag->setKeywordId(17);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(25);
+//$tag->setKeywordId(13);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(25);
+//$tag->setKeywordId(14);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(25);
+//$tag->setKeywordId(15);
+//TagDAO::create($tag);
+
+//$tag = new Tag();
+//$tag->setDestId(25);
+//$tag->setKeywordId(16);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(25);
+//$tag->setKeywordId(17);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(25);
+//$tag->setKeywordId(6);
+//TagDAO::create($tag);
+//
+//$tag = new Tag();
+//$tag->setDestId(25);
+//$tag->setKeywordId(7);
+//TagDAO::create($tag);
+
+
+$tags = TagDAO::getByKeywordID(1);
+
+foreach($tags as $tag)
+    echo $tag . "<br>";
+
+
+
+
+
 
 
 

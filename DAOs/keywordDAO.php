@@ -62,7 +62,7 @@ class KeywordDAO {
 
         $db = dbConnect::getInstance();
         //query
-        $q = "SELECT * FROM keyword WHERE word =" . $word;
+        $q = "SELECT * FROM keyword WHERE word = '" . $word . "'";
 
         if (!$result = $db->query($q)) return null;
         

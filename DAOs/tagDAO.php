@@ -29,7 +29,7 @@ class TagDAO {
         $db = dbConnect::getInstance();
         //query
         $q = "INSERT INTO tag (dest_id, keyword_id) VALUES ('"
-                . $tag->getDestId() . $tag->getKeywordId() . "')";
+                . $tag->getDestId() . "', '" . $tag->getKeywordId() . "')";
 
         if (!$db->query($q)) return null;
 
@@ -49,11 +49,15 @@ class TagDAO {
 
         if (!$result = $db->query($q)) return null;
         
-        $arr = mysqli_fetch_array($result);
-        $tag = new Tag();
-        $tag->setDestId($arr["dest_id"]);
-        $tag->setKeywordId($arr["keyword_id"]);
+        $tags = array();
         
-        return $tag;
+        while($row = mysqli_fetch_array($result)){
+            $tag = new Tag();
+            $tag->setDestId($row["dest_id"]);
+            $tag->setKeywordId($row["keyword_id"]);
+            $tags[] = $tag;
+        }
+        
+        return $tags;
     }
 }
