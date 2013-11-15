@@ -58,6 +58,22 @@ class KeywordDAO {
         return $key;
     }
     
+    public static function getByWord($word) {
+
+        $db = dbConnect::getInstance();
+        //query
+        $q = "SELECT * FROM keyword WHERE word =" . $word;
+
+        if (!$result = $db->query($q)) return null;
+        
+        $arr = mysqli_fetch_array($result);
+        $key = new Keyword();
+        $key->setKeywordId($arr["keyword_id"]);
+        $key->setWord($arr["word"]);
+        
+        return $key;
+    }
+    
     public static function update(Keyword $key){
 
         $db = dbConnect::getInstance();
