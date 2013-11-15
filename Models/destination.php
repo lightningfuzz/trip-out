@@ -102,13 +102,13 @@ class Destination {
     public function getNumReviews(){
         return $this->numReviews;
     }
-    public function getCity($city){
+    public function getCity(){
         return $this->city;
     }
-    public function getState($state){
+    public function getState(){
         return $this->state;
     }
-    public function getZipCode($zipCode){
+    public function getZipCode(){
         return $this->zipCode;
     }
     //put your code here

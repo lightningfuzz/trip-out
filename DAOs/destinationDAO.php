@@ -30,12 +30,14 @@ class DestinationDAO {
         $db = dbConnect::getInstance();
         //query
         $q = "INSERT INTO destination (type, name, address, "
-                . "avg_rating, num_images, num_videos, description, image_url, num_reviews) VALUES ('"
+                . "avg_rating, num_images, num_videos, description, image_url, num_reviews, "
+                . "city, state, zip_code) VALUES ('"
                 . $dest->getType() . "', '" . $dest->getName() . "', '"
                 . $dest->getAddress() . "', '" . $dest->getAvgRating() . "', '"
                 . $dest->getNumImages() . "', '" . $dest->getNumVideos() . "', '"
                 . $dest->getDescription() . "', '" . $dest->getImageUrl() . "', '"
-                . $dest->getNumReviews() . "')";
+                . $dest->getNumReviews() . "', '".$dest->getCity() . "', '" 
+                . $dest->getState() . "', '" . $dest->getZipCode() . "')";
 
         if (!$db->query($q)) return null;
         $dest->setDestId($db->insert_id);
@@ -68,6 +70,9 @@ class DestinationDAO {
         $dest->setDescription($arr["description"]);
         $dest->setImageUrl($arr["image_url"]);
         $dest->setNumReviews($arr["num_reviews"]);
+        $dest->setCity($arr["city"]);
+        $dest->setState($arr["state"]);
+        $dest->setZipCode($arr["zip_code"]);
         
         return $dest;
     }

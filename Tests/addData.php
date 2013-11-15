@@ -22,21 +22,20 @@ require_once '../DAOs/destinationDAO.php';
 //
 //
 //
-//$dest = new Destination();
-//$dest->setAddress("333 Pop St.");
-//$dest->setAvgRating(0);
-//$dest->setName("The Greatest Hotel");
-//$dest->setNumImages(1);
-//$dest->setNumVideos(0);
-//$dest->setType(3);
-//$dest->setDescription("We have nice beds!");
-//$dest->setImageUrl("../media/images/shopping3.JPG");
-//$dest->setnumReviews(0);
-//$dest->setCity("Oakland");
-//$dest->setState("California");
-//$dest->setzipCode("94xxx");
-//DestinationDAO::create($dest);
-//if(DestinationDAO::create($dest) == null)
+//$dest1 = new Destination();
+//$dest1->setAddress("333 Pop St.");
+//$dest1->setAvgRating(0);
+//$dest1->setName("The Greatest Hotel");
+//$dest1->setNumImages(1);
+//$dest1->setNumVideos(0);
+//$dest1->setType(3);
+//$dest1->setDescription("We have nice beds!");
+//$dest1->setImageUrl("../media/images/shopping3.JPG");
+//$dest1->setnumReviews(0);
+//$dest1->setCity("Oakland");
+//$dest1->setState("California");
+//$dest1->setzipCode("94xxx");
+//if(DestinationDAO::create($dest1) == null)
 //        echo "error! <br>";
 //
 //$dest = new Destination();
@@ -52,7 +51,6 @@ require_once '../DAOs/destinationDAO.php';
 //$dest->setCity("San Francisco");
 //$dest->setState("California");
 //$dest->setzipCode("94132");
-//DestinationDAO::create($dest);
 //if(DestinationDAO::create($dest) == null)
 //        echo "error! <br>";
 //
@@ -69,11 +67,10 @@ require_once '../DAOs/destinationDAO.php';
 //$dest->setCity("Los Gatos");
 //$dest->setState("California");
 //$dest->setzipCode("9xxxx");
-//DestinationDAO::create($dest);
 //if(DestinationDAO::create($dest) == null)
 //        echo "error! <br>";
 
-$dest = DestinationDAO::getByID(1);
+$dest = DestinationDAO::getByID(23);
 if($dest == null) echo "error";
 echo $dest;
 
