@@ -22,6 +22,9 @@ class Destination {
     private $description;
     private $imageUrl;
     private $numReviews;
+    private $city;
+    private $state;
+    private $zipCode;
     
     public function setDestId($destId){
         $this->destId = $destId;
@@ -56,6 +59,18 @@ class Destination {
     public function setNumReviews($numReviews){
         $this->numReviews = $numReviews;
     }
+    public function setCity($city){
+        $this->city= $city;
+    }
+    public function setState($state){
+        $this->state = $state;
+    }
+    public function setZipCode($zipCode){
+        $this->zipCode = $zipCode;
+    }
+    
+    
+    
     
     public function getDestId(){
         return $this->destId;
@@ -86,6 +101,15 @@ class Destination {
     }
     public function getNumReviews(){
         return $this->numReviews;
+    }
+    public function getCity($city){
+        return $this->city;
+    }
+    public function getState($state){
+        return $this->state;
+    }
+    public function getZipCode($zipCode){
+        return $this->zipCode;
     }
     //put your code here
     
