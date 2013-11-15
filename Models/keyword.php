@@ -10,7 +10,7 @@
  *
  * @author Jung Hwan Kim
  */
-class keyword {
+class Keyword {
     private $keywordId;
     private $word;
     
