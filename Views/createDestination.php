@@ -5,7 +5,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
+        <!--<link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css"> -->
+        <link rel ="stylesheet" type ="text/css" href ="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
         <script src="../js/bootstrap.js"></script>
         <script src="../js/script.js"></script>
@@ -17,8 +18,9 @@ and open the template in the editor.
         <title>Create a Destination</title>
     </head>
     <body>
+        <!-- BEGIN BANNER -->
         <div style ="background-color:black;">
-                <img src="media/assets/images/tripOutLogo.jpg"></img>
+                <img src="../media/assets/images/tripOutLogo.jpg"></img>
                 <div class ="pull-right" style="padding-top:20px;color:white;">
                     Login: <input type="text" placeholder="username" name="tag" value="" />
                     <input type="password" placeholder="password" name="tag" value="" />
@@ -40,12 +42,12 @@ and open the template in the editor.
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </nav>
-        <br><br>
+         <!-- END BANNER -->
         <h2 align="center">Create a Destination</h2>
         <div align="center">
              <div style="border:2px solid; border-radius:25px; display: block;
                text-align: center; float: center; width: 50%; height: 50%">
-        <p>Enter a Destination</p>
+        <p><br>Enter a Destination</p>
 
         <form class="create_dest_form" method="post" action="">
             <input class="input-medium" type="text" placeholder="Enter destination" >
@@ -57,22 +59,22 @@ and open the template in the editor.
                 <option value="Restaurants">Restaurants</option> 
             </select> 
             <!--<input type="submit" value="search!" /> <br><br> -->
-            <button type="submit" class="btn">Search</button>
-
-            <p>Title of your Review</p>
+            <p><br>Title of your Review</p>
             <input class="input-large" type="text" placeholder="review title">
-            <p>Your Review</p>
-            <textarea class="input-xxlarge" style="resize: none; height: 110px;">Write Review Here!</textarea>
-            <br>
+            <p><br>Your Review</p>
+            <textarea class="input-xxlarge" style="resize: none; width: 50%; height: 50%;">Write Review Here!</textarea>
             <!-- <input type="submit" value="Submit" />  -->
-            <input class="btn btn-default" type="submit" id="reviewSubmitButton" value="Submit!">
-            <br><br><br>
+            <br>
+            <input class="btn btn-primary" type="submit" id="reviewSubmitButton" value="Submit!">
+            <br>
         </form>
-        <form action="">
-             <input type="file" name="img" placeholder="Select a media file">
-              <input class="btn btn-default" type="submit" id="mediaSubmitButton" value="Submit!">
-            <!--<input type="submit"> -->
+        <br>
+        <p><br>Select a media file to upload</p>
+       <form style="display: inline;" action="">
+             <input type="file" name="media" style="position: relative; left: 40%;">
+             <input class="btn btn-primary" type="submit" id="mediaSubmitButton" value="Submit!">
         </form>
+        
         <?php
         // put your code here
         ?>
