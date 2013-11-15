@@ -33,7 +33,7 @@ class DestinationDAO {
                 . "avg_rating, num_images, num_videos, description, image_url, num_reviews) VALUES ('"
                 . $dest->getType() . "', '" . $dest->getName() . "', '"
                 . $dest->getAddress() . "', '" . $dest->getAvgRating() . "', '"
-                . $dest->getNumImage() . "', '" . $dest->getNumVideo() . "', '"
+                . $dest->getNumImages() . "', '" . $dest->getNumVideos() . "', '"
                 . $dest->getDescription() . "', '" . $dest->getImageUrl() . "', '"
                 . $dest->getNumReviews() . "')";
 
@@ -52,19 +52,20 @@ class DestinationDAO {
 
         $db = dbConnect::getInstance();
         //query
-        $q = "SELECT * FROM registered_user WHERE dest_id =" . $id;
+        $q = "SELECT * FROM destination WHERE dest_id =" . $id;
 
         if (!$result = $db->query($q)) return null;
         
         $arr = mysqli_fetch_array($result);
         $dest = new Destination();
+        $dest->setDestId($arr["dest_id"]);
         $dest->setType($arr["type"]);
         $dest->setName($arr["name"]);
         $dest->setAddress($arr["address"]);
         $dest->setAvgRating($arr["avg_rating"]);
         $dest->setNumImages($arr["num_images"]);
         $dest->setNumVideos($arr["num_videos"]);
-        $dest->setDescirption($arr["description"]);
+        $dest->setDescription($arr["description"]);
         $dest->setImageUrl($arr["image_url"]);
         $dest->setNumReviews($arr["num_reviews"]);
         

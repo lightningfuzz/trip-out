@@ -50,7 +50,7 @@ class Destination {
     public function setNumVideos($numVideo){
         $this->numVideo = $numVideo;
     }
-    public function setDescirption($description){
+    public function setDescription($description){
         $this->description = $description;
     }
     public function setImageUrl($imageUrl){
