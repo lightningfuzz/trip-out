@@ -8,8 +8,8 @@ class RegisteredUser {
     private $lastLoginTime;
     private $email;
     private $numReviews; //number of reviews posted by the user
-    
-    public function _construct(){
+
+    public function _construct() {
         
     }
 
@@ -68,6 +68,19 @@ class RegisteredUser {
     public function setNumReviews($numReviews) {
         $this->numReviews = $numReviews;
     }
+
+    function __toString() {
+        $s = "";
+        $s .= "<table>\n";
+        $s .= "<tr><td colspan=2><hr></td></tr>\n";
+        foreach (get_class_vars(get_class($this)) as $name => $value) {
+            $s .= "<tr><td>$name:</td><td>" . $this->$name . "</td></tr>\n";
+        }
+        $s .= "<tr><td colspan=2><hr></td></tr>\n";
+        $s .= "</table>\n";
+        return $s;
+    }
+
 }
 
 ?>

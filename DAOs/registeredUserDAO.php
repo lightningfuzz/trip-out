@@ -11,9 +11,9 @@ class RegisteredUserDAO {
     }
 
     /**
-     * creates a new user account; user_id 
-     * @param $user is 
-     * @return
+     * creates a new user account; returns a new user id.
+     * @param $user is the new RegisteredUser object
+     * @return the $user object with a new user id; return null if failed
      */
     public static function create(RegisteredUser $user) {
 
@@ -32,27 +32,105 @@ class RegisteredUserDAO {
     }
 
     /**
-     * returns an RegisteredUser object
+     * searches the registered_user table by id
      * @param $id the user id
-     * @return a RegisteredUser object
+     * @return a RegisteredUser object if found; else return null
      */
     public static function getByID($id) {
 
         $db = dbConnect::getInstance();
-        $ru = new RegisteredUser();
         //query
         $q = "SELECT * FROM registered_user WHERE user_id =" . $id;
 
         if (!$result = $db->query($q)) return null;
+        
+        $arr = mysqli_fetch_array($result);
+        $ru = new RegisteredUser();
+        $ru->setUserID($arr["user_id"]);
+        $ru->setUserName($arr["user_name"]);
+        $ru->setPassword($arr["password"]);
+        $ru->setRegTime($arr["reg_time"]);
+        $ru->setLastLoginTime($arr["last_login_time"]);
+        $ru->setEmail($arr["email"]);
+        $ru->setNumReviews($arr["num_reviews"]);
+        
+        return $ru;
+    }
+    
+    /**
+     * searches the registered_user table by username; userful for retrieving password
+     * @param $username is the username for the user account
+     * @return a RegisteredUser object if found; else return null
+     */
+    public static function getByUsername($username) {
 
-        $var = mysqli_fetch_array($result);
-        $ru->setUserID($var["user_id"]);
-        $ru->setUserName($var["user_name"]);
-        $ru->setPassword($var["password"]);
-        $ru->setRegTime($var["reg_time"]);
-        $ru->setLastLoginTime($var["last_login_time"]);
-        $ru->setEmail($var["email"]);
-        $ru->setNumReviews($var["num_reviews"]);
+        $db = dbConnect::getInstance();
+        //query
+        $q = "SELECT * FROM registered_user WHERE user_name =" . $username;
+
+        if (!$result = $db->query($q)) return null;
+
+        $arr = mysqli_fetch_array($result);
+        $ru = new RegisteredUser();
+        $ru->setUserID($arr["user_id"]);
+        $ru->setUserName($arr["user_name"]);
+        $ru->setPassword($arr["password"]);
+        $ru->setRegTime($arr["reg_time"]);
+        $ru->setLastLoginTime($arr["last_login_time"]);
+        $ru->setEmail($arr["email"]);
+        $ru->setNumReviews($arr["num_reviews"]);
+        
+        return $ru;
+    }
+    
+    /**
+     * searches the registered_user table by email; userful for retrieving password
+     * @param $email is the email for the user account
+     * @return a RegisteredUser object if found; else return null
+     */
+    public static function getByEmail($email) {
+
+        $db = dbConnect::getInstance();
+        //query
+        $q = "SELECT * FROM registered_user WHERE email =" . $email;
+
+        if (!$result = $db->query($q)) return null;
+
+        $arr = mysqli_fetch_array($result);
+        $ru = new RegisteredUser();
+        $ru->setUserID($arr["user_id"]);
+        $ru->setUserName($arr["user_name"]);
+        $ru->setPassword($arr["password"]);
+        $ru->setRegTime($arr["reg_time"]);
+        $ru->setLastLoginTime($arr["last_login_time"]);
+        $ru->setEmail($arr["email"]);
+        $ru->setNumReviews($arr["num_reviews"]);
+        
+        return $ru;
+    }
+    
+    /**
+     * searches the registered_user table by email; userful for retrieving password
+     * @param $email is the email for the user account
+     * @return a RegisteredUser object if found; else return null
+     */
+    public static function getByUsernameAndPassword($username, $password) {
+        
+        $db = dbConnect::getInstance();
+        //query
+        $q = "SELECT * FROM registered_user WHERE user_name =" . $username . " AND password =" . $password;
+
+        if (!$result = $db->query($q)) return null;
+
+        $arr = mysqli_fetch_array($result);
+        $ru = new RegisteredUser();
+        $ru->setUserID($arr["user_id"]);
+        $ru->setUserName($arr["user_name"]);
+        $ru->setPassword($arr["password"]);
+        $ru->setRegTime($arr["reg_time"]);
+        $ru->setLastLoginTime($arr["last_login_time"]);
+        $ru->setEmail($arr["email"]);
+        $ru->setNumReviews($arr["num_reviews"]);
         
         return $ru;
     }
@@ -72,6 +150,7 @@ class RegisteredUserDAO {
     }
     
     public static function delete($reviewId) {
+        
         $db = dbConnect::getInstance();
         
         $q = "DELETE FROM registered_user WHERE user_id = " . $reviewId;
