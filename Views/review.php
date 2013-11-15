@@ -15,9 +15,9 @@
                 <h3>Write a Review</h3>
                 <p>
                 <form name="logon" action="index.php" method="POST" >
-                    Title: <input type="text" name="user"><br>
-                    Review: <input type="password" name="userpassword"><br>
-                    Upload Media: <input class="btn btn-default" type="submit" id="editButton" value="Browse">
+                    Title: <input type="text" name="user"> *****<br>
+                    Review: <input type="password" name="userpassword" style="height:100px; width:300px"><br>
+                    Upload Media: <input class="btn btn-default" type="submit" id="editButton" value="Browse"><br>
                     <input class="btn btn-default" type="submit" id="editButton" value="Submit">
                 </form>
                 </p>
