@@ -19,6 +19,7 @@ class Destination {
     private $avgRating;
     private $numImage;
     private $numVideo;
+    private $description;
     
     public function setDestId($destId){
         $this->destId = $destId;
@@ -44,6 +45,9 @@ class Destination {
     public function setNumVideo($numVideo){
         $this->numVideo = $numVideo;
     }
+    public function setDescirption($description){
+        $this->description = $description;
+    }
     
     public function getDestId(){
         return $this->destId;
@@ -65,6 +69,9 @@ class Destination {
     }
     public function getNumVideo(){
         return $this->numVideo;
+    }
+    public function getDescription(){
+        return $this->description;
     }
     //put your code here
 }
