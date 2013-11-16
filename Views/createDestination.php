@@ -22,14 +22,16 @@ and open the template in the editor.
         <div style ="background-color:black;">
                 <img src="../media/assets/images/tripOutLogo.jpg"></img>
                 <div class ="pull-right" style="padding-top:20px;color:white;">
-                    Login: <input type="text" placeholder="username" name="tag" value="" />
-                    <input type="password" placeholder="password" name="tag" value="" />
-                    <br>
-                        <div class="col-md-2" style="padding-top:5px;">
-                            <button class ="btn btn-primary">Sign Up</button>
-                        </div>
+                    <div class="btn-group">
+                        <a href="signUp.php" class="btn btn-primary" id="registerButton">
+                            Register
+                        </a>
+                        <a href="signIn.php" class="btn btn-primary" id="registerButton">
+                            Sign In
+                        </a>
+                    </div>
                         <div style = "text-align:right; float:right;padding-top:10px;padding-right:10px;">
-                            <a href="" >forgot password?</a>
+                            <!-- <a href="" >forgot password?</a> -->
                         </div>
                 </div>
             </div>
@@ -47,29 +49,29 @@ and open the template in the editor.
         <div align="center">
              <div style="border:2px solid; border-radius:25px; display: block;
                text-align: center; float: center; width: 50%; height: 50%">
-        <p><br>Enter a Destination</p>
+        <p><br>Name of Destination</p>
 
         <form class="create_dest_form" method="post" action="">
-            <input class="input-medium" type="text" placeholder="Enter destination" >
+            <input class="input-medium" type="text" placeholder="Name" >
             <select class="input-small">
-                <option value="all">All</option>
+                <option value="---">---</option>
                 <option value="Attractions">Attractions</option>
                 <option value="Events">Events</option>
                 <option value="Hotels">Hotels</option>
                 <option value="Restaurants">Restaurants</option> 
             </select> 
             <!--<input type="submit" value="search!" /> <br><br> -->
-            <p><br>Title of your Review</p>
-            <input class="input-large" type="text" placeholder="review title">
-            <p><br>Your Review</p>
-            <textarea class="input-xxlarge" style="resize: none; width: 50%; height: 50%;">Write Review Here!</textarea>
+            <p><br>Address</p>
+            <input class="input-large" type="text" placeholder="Address">
+            <p><br>Description</p>
+            <textarea class="input-xxlarge" style="resize: none; width: 40%;">Description</textarea>
             <!-- <input type="submit" value="Submit" />  -->
             <br>
-            <input class="btn btn-primary" type="submit" id="reviewSubmitButton" value="Submit!">
+            <input class="btn btn-primary" type="submit" id="createDestSubmitButton" value="Submit!">
             <br>
         </form>
         <br>
-        <p><br>Select a media file to upload</p>
+        <p><br>Select an image to upload</p>
        <form style="display: inline;" action="">
              <input type="file" name="media" style="position: relative; left: 40%;">
              <input class="btn btn-primary" type="submit" id="mediaSubmitButton" value="Submit!">
