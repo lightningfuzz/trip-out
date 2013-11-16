@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-            <title>Detail Trip</title> 
+            <link rel="shortcut icon" href="../media/assets/images/TripoutIcon.ico">
+            <title>Alcatraz</title> 
 		<link rel ="stylesheet" type="type/css" href ="../css/destinationDetail.css" /> 
                 <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
                 <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css"> 
@@ -50,38 +51,80 @@
             
 		<div>
 		<div id = 'photo'>
-                    <a href="../media/images/dumplingking.jpg">
-                            <img src="../media/images/dumplingking.jpg" alt="" class="img-thumbnail" height="300px" width ="140px">
+                    <a href="../media/images/alcatraz/alcatraz1.jpg">
+                            <img src="../media/images/alcatraz/alcatraz1.jpg" alt="" class="img-thumbnail" height="100px" width ="300px">
                     </a>
 		</div>
 		<div id = 'info'>
-			<h2>Shanghai Dumpling King</h2>
-			<p name="pop">Restaurant / Chineese</p>
-			<p id = 'pop'>Food to go Call 387-2088</p>
-			<p name = 'pop'><a  href="http://www.shanghaidumplingkingsf.com/">Website</a></p>
+			<h1>Alcatraz</h1>
+                        <p>
+                            <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
+                            <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
+                            <img src="../media/images/rate1.png"/>(123)
+                        </p>
+			<p>Attraction/ Park</p>
+			<p>One of the most well known prisons in the world</p>
 		</div>
 		</div>
-			<p><a href ="../Views/review.php"> Upload Media </a></p>
-                        <p><a href="../Views/mediaViewer.php">More media of Shanghai Dumpling King</a></p>
+                        <p><a class="fancybox fancybox.iframe" href="../Views/uploadMedia.php">Upload Media</a></p>
+                        <p><a href="../Views/mediaViewer.php">More media of Alcatraz</a></p>
                 <div>
-                    <h4>Reviews</h4>
-                    <a class="fancybox" href="../Views/review.php" title="Lorem ipsum dolor sit amet">Write a review</a>
-                    <p><a href ="../Views/review.php"> Write a review </a></p>
-                    <p>Showing 1-3 out of 15 Reviews</p>
+                    <h3>Reviews</h3>
+                    <a class="fancybox fancybox.iframe" href="../Views/review.php" title="Write a review">Write a review!</a>
+                    <p>Showing 1-4 out of 15 Reviews</p>
                     <ul>
-                        <li><p>Good Eats!                *****</p>
-                            <p>This was the best food I have ever eaten ever.</p>
+                        <li><p>Very Educational! 
+                                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
+                                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
+                                <img src="../media/images/rate1.png"/><br/>
+                            </p>
+                            <p>There was plenty to discover on this rock.</p>
+                            <p class = "byline">by user2</p>
+                            <hr>
                         </li>
-                            <li><p>Okay Eats!            ***</p>
-                            <p>This was the most okay food I have ever eaten.</p>
+                            <li><p>Boring!
+                                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
+                                <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
+                                <img src="../media/images/rate1.png"/><br/>
+                                </p>
+                            <p>Just a bunch of history about a famous prison.</p>
+                            <p class = "byline">by trippin</p>
+                            <hr>
                         </li>
                          </li>
-                            <li><p>Meh Eats!             **</p>
-                            <p>This was the most meh food I have ever eaten.</p>
+                            <li><p>Lots of birds! 
+                                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
+                                <img src="../media/images/rate3.png"/><img src="../media/images/rate1.png"/>
+                                <img src="../media/images/rate1.png"/><br/>
+                                </p>
+                            <p>This is a nesting ground for birds, so be careful where you have your food.</p>
+                            <p class = "byline">by strebek</p>
+                            <hr>
+                        </li>
+                        </li>
+                            <li><p>Crowded but worth it 
+                                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
+                                <img src="../media/images/rate3.png"/><img src="../media/images/rate1.png"/>
+                                <img src="../media/images/rate1.png"/><br/>
+                                </p>
+                            <p>This is a nesting ground for birds, so be careful where you have your food.</p>
+                            <p class = "byline">by user3</p>
+                            <hr>
                         </li>
                     </ul>
                     <p><a href="../Views/destinationDetail.php">More reviews</a></p>
                 </div>
                 </div>
 	</body>
+           <script type="text/javascript">
+	$(document).ready(function() {
+                $("a[href$='.jpg']").attr('rel', 'gallery').fancybox();
+	});
+        </script>
+         <script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+        </script>
+    </script>
 </html>
