@@ -81,7 +81,7 @@ class DestinationDAO {
         return $dest;
     }
     
-    public static function getName($name) {
+    public static function getByName($name) {
 
         $db = dbConnect::getInstance();
         //query

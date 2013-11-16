@@ -10,7 +10,7 @@
         $review->setUserId($userId);
         $review->setRating($_POST['rating']);
         $review->setComment($_POST['comment']);
-        $destId = DestinationDAO::getName($_POST['destination'])->getDestId();
+        $destId = DestinationDAO::getByName($_POST['destination'])->getDestId();
         $review->setDestId($destId);
         
         try{
