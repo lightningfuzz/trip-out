@@ -48,7 +48,7 @@ and open the template in the editor.
         <h2 align="center">Create a Destination</h2>
         <div align="center">
              <div style="border:2px solid; border-radius:25px; display: block;
-               text-align: center; float: center; width: 65%; height: 50%">
+               text-align: center; float: center; width: 55%; height: 50%">
         <p><br>Name of Destination</p>
 
         <form class="create_dest_form" method="post" action="">
@@ -64,6 +64,7 @@ and open the template in the editor.
             <p><br>Address</p>
             <input class="input-large" type="text" placeholder="Address">
             <input class="input-large" type="text" placeholder="City">
+            <input class="input-mini" type="text" placeholder="Zip">
             <select name="States-Provinces"> 
                 <option> - Select Province/State - </option>
                 <option value="AL">Alabama</option> 
@@ -132,7 +133,7 @@ and open the template in the editor.
                 <option value="SK">Saskatchewan</option>
                 <option value="YT">Yukon</option>
             </select>
-            <input class="input-mini" type="text" placeholder="Zip">
+            
             <p><br>Country<p>
             <select id="countries" name="countries">
                 <option value="US">United States</option>
