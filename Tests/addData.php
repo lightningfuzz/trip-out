@@ -272,10 +272,29 @@ require_once '../DAOs/TagDAO.php';
 //TagDAO::create($tag);
 
 
-$tags = TagDAO::getByKeywordID(1);
+//$tags = TagDAO::getByKeywordID(1);
+//
+//foreach($tags as $tag)
+//    echo $tag . "<br>";
 
-foreach($tags as $tag)
-    echo $tag . "<br>";
+$dest = new Destination();
+$dest->setAddress("555 Jingle St.");
+$dest->setAvgRating(0);
+$dest->setName("Food Hut");
+$dest->setNumImages(1);
+$dest->setNumVideos(0);
+$dest->setType(2);
+$dest->setDescription("A place for Food");
+$dest->setImageUrl("../media/images/hp9.JPG");
+$dest->setCity("San Francisco");
+$dest->setState("California");
+$dest->setzipCode("94132");
+$dest->setnumReviews(0);
+$dest->setDestId(22);
+$dest->setWebsite("http://website.com");
+$dest->setPhoneNumber("5555555555");
+DestinationDAO::update($dest);
+echo DestinationDAO::getByID(22);
 
 
 

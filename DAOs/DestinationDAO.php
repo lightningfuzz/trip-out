@@ -31,13 +31,14 @@ class DestinationDAO {
         //query
         $q = "INSERT INTO destination (type, name, address, "
                 . "avg_rating, num_images, num_videos, description, image_url, num_reviews, "
-                . "city, state, zip_code) VALUES ('"
+                . "city, state, zip_code, website, phone_number) VALUES ('"
                 . $dest->getType() . "', '" . $dest->getName() . "', '"
                 . $dest->getAddress() . "', '" . $dest->getAvgRating() . "', '"
                 . $dest->getNumImages() . "', '" . $dest->getNumVideos() . "', '"
                 . $dest->getDescription() . "', '" . $dest->getImageUrl() . "', '"
                 . $dest->getNumReviews() . "', '".$dest->getCity() . "', '" 
-                . $dest->getState() . "', '" . $dest->getZipCode() . "')";
+                . $dest->getState() . "', '" . $dest->getZipCode() . "', '"
+                . $dest->getWebsite() . "', '" . $dest->getPhoneNumber() . "')";
 
         if (!$db->query($q)) return null;
         $dest->setDestId($db->insert_id);
@@ -73,6 +74,8 @@ class DestinationDAO {
         $dest->setCity($arr["city"]);
         $dest->setState($arr["state"]);
         $dest->setZipCode($arr["zip_code"]);
+        $dest->setWebsite($arr["website"]);
+        $dest->setPhoneNumber($arr["phone_number"]);
         
         return $dest;
     }
@@ -85,7 +88,10 @@ class DestinationDAO {
             . "', address = '" . $dest->getAddress() . "', avg_rating = '" . $dest->getAvgRating()
                 . "', num_images = '" . $dest->getNumImages() . "', num_videos = '" . $dest->getNumVideos()
                 . "', description = '" . $dest->getDescription() . "', num_reviews = '" . $dest->getNumReviews()
-                . "', image_url = '" . $dest->getImageUrl() . "' WHERE dest_id = " . $dest->getDestId() . "";
+                . "', image_url = '" . $dest->getImageUrl() . "', city = '" . $dest->getCity()
+                . "', state = '" . $dest->getState() . "', zip_code = '" . $dest->getZipCode()
+                . "', website = '" . $dest->getWebsite() . "', phone_number = '" . $dest->getPhoneNumber()
+                . "' WHERE dest_id = " . $dest->getDestId() . "";
 
         if(!$db->query($q)) return null;
 

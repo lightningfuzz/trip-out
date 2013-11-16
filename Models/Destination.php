@@ -25,6 +25,8 @@ class Destination {
     private $city;
     private $state;
     private $zipCode;
+    private $website;
+    private $phoneNumber;
     
     public function setDestId($destId){
         $this->destId = $destId;
@@ -68,6 +70,12 @@ class Destination {
     public function setZipCode($zipCode){
         $this->zipCode = $zipCode;
     }
+    public function setWebsite($website){
+        $this->website = $website;
+    }
+    public function setPhoneNumber($phoneNumber){
+        $this->phoneNumber = $phoneNumber;
+    }
     
     
     
@@ -110,6 +118,12 @@ class Destination {
     }
     public function getZipCode(){
         return $this->zipCode;
+    }
+    public function getWebsite(){
+        return $this->website;
+    }
+    public function getPhoneNumber(){
+        return $this->phoneNumber;
     }
     //put your code here
     
