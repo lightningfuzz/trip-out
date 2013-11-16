@@ -1,11 +1,11 @@
 <?php
 
-require_once '../Models/destination.php';
-require_once '../DAOs/destinationDAO.php';
-require_once '../Models/keyword.php';
-require_once '../DAOs/keywordDAO.php';
-require_once '../Models/tag.php';
-require_once '../DAOs/tagDAO.php';
+require_once '../Models/Destination.php';
+require_once '../DAOs/DestinationDAO.php';
+require_once '../Models/Keyword.php';
+require_once '../DAOs/KeywordDAO.php';
+require_once '../Models/Tag.php';
+require_once '../DAOs/TagDAO.php';
 
 //$dest = new Destination();
 //$dest->setAddress("555 Jingle St.");

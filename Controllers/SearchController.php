@@ -1,11 +1,11 @@
 <?php
 
-require_once '../Models/destination.php';
-require_once '../DAOs/destinationDAO.php';
-require_once '../Models/keyword.php';
-require_once '../DAOs/keywordDAO.php';
-require_once '../Models/tag.php';
-require_once '../DAOs/tagDAO.php';
+require_once '../Models/Destination.php';
+require_once '../DAOs/DestinationDAO.php';
+require_once '../Models/Keyword.php';
+require_once '../DAOs/KeywordDAO.php';
+require_once '../Models/Tag.php';
+require_once '../DAOs/TagDAO.php';
 
 class Search {
     
@@ -34,12 +34,13 @@ class Search {
             $key = KeywordDAO::getByWord($word);
             
             // get array of destination ids associated with the keyword ID
-            // and merge with existing array of ids
             $tags = TagDAO::getByKeywordID($key->getKeywordId());
             $ids = array();
             foreach($tags as $tag){
                 $ids[] = $tag->getDestId();
             }
+            
+            // merge with existing array of ids
             $destinationIds = array_merge($destinationIds, $ids); 
         }
         
@@ -51,7 +52,7 @@ class Search {
         
         //lookup destinations by id and save object to array
         foreach($destinationIds as $destId => $count){
-            $destObject = destinationDAO::getByID($destId);
+            $destObject = DestinationDAO::getByID($destId);
             if($destObject != null){
                 $destinations[] = $destObject;
             }

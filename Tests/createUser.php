@@ -1,6 +1,6 @@
 <?php
-    require_once("../DAOs/registeredUserDAO.php");
-    require_once("../Models/registeredUser.php");
+    require_once("../DAOs/RegisteredUserDAO.php");
+    require_once("../Models/RegisteredUser.php");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = new RegisteredUser();
         $user->setUserName($_POST['userName']);
