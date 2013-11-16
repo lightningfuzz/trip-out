@@ -2,6 +2,7 @@
 
 class RegisteredUser {
 
+    private $userID;
     private $userName;
     private $password;
     private $regTime; //registration time

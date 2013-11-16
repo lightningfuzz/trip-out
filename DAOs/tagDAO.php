@@ -60,4 +60,17 @@ class TagDAO {
         
         return $tags;
     }
+    
+    public static function delete(Tag $tag) {
+
+        $db = dbConnect::getInstance();
+
+        $q = "DELETE FROM tag WHERE dest_id = " . $tag->getDestId()
+                . " AND keyword_id = " . $tag->getKeywordId();
+
+        if ($db->query($q))
+            return true;
+        else
+            return false;
+    }
 }
