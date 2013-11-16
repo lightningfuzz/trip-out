@@ -1,19 +1,51 @@
-.left_pane {
+/* <!-- .left_pane {
 	position: relative; 
 	float: left;
 	width: 15%;
 	
 }
+*/
 
 .content {
-	position: relative;
-	float: right;
-	width: 83%;
-		
+        /* position: relative; */
+	float: none;
+	/* width: 83%; */
+        width: 870px;
+        padding: 5px;
+        margin-left: auto;
+        margin-right: auto;
 }
 
 .destination {
-        margin-top: 30px;
+        margin-top: 10px;
 	float: left;
 	clear: both;
+        width: 900px;
+        padding: 5px;
+        border-bottom: solid 1px green;
+}
+
+.destination p {
+    margin: 5px;
+}
+
+.search_name {
+    width: 590px;
+    float: left;
+}
+
+.search_addr {
+    width: 300px;
+    float: right;
+    
+}
+
+.newDest {
+        margin-top: 30px;
+        margin-bottom: 20px;
+	float: left;
+	clear: both;
+        width: 900px;
+        padding: 5px;
+
 }
