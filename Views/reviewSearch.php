@@ -47,7 +47,7 @@
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
                 <div class="panel-heading">What would you like to review?</div>
                 <div class="panel-body" align="center">
-                    
+                     <form action="reviewSearchResult.php" method="post" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox1" name ="reviewType" value="option1"> Attractions
@@ -65,9 +65,9 @@
                             <input type="radio" id="inlineCheckbox5" name = "reviewType" value="option5"> All
                         </label>
                     </div>
-                    <form class="form-inline" role="form">
+                   
                         <div class="form-group" style="width:40%;">
-                          <input class="form-control"  placeholder="Enter search keywords">
+                          <input name="txtSearch" class="form-control"  placeholder="Enter search keywords">
                         </div>
                         <button type="submit" class="btn btn-default">Search</button>
                     </form>
