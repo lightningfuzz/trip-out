@@ -4,6 +4,10 @@ require_once("../Models/RegisteredUser.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $user = RegisteredUserDAO::getByID($_POST['userId']);
+    if($user == null){
+        echo "error <br>";
+        exit;
+    }
     $user->setUserName($_POST['name']);
     $user->setEmail($_POST['email']);
     $user->setPassword($_POST['password']);

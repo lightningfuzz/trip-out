@@ -10,7 +10,9 @@
  *
  * @author deon
  */
-//require_once("../DAOs/registeredUserDAO.php");
+require_once("../DAOs/registeredUserDAO.php");
+require_once("../Exceptions/UsernameException.php");
+
 
 class AccountController {
 
@@ -53,12 +55,12 @@ class AccountController {
     public static function register(RegisteredUser $user) {
 
         //checks if username already taken
-        if (RegisteredUserDAO::getByUsername($user->getUserName()) == null)
+        if ((RegisteredUserDAO::getByUsername($user->getUserName())) != null)
             throw new UsernameException();
 
         //save the registration time and create the user
         $user->setRegTime(date("F j, Y, g:i:s a"));
-        return ($this->user = RegisteredUserDAO::create($user));
+        return ($user = RegisteredUserDAO::create($user));
     }
     
     public static function isLogin() {

@@ -66,11 +66,12 @@ class RegisteredUserDAO {
 
         $db = dbConnect::getInstance();
         //query
-        $q = "SELECT * FROM registered_user WHERE user_name =" . $username;
+        $q = "SELECT * FROM registered_user WHERE user_name = '" . $username . "'";
 
-        if (!$result = $db->query($q)) return null;
+        $result = $db->query($q);
+        
+        if (!($arr = mysqli_fetch_array($result))) return null;
 
-        $arr = mysqli_fetch_array($result);
         $ru = new RegisteredUser();
         $ru->setUserID($arr["user_id"]);
         $ru->setUserName($arr["user_name"]);

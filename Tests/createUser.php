@@ -1,5 +1,5 @@
 <?php
-    require_once("../DAOs/RegisteredUserDAO.php");
+    require_once("../Controllers/AccountController.php");
     require_once("../Models/RegisteredUser.php");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = new RegisteredUser();
@@ -7,13 +7,15 @@
         $user->setEmail($_POST['email']);
         $user->setPassword($_POST['password']);
         $user->setNumReviews(0);
-        $result = RegisteredUserDAO::create($user);
-        if($result == null){
-            print "entry failed: <br>";
-            print "Username: ".$user->getUserName()."<br>";
+        
+        try{
+            $result = AccountController::register($user);
+         }
+        catch(UsernameException $e){
+            echo $e;
+            exit;
         }
-        else
-            header('Location: listAll.php');
+        header('Location: listAll.php');
         exit;
     }?>
 
