@@ -10,7 +10,7 @@
  *
  * @author deon
  */
-//require_once("../DAOs/registeredUserDAO.php");
+require_once("../DAOs/ReviewDAO.php");
 
 class ReviewController {
 

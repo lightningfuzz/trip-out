@@ -11,6 +11,7 @@
  * @author Deon
  */
 require_once("../dbConnect.php");
+require_once '../Models/Destination.php';
 
 //singleton class
 class DestinationDAO {
@@ -60,6 +61,36 @@ class DestinationDAO {
         if (!$result = $db->query($q)) return null;
         
         $arr = mysqli_fetch_array($result);
+        $dest = new Destination();
+        $dest->setDestId($arr["dest_id"]);
+        $dest->setType($arr["type"]);
+        $dest->setName($arr["name"]);
+        $dest->setAddress($arr["address"]);
+        $dest->setAvgRating($arr["avg_rating"]);
+        $dest->setNumImages($arr["num_images"]);
+        $dest->setNumVideos($arr["num_videos"]);
+        $dest->setDescription($arr["description"]);
+        $dest->setImageUrl($arr["image_url"]);
+        $dest->setNumReviews($arr["num_reviews"]);
+        $dest->setCity($arr["city"]);
+        $dest->setState($arr["state"]);
+        $dest->setZipCode($arr["zip_code"]);
+        $dest->setWebsite($arr["website"]);
+        $dest->setPhoneNumber($arr["phone_number"]);
+        
+        return $dest;
+    }
+    
+    public static function getName($name) {
+
+        $db = dbConnect::getInstance();
+        //query
+        $q = "SELECT * FROM destination WHERE name = '" . $name . "'";
+
+        $result = $db->query($q);
+        
+        if (!($arr = mysqli_fetch_array($result))) return null;
+        
         $dest = new Destination();
         $dest->setDestId($arr["dest_id"]);
         $dest->setType($arr["type"]);

@@ -1,6 +1,7 @@
 <?php
 
 require_once("../dbConnect.php");
+require_once '../Models/RegisteredUser.php';
 
 //singleton class
 class RegisteredUserDAO {
