@@ -1,10 +1,7 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
+	
+    ?>
 <html>
     <head>
         <title>TRIP OUT!</title>    
@@ -41,31 +38,34 @@
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </nav>
+            
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
-                <div class="panel-heading">Plan Your Destination</div>
+                <div class="panel-heading">Plan Your Trip</div>
                 <div class="panel-body" align="center">
+                     <form action="Views/searchResult.php" method="post" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox1" value="option1"> Attractions
+                            <input type="radio" id="inlineCheckbox1" name ="searchType" value="option1"> Attractions
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox2" value="option2"> Restaurants
+                            <input type="radio" id="inlineCheckbox2" name ="searchType" value="option2"> Restaurants
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox3" value="option3"> Hotels
+                            <input type="radio" id="inlineCheckbox3" name = "searchType" value="option3"> Hotels
+                            
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox3" value="option3"> Events
+                            <input type="radio" id="inlineCheckbox4" name = "searchType" value="option4"> Events
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox3" value="option3"> All
+                            <input type="radio" id="inlineCheckbox5" name = "searchType" value="option5"> All
                         </label>
                     </div>
-                    <form class="form-inline" role="form">
+                   
                         <div class="form-group" style="width:40%;">
-                          <input class="form-control"  placeholder="Enter search keywords">
+                          <input name="txtSearch" class="form-control"  placeholder="Enter search keywords" value="">
                         </div>
-                        <button type="submit" class="btn btn-default">Search Destinations</button>
+                        <button type="submit" class="btn btn-default">Search</button>
                     </form>
                 </div>
             </div>
