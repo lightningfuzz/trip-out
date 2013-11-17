@@ -100,7 +100,7 @@ $searchTp = getValue("searchType");
             -->
 		<div class = "content">
                     
-			<h3 style = "color: green"> Search Results of "<?php echo $searchVal;?>" </h3> 
+			<h3 style = "color: green"> Search Results for "<?php echo $searchVal;?>" </h3> 
 			<p style = "text-align: right; padding-right: 200px"> Showing 1 - 5 out of 10 </p> <br/>
 			<div class = "destination">
                                 <div class ="search_name"> 
