@@ -1,7 +1,7 @@
 <?php
 
 require_once '../Controllers/SearchController.php';
-$search = new Search("bay area");
+$search = new Search("creepy");
 $result = $search->run();
 
 //foreach($result as $dest){
