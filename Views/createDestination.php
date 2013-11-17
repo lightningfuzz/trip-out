@@ -53,6 +53,7 @@ and open the template in the editor.
 
         <form class="create_dest_form" method="post" action="">
             <input class="input-medium" type="text" placeholder="Name" >
+            <br>
             <select class="input-small">
                 <option value="Category">-Category-</option>
                 <option value="Attractions">Attractions</option>
