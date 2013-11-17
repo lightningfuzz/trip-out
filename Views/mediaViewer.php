@@ -133,7 +133,6 @@
             <!-- END FOOTER -->
         </div>
     </body>
-    
     <!--js for fancy box-->
     <script type="text/javascript">
 	$(document).ready(function() {
