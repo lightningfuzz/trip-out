@@ -62,7 +62,7 @@
                                    </div>
                            </div>
                            <br>
-                           <a href="#" class="btn btn-primary" id="signUpButton">
+                           <a href="../index.php" class="btn btn-primary" id="signUpButton">
                            Register Now
                            </a>
                        </form>

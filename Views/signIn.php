@@ -34,8 +34,12 @@
                     <form name="logon" action="index.php" method="POST" >
                         Username: <input type="text" name="user"><br>
                         Password: <input type="password" name="userpassword"><br>
-
-                        <input class="btn btn-primary" type="submit" id="editButton" value="Sign In">
+                        <div class="btn-group">
+                        <a href="../index.php" class="btn btn-primary" id="signInButton">
+                            Sign In
+                        </a>
+                        </div>
+                        <!-- <input class="btn btn-primary" type="submit" id="editButton" value="Sign In"> -->
                     </form>
                     </p>
                 </div>
