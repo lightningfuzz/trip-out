@@ -52,11 +52,12 @@ Stars:Khine-->
             </nav>
             <div class ="container">
             
-		<div>
 		<div id = 'photo'>
                     <a href="../media/images/alcatraz/alcatraz1.jpg" title="Arriving on the ferry">
                             <img src="../media/images/alcatraz/alcatraz1.jpg" alt="" class="img-thumbnail" height="100px" width ="300px">
                     </a>
+                    <a class="btn btn-primary fancybox fancybox.iframe" href="../Views/uploadMedia.php">Upload Media!</a>
+                    <a class="btn btn-info"href="../Views/mediaViewer.php">More media of Alcatraz</a>
 		</div>
 		<div class = 'info'>
 			<h1>Alcatraz</h1>
@@ -65,12 +66,14 @@ Stars:Khine-->
                             <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                             <img src="../media/images/rate1.png"/><span class="badge badge-info">123 Ratings</span>
                         </p>
-			<p>Category: Attraction/Park</p>
-			<p>One of the most famous prisons in the world</p>
+			<p><b>Category</b> Attraction/Park</p>
+                        <p><b>City</b>San Francisco</p>
+                        <p><b>Address</b>Just north of San Francisco</p>
+                        <p><b>Phone Number</b>(123)123-1234</p>
+			<p><b>Description</b>One of the most famous prisons in the world.  It was originally just a rock with very little plant life.  But it was eventually
+                        turned into a military base.  It was then turned into a prison, and is now a national park.</p>
 		</div>
-		</div>
-                <a class="btn btn-primary fancybox fancybox.iframe" href="../Views/uploadMedia.php">Upload Media!</a>
-                <a class="btn btn-info"href="../Views/mediaViewer.php">More media of Alcatraz</a>
+                <br>
                 <div id =".destReviews">
                     <h3>Reviews</h3>
                     <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/review.php" title="Write a review">Write a review!</a>

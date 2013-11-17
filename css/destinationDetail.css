@@ -5,27 +5,20 @@
     Description:
         Purpose of the stylesheet follows.
 */
-
-root { 
-    display: block;
-}
-div{
-}
-h1{
-    margin-bottom:200px;
+.blorb{
 }
 .info{
+    width:400px;
     display:inline-block;
 }
 .byline{
     color:#808080;
 }
 #photo{
+    float:left
     margin:auto;
-    border:solid black 1px;
     height:200px;
     width:300px;
     display:inline-block;
-    background-color: #A0A0A0;
 }
 
