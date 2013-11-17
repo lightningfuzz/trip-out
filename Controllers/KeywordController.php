@@ -12,8 +12,11 @@ require_once '../Models/Tag.php';
 
 class KeywordController {
     
+    
+    //creates keywords and tags in the database based on given destinations
     public static function createFromDestination(Destination $dest){
         
+        //can't create tags without a destination ID
         if(!$dest->getDestId())
             throw new Exception("Can't create keyword without dest_id");
         
