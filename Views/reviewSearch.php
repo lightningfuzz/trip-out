@@ -47,7 +47,7 @@
                     <div style="padding-bottom:10px;">
                         
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox5" name = "reviewType" value="option5"> All
+                            <input type="radio" id="inlineCheckbox5" name = "reviewType" value="option5" checked> All
                         </label>
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox1" name ="reviewType" value="option1"> Attractions
