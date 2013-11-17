@@ -139,12 +139,12 @@ $result = $search->run();
 
        <!-- Can't find the destination? Create a new Destination -->
        
-       <form action="createDestination.php" method="post" class="form-inline">
+       <form action="createDestination.php" method="get" class="form-inline">
        <div class ="newDest">
            <p>
                Can't find your destination? Create a new one!
            </p>
-           <button type="submit" method ="get" class="btn btn-default">Create Destination</button>    
+           <button type="submit" class="btn btn-default">Create Destination</button>    
        </div>
        </form> 
        </div>
