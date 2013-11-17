@@ -44,6 +44,10 @@
                 <div class="panel-body" align="center">
                      <form action="Views/searchResult.php" method="post" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
+                        
+                        <label class="checkbox-inline">
+                            <input type="radio" id="inlineCheckbox5" name = "searchType" value="option5"> All
+                        </label>
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox1" name ="searchType" value="option1"> Attractions
                         </label>
@@ -57,9 +61,7 @@
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox4" name = "searchType" value="option4"> Events
                         </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox5" name = "searchType" value="option5"> All
-                        </label>
+                        
                     </div>
                    
                         <div class="form-group" style="width:40%;">
