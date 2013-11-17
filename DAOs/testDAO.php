@@ -1,7 +1,6 @@
 <?php
 require_once("../dbConnect.php");
 
-//test comment
 class testDAO{
     //put your code here
     
