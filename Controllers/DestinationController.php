@@ -20,7 +20,7 @@ class DestinationController{
         
         //if certian fields are missing, throw exception
         if( !$dest->getName() || !$dest->getCity()
-                || !$dest->getAddress() || !$dest->getState())
+                || !$dest->getAddress() || !$dest->getState() || !$dest->getType())
             
             throw new DestinationException("Missing Name, Address, City, or State");
         
