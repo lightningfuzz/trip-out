@@ -17,17 +17,15 @@ Made by Modifying signIn.php-Rob Pennock-->
                 <h3>Write a Review</h3>
                 <form name="logon" action="index.php" method="POST" >
                     Title: <input type="text" name="reviewTitle"> 
-                                <p> 
                                 <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
                                 <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
-                                <img src="../media/images/rate1.png"/><br/>
-                                </p><br>
+                                <img src="../media/images/rate1.png"/><br/><br>
                     Review: <textarea rows="4" cols="50"></textarea><br>
-                    <input type="text" input name="reviewText" style="height:100px; width:300px"><br>
                     <hr>
-                    <p>Upload Media(Optional)</p> <input type=file  value="Browse"><br>
+                    <p>Upload Media(Optional)</p> 
                     Media Title: <input type="text" name="reviewTitle"><br>
-                    <input class="btn btn-default" type="submit" id="editButton" value="Submit">
+                    <input type=file  value="Browse"><br>
+                    <input class="btn btn-primary" type="submit" id="editButton" value="Submit">
                 </form>
          </div>
      </div>

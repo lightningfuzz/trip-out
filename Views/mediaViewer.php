@@ -61,7 +61,7 @@
                 <div class ="col-md-3">
                 </div>
                 <div class ="col-md-2">
-                    <button class ="btn btn-default">Back to Destination</button>
+                    <a class ="btn btn-default" href="../Views/destinationDetail.php">Back to Destination</a>
                 </div>
                 <div class ="col-md-3">
                     <a href ="">All</a> | 
