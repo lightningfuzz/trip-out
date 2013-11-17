@@ -60,11 +60,11 @@ Stars:Khine-->
                         <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                         <img src="../media/images/rate1.png"/><span class="badge badge-info">123 Ratings</span>
                     </p>
-                    <p><b>Category</b> Attraction/Park</p>
-                    <p><b>City</b>San Francisco</p>
-                    <p><b>Address</b>Just north of San Francisco</p>
-                    <p><b>Phone Number</b>(123)123-1234</p>
-                    <p><b>Description</b>One of the most famous prisons in the world.  It was originally just a rock with very little plant life.  But it was eventually
+                    <p><b>Category: </b> Attraction/Park</p>
+                    <p><b>City: </b>San Francisco</p>
+                    <p><b>Address: </b>Just north of San Francisco</p>
+                    <p><b>Phone Number: </b>(123)123-1234</p>
+                    <p><b>Description: </b>One of the most famous prisons in the world.  It was originally just a rock with very little plant life.  But it was eventually
                     turned into a military base.  It was then turned into a prison, and is now a national park.</p>
 		</div>
                 <br>
