@@ -1,3 +1,5 @@
+<!-- Author:Matthew Rutherford 
+Made by Modifying signIn.php-Rob Pennock-->
 <html>
     <head>
         <title>TRIP OUT!</title>    
@@ -20,7 +22,8 @@
                                 <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
                                 <img src="../media/images/rate1.png"/><br/>
                                 </p><br>
-                    Review: <input type="text" input name="reviewText" style="height:100px; width:300px"><br>
+                    Review: <textarea rows="4" cols="50"></textarea><br>
+                    <input type="text" input name="reviewText" style="height:100px; width:300px"><br>
                     <hr>
                     <p>Upload Media(Optional)</p> <input type=file  value="Browse"><br>
                     Media Title: <input type="text" name="reviewTitle"><br>

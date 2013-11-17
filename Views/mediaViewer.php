@@ -77,55 +77,55 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="../media/images/mv_hp/dumplingking.jpg">
-                            <img src="../media/images/mv_hp/dumplingking.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
+                        <a href="../media/images/alcatraz/alcatraz1.jpg" title="Arriving on the ferry">
+                            <img src="../media/images/alcatraz/alcatraz1.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
                         </a>
                     </td>    
                     <td>
-                        <a href="../media/images/mv_hp/hp1.jpg">
-                            <img src="../media/images/mv_hp/hp1.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
+                        <a href="../media/images/alcatraz/alcatraz2.jpg" title="Indian Graffiti from when they owned the island">
+                            <img src="../media/images/alcatraz/alcatraz2.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
                         </a>
                     </td>
                     <td>
-                        <a href="../media/images/mv_hp/hp2.jpg">
-                            <img src="../media/images/mv_hp/hp2.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">                    
+                        <a href="../media/images/alcatraz/alcatraz3.jpg" title="The power plant">
+                            <img src="../media/images/alcatraz/alcatraz3.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">                    
                         </a>
                     </td>
                     <td>
-                        <a href="../media/images/mv_hp/hp3.jpg">
-                            <img src="../media/images/mv_hp/hp3.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">                    
+                        <a href="../media/images/alcatraz/alcatraz4.jpg" title="tunnel going through a part of the island">
+                            <img src="../media/images/alcatraz/alcatraz4.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">                    
                         </a>
                     </td>
                     <td>
-                        <a href="../media/images/mv_hp/hp4.jpg">
-                            <img src="../media/images/mv_hp/hp4.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">                    
+                        <a href="../media/images/alcatraz/alcatraz5.jpg" title="Table in the morgue">
+                            <img src="../media/images/alcatraz/alcatraz5.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">                    
                         </a>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <a href="../media/images/mv_hp/hp5.jpg">
-                            <img src="../media/images/mv_hp/hp5.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
+                        <a href="../media/images/alcatraz/alcatraz6.jpg" title="A prison hospital room">
+                            <img src="../media/images/alcatraz/alcatraz6.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
                         </a>
                     </td>
                     <td>
-                        <a href="../media/images/mv_hp/hp6.jpg">
-                            <img src="../media/images/mv_hp/hp6.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
+                        <a href="../media/images/alcatraz/alcatraz7.jpg" title="view from below of main prison block">
+                            <img src="../media/images/alcatraz/alcatraz7.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
                         </a>
                     </td>
                     <td>
-                        <a href="../media/images/mv_hp/hp7.jpg">
-                            <img src="../media/images/mv_hp/hp7.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
+                        <a href="../media/images/alcatraz/alcatraz8.jpg" title="Room">
+                            <img src="../media/images/alcatraz/alcatraz8.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
                         </a>
                     </td>
                     <td>
-                        <a href="../media/images/mv_hp/hp8.jpg">
-                            <img src="../media/images/mv_hp/hp8.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
+                        <a href="../media/images/alcatraz/alcatraz9.jpg" title="The Garden at alcatraz">
+                            <img src="../media/images/alcatraz/alcatraz9.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
                         </a>
                     </td>
                     <td>
-                        <a href="../media/images/mv_hp/hp5.jpg">
-                            <img src="../media/images/mv_hp/hp9.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
+                        <a href="../media/images/alcatraz/alcatraz10.jpg" title="Watertower with indian graffiti">
+                            <img src="../media/images/alcatraz/alcatraz10.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
                         <a>
                     </td>
                 </tr>

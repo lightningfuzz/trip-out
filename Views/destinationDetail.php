@@ -1,3 +1,6 @@
+<!-- Author:Matthew Rutherford 
+Nav bar: Marcian Diamond/Help with Fancy Box
+Stars:Khine-->
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -26,7 +29,6 @@
             <script src="../js/script.js"></script>
             <div class ="container">
             <div style ="background-color:black;">
-                <img src="http://sfsuswe.com/~mruthe/media/assets/images/tripOutLogo.jpg"></img>
                 <div class ="pull-right" style="padding-top:20px;color:white;">
                     Login: <input type="text" placeholder="username" name="tag" value="" />
                     <input type="password" placeholder="password" name="tag" value="" />
@@ -51,7 +53,7 @@
             
 		<div>
 		<div id = 'photo'>
-                    <a href="../media/images/alcatraz/alcatraz1.jpg">
+                    <a href="../media/images/alcatraz/alcatraz1.jpg" title="Arriving on the ferry">
                             <img src="../media/images/alcatraz/alcatraz1.jpg" alt="" class="img-thumbnail" height="100px" width ="300px">
                     </a>
 		</div>
@@ -63,7 +65,7 @@
                             <img src="../media/images/rate1.png"/>(123)
                         </p>
 			<p>Category: Attraction/Park</p>
-			<p>One of the most well known prisons in the world</p>
+			<p>One of the most famous prisons in the world</p>
 		</div>
 		</div>
                         <p><a class="fancybox fancybox.iframe" href="../Views/uploadMedia.php">Upload Media!</a></p>

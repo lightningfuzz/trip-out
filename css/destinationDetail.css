@@ -25,7 +25,7 @@ h1{
     border:solid black 1px;
     height:200px;
     width:300px;
-    color:blue;
     display:inline-block;
+    background-color: #A0A0A0;
 }
 
