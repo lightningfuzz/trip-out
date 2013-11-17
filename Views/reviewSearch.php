@@ -1,9 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 ?>
 <html>
     <head>
@@ -65,9 +61,7 @@
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox4" name = "reviewType" value="option4"> Events
                         </label>
-                        
                     </div>
-                   
                         <div class="form-group" style="width:40%;">
                           <input name="txtSearch" class="form-control"  placeholder="Enter search keywords">
                         </div>
