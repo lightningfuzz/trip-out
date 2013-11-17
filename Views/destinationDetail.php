@@ -41,7 +41,7 @@
             </div>
             <nav class="navbar navbar-inverse" role="navigation">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="http://sfsuswe.com/~mruthe/">Home</a></li>
                     <li><a href="../Views/about.html">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="../Views/reviewSearch.php">Write a Review</a></li>
@@ -55,18 +55,18 @@
                             <img src="../media/images/alcatraz/alcatraz1.jpg" alt="" class="img-thumbnail" height="100px" width ="300px">
                     </a>
 		</div>
-		<div id = 'info'>
+		<div class = 'info'>
 			<h1>Alcatraz</h1>
                         <p>
                             <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                             <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                             <img src="../media/images/rate1.png"/>(123)
                         </p>
-			<p>Attraction/ Park</p>
+			<p>Category: Attraction/Park</p>
 			<p>One of the most well known prisons in the world</p>
 		</div>
 		</div>
-                        <p><a class="fancybox fancybox.iframe" href="../Views/uploadMedia.php">Upload Media</a></p>
+                        <p><a class="fancybox fancybox.iframe" href="../Views/uploadMedia.php">Upload Media!</a></p>
                         <p><a href="../Views/mediaViewer.php">More media of Alcatraz</a></p>
                 <div>
                     <h3>Reviews</h3>
@@ -123,7 +123,7 @@
         </script>
          <script type="text/javascript">
 	$(document).ready(function() {
-		$(".fancybox").fancybox();
+		$(".fancybox").fancybox({"width":350,"height":200});
 	});
         </script>
     </script>

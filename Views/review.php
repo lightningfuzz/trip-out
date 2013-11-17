@@ -13,14 +13,19 @@
      <div class="row">
          <div class="span5">
                 <h3>Write a Review</h3>
-                <p>
                 <form name="logon" action="index.php" method="POST" >
-                    Title: <input type="text" name="reviewTitle"> *****<br>
+                    Title: <input type="text" name="reviewTitle"> 
+                                <p> 
+                                <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
+                                <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
+                                <img src="../media/images/rate1.png"/><br/>
+                                </p><br>
                     Review: <input type="text" input name="reviewText" style="height:100px; width:300px"><br>
-                    Upload Media: <input class="btn btn-default" type="submit" id="editButton" value="Browse"><br>
+                    <hr>
+                    <p>Upload Media(Optional)</p> <input type=file  value="Browse"><br>
+                    Media Title: <input type="text" name="reviewTitle"><br>
                     <input class="btn btn-default" type="submit" id="editButton" value="Submit">
                 </form>
-                </p>
          </div>
      </div>
     </div>

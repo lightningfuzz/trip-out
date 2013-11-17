@@ -14,8 +14,7 @@ div{
 h1{
     margin-bottom:200px;
 }
-#info{
-    color:blue;
+.info{
     display:inline-block;
 }
 .byline{
