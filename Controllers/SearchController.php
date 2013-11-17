@@ -36,8 +36,10 @@ class Search {
             // get array of destination ids associated with the keyword ID
             $tags = TagDAO::getByKeywordID($key->getKeywordId());
             $ids = array();
-            foreach($tags as $tag){
-                $ids[] = $tag->getDestId();
+            if($tags){
+                foreach($tags as $tag){
+                    $ids[] = $tag->getDestId();
+                }
             }
             
             // merge with existing array of ids
