@@ -2,6 +2,30 @@
 To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+    require_once("../Controllers/DestinationController.php");
+    require_once("../Models/Destination.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $destin = new Destination();
+        $destin->setName($_POST['destName']);
+        $destin->setType($_POST['destType']);
+        $destin->setAddress($_POST['destAddress']);
+        $destin->setCity($_POST['destCity']);
+        $destin->setState($_POST['destState']);
+        $destin->setZipCode($_POST['destZip']);
+        $destin->setPhoneNumber($_POST['destPhone']);
+        $destin->setWebsite($_POST['destWebsite']);
+        
+        try{
+            $result = DestinationController::create($destin);
+         }
+        catch(DestinationException $e){
+            echo $e;
+            exit;
+        }
+        header('Location: destinationDetail.php');
+        exit;
+    }?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,26 +75,26 @@ and open the template in the editor.
                text-align: center; float: center; width: 55%; height: 50%">
         <p><br>Name of Destination</p>
 
-        <form class="create_dest_form" method="post" action="">
-            <input class="input-medium" type="text" placeholder="Name" >
+        <form class="create_dest_form" method="POST" action="createDest.php">
+            <input class="input-medium" name ="destName" type="text" placeholder="Name" >
             <br>
-            <select class="input-small">
+            <select name="destType" class="input-small">
                 <option value="">-Category-</option>
                 <option value="1">Attractions</option>
+                <option value="2">Restaurants</option>
+                <option value="3">Hotels</option>   
                 <option value="4">Events</option>
-                <option value="3">Hotels</option>
-                <option value="2">Restaurants</option> 
             </select> 
             <!--<input type="submit" value="search!" /> <br><br> -->
             <p><br>Address</p>
-            <input class="input-large" id="destAddress" type="text" placeholder="Address">
+            <input class="input-large" name="destAddress" type="text" placeholder="Address">
             <p></p>
-            <input class="input-large" type="text" placeholder="City">
+            <input class="input-large" name="destCity" type="text" placeholder="City">
             <p></p>
-            <input class="input-mini" type="text" placeholder="Zip">
+            <input class="input-mini" name="destZip"type="text" placeholder="Zip">
             <p></p>
             <!-- from http://chrishacia.com/2012/10/html-select-box-country-list-with-iso-codes-as-values/ -->
-            <select name="States-Provinces"> 
+            <select name="destState"> 
                 <option> - Select Province/State - </option>
                 <option value="Alabama">Alabama</option> 
                 <option value="Alaska">Alaska</option> 
@@ -124,7 +148,7 @@ and open the template in the editor.
                 <option value="Wisconsin">Wisconsin</option> 
                 <option value="Wyoming">Wyoming</option>
                 <option> ---------------- </option>
-                <option value="Alberta">Alberta</option>
+                <option valfue="Alberta">Alberta</option>
                 <option value="British Columbia">British Columbia</option>
                 <option value="Manitoba">Manitoba</option>
                 <option value="New Brunswick">New Brunswick</option>
@@ -138,27 +162,24 @@ and open the template in the editor.
                 <option value="Saskatchewan">Saskatchewan</option>
                 <option value="Yukon">Yukon</option>
             </select>
+            
+           
             <p><br>Additional Info</p>
-            <input class="input-large" type="text" placeholder="Phone Number"> 
+            <input class="input-large" name="destPhone" type="text" placeholder="Phone #"> 
             <p></p>
-            <input class="input-large" type="text" placeholder="Website">
+            <input class="input-large" name="destWebsite" type="text" placeholder="website">
             <p></p>
             <p>Description</p>
-            <textarea class="input-xxlarge" style="resize: none; width: 40%;"></textarea>
+            <textarea class="input-xxlarge" name="destDescription" style="resize: none; width: 40%;"></textarea>
             <!-- <input type="submit" value="Submit" />  -->
-        </form>
-        <p>Select an image to upload</p>
-       <form style="display: inline;" action="">
-             <input type="file" name="media" style="position: relative; left: 40%;">
-
+            <p>Select an image to upload</p>
+             <input type="file" name="destImage" style="position: relative; left: 40%;">
+             <input class ="btn btn-primary" type="submit"/>
+             <!--
              <a href="destinationDetail.php" class="btn btn-primary" id="createDestSubmitButtonButton">
                             Submit!
-            </a>
+            </a> -->
         </form>
-        
-        <?php
-        // put your code here
-        ?>
         </div>
       </div>
     </body>
