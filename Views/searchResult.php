@@ -144,7 +144,7 @@ $result = $search->run();
            <p>
                Can't find your destination? Create a new one!
            </p>
-           <button type="submit" class="btn btn-default">Create Destination</button>    
+           <button type="submit" method ="get" class="btn btn-default">Create Destination</button>    
        </div>
        </form> 
        </div>
