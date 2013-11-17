@@ -2,6 +2,31 @@
 To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+    require_once("../Controllers/DestinationController.php");
+    require_once("../Models/Destination.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $destin = new Destination();
+        $destin->setName($_POST['destName']);
+        $destin->setType($_POST['destType']);
+        $destin->setAddress($_POST['destAddress']);
+        $destin->setCity($_POST['destCity']);
+        $destin->setState($_POST['destState']);
+        $destin->setZipCode($_POST['destZip']);
+        $destin->setPhoneNumber($_POST['destPhone']);
+        $destin->setWebsite($_POST['destWebsite']);
+        $destin->setDescription($_POST['destDescription']);
+        
+        try{
+            $result = DestinationController::create($destin);
+         }
+        catch(DestinationException $e){
+            echo $e;
+            exit;
+        }
+        header('Location: destinationDetail.php');
+        exit;
+    }?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,30 +44,34 @@ and open the template in the editor.
     </head>
     <body>
         <!-- BEGIN BANNER -->
-        <div style ="background-color:black;">
-                <img src="../media/assets/images/tripOutLogo.jpg"></img>
-                <div class ="pull-right" style="padding-top:20px;color:white;">
-                    <div class="btn-group">
-                        <a href="signUp.php" class="btn btn-primary" id="registerButton">
-                            Register
-                        </a>
-                        <a href="signIn.php" class="btn btn-primary" id="registerButton">
-                            Sign In
-                        </a>
-                    </div>
-                        <div style = "text-align:right; float:right;padding-top:10px;padding-right:10px;">
-                            <!-- <a href="" >forgot password?</a> -->
-                        </div>
-                </div>
-            </div>
+                <title>TRIP OUT!</title>    
+        <!-- <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css"> -->
+        <link rel ="stylesheet" type ="text/css" href ="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
+        <link rel ="stylesheet" type ="text/css" href ="../css/index.css">
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/script.js"></script>
+        <script src="../js/jquery.js"></script>
+        <!-- Add jQuery library -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    </head>  
+    <body> 
+        <!-- BEGIN CONTAINER -->
+        <div class="container">
+            <!-- BEGIN BANNER -->
             <nav class="navbar navbar-inverse" role="navigation">
+                <a class="navbar-brand" href="../index.php">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="reviewSearch.php">Write a Review</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">Write a Review</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
+                <form class="navbar-form navbar-right">
+                    <a type="submit" class="btn btn-default" href="signIn.php">Sign In</a>
+                    <a type="submit" class="btn btn-default" href="signUp.php">Register</a>
+                </form>
             </nav>
          <!-- END BANNER -->
         <h2 align="center">Create a Destination</h2>
@@ -51,26 +80,26 @@ and open the template in the editor.
                text-align: center; float: center; width: 55%; height: 50%">
         <p><br>Name of Destination</p>
 
-        <form class="create_dest_form" method="post" action="">
-            <input class="input-medium" type="text" placeholder="Name" >
+        <form class="create_dest_form" method="POST" action="createDestination.php">
+            <input class="input-medium" name ="destName" type="text" placeholder="Name" >
             <br>
-            <select class="input-small">
+            <select name="destType" class="input-small">
                 <option value="">-Category-</option>
                 <option value="1">Attractions</option>
+                <option value="2">Restaurants</option>
+                <option value="3">Hotels</option>   
                 <option value="4">Events</option>
-                <option value="3">Hotels</option>
-                <option value="2">Restaurants</option> 
             </select> 
             <!--<input type="submit" value="search!" /> <br><br> -->
             <p><br>Address</p>
-            <input class="input-large" id="destAddress" type="text" placeholder="Address">
+            <input class="input-large" name="destAddress" type="text" placeholder="Address">
             <p></p>
-            <input class="input-large" type="text" placeholder="City">
+            <input class="input-large" name="destCity" type="text" placeholder="City">
             <p></p>
-            <input class="input-mini" type="text" placeholder="Zip">
+            <input class="input-mini" name="destZip"type="text" placeholder="Zip">
             <p></p>
             <!-- from http://chrishacia.com/2012/10/html-select-box-country-list-with-iso-codes-as-values/ -->
-            <select name="States-Provinces"> 
+            <select name="destState"> 
                 <option> - Select Province/State - </option>
                 <option value="Alabama">Alabama</option> 
                 <option value="Alaska">Alaska</option> 
@@ -124,7 +153,7 @@ and open the template in the editor.
                 <option value="Wisconsin">Wisconsin</option> 
                 <option value="Wyoming">Wyoming</option>
                 <option> ---------------- </option>
-                <option value="Alberta">Alberta</option>
+                <option valfue="Alberta">Alberta</option>
                 <option value="British Columbia">British Columbia</option>
                 <option value="Manitoba">Manitoba</option>
                 <option value="New Brunswick">New Brunswick</option>
@@ -138,28 +167,32 @@ and open the template in the editor.
                 <option value="Saskatchewan">Saskatchewan</option>
                 <option value="Yukon">Yukon</option>
             </select>
+            
+           
             <p><br>Additional Info</p>
-            <input class="input-large" type="text" placeholder="Phone Number"> 
+            <input class="input-large" name="destPhone" type="text" placeholder="Phone #"> 
             <p></p>
-            <input class="input-large" type="text" placeholder="Website">
+            <input class="input-large" name="destWebsite" type="text" placeholder="website">
             <p></p>
             <p>Description</p>
-            <textarea class="input-xxlarge" style="resize: none; width: 40%;"></textarea>
+            <textarea class="input-xxlarge" name="destDescription" style="resize: none; width: 40%;"></textarea>
             <!-- <input type="submit" value="Submit" />  -->
-        </form>
-        <p>Select an image to upload</p>
-       <form style="display: inline;" action="">
-             <input type="file" name="media" style="position: relative; left: 40%;">
-
+            <p>Select an image to upload</p>
+             <input type="file" name="destImage" style="position: relative; left: 40%;">
+             <input class ="btn btn-primary" type="submit"/>
+             <!--
              <a href="destinationDetail.php" class="btn btn-primary" id="createDestSubmitButtonButton">
                             Submit!
-            </a>
+            </a> -->
         </form>
-        
-        <?php
-        // put your code here
-        ?>
         </div>
+        <!-- BEGIN FOOTER-->
+          <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+             <div class ="footer">
+                 SFSU-FAU-FULDA joint SW Engineering Project Fall 2013
+             </div>
+          </nav>
+        <!-- END FOOTER -->
       </div>
     </body>
 </html>

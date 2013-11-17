@@ -31,10 +31,10 @@
                 </form>
             </nav>
             <!-- END BANNER -->       
-            <div class="row">
-                <div class="span6">
+            <div class="row" align="center">
+                <!-- <div class="span6"> -->
                     <div align="center" style="border:2px solid; border-radius:25px; display: block;
-                      text-align: center; float: center; width: 50%; height: 50%">
+                      text-align: center; float: center; width: 30%; height: 50%">
                        <h3>Sign Up</h3>
                        <form class="form-horizontal" name="logon" action="index.php" method="POST" >
                            <div class="control-group">
@@ -67,12 +67,12 @@
                            </a>
                        </form>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
             <!-- BEGIN FOOTER-->
             <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
                 <div class ="footer">
-                    SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 
+                    SFSU-FAU-FULDA joint SW Engineering Project Fall 2013
                 </div>
             </nav>
             <!-- END FOOTER -->
