@@ -24,14 +24,17 @@ class KeywordDAO {
      * @param $user is the new RegisteredUser object
      * @return the $user object with a new user id; return null if failed
      */
-    public static function create(Keyword $key) {
+    public static function create($word) {
 
         $db = dbConnect::getInstance();
         //query
         $q = "INSERT INTO keyword (word) VALUES ('"
-                . $key->getWord() . "')";
-
-        if (!$db->query($q)) return null;
+                . $word . "')";
+                
+        if (!($db->query($q))) return null;
+        
+        $key = new Keyword();
+        $key->setWord($word);
         $key->setKeywordId($db->insert_id);
 
         return $key;

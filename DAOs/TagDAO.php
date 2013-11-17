@@ -11,6 +11,7 @@
  * @author deon
  */
 require_once("../dbConnect.php");
+require_once '../Models/Tag.php';
 
 class TagDAO {
 
@@ -59,6 +60,21 @@ class TagDAO {
         }
         
         return $tags;
+    }
+    
+    //Checks if an entry with a given keyword_id and dest_id already exists
+    public static function doesExist(Tag $tag){
+        $db = dbConnect::getInstance();
+        $q = "SELECT * FROM tag WHERE keyword_id = '" . $tag->getKeywordId()
+                . "' AND dest_id = '" . $tag->getDestId() . "'";
+        
+        $result = $db->query($q);
+        
+        if(!mysqli_fetch_array($result))
+            return false;
+        else
+            return true;
+        
     }
     
     public static function delete(Tag $tag) {
