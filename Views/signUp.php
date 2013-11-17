@@ -72,7 +72,7 @@
             <!-- BEGIN FOOTER-->
             <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
                 <div class ="footer">
-                    SFSU-FAU-FULDA joint SW Engineering Project Fall 2013
+                    SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 
                 </div>
             </nav>
             <!-- END FOOTER -->
