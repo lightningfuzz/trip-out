@@ -1,4 +1,4 @@
-<?php
+<?php /*
 
 function getValue($pname) {
         if(isset($_POST[$pname])){
@@ -12,77 +12,83 @@ function getValue($pname) {
 $searchVal = getValue("txtSearch");
 $reviewTp = getValue("reviewType");
 
-	
+*/	
     ?>
+
+<?php
+
+require_once '../Controllers/SearchController.php';
+$search = new Search("San Francisco");
+$result = $search->run();
+
+?>
+
+
 <html>
     <head>
         <title>TRIP OUT!</title>    
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
-        <link rel ="stylesheet" type ="text/css" href ="../css/reviewSearchResult.css">
+        <link rel ="stylesheet" type ="text/css" href ="css/index.css">
+        <link rel = "stylesheet" type = "text/css" href = "../css/searchResult.css">
+        <script src="js/bootstrap.js"></script>
+        <script src="js/script.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
     </head>
 
     <body> 
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/script.js"></script>
         <div class ="container">
-            <div style ="background-color:black;">
-                <img src="../media/assets/images/tripOutLogo.jpg"/>
-                <div class ="pull-right" style="padding-top:20px;color:white;">
-                    Login: <input type="text" placeholder="username" name="tag" value="" />
-                    <input type="password" placeholder="password" name="tag" value="" />
-                    <br>
-                        <div class="col-md-2" style="padding-top:5px;">
-                            <button class ="btn btn-primary">Sign Up</button>
-                        </div>
-                        <div style = "text-align:right; float:right;padding-top:10px;padding-right:10px;">
-                            <a href="" >forgot password?</a>
-                        </div>
-                </div>
-            </div>
             <nav class="navbar navbar-inverse" role="navigation">
+                <a class="navbar-brand" href="#">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="Views/reviewSearch.php">Write a Review</a></li>
+                    <li><a href="Views/about.html">About</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">Write a Review</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
+                <form class="navbar-form navbar-right">
+                    <a type="submit" class="btn btn-default" href="Views/signIn.php">Sign In</a>
+                    <a type="submit" class="btn btn-default" href="Views/signUp.php">Register</a>
+                </form>
             </nav>
-         <!--   <h3> Write a Review </h3> <br/>
-            <p> Review a Destination (e.g., Attractions, Restaurants, Hotels, Events, All) you visited... </p>
-            <br/> <br/> -->
+            <div class ="mainContent">
+                <div class ="overview">
+                    <h1>Welcome to Trip Out!</h1>
+                    Plan your trip, read reviews, share your experiences
+                </div>
+                
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
-                <div class="panel-heading">What would you like to review?</div>
+                <div class="panel-heading">Plan Your Trip </div>
                 <div class="panel-body" align="center">
-                    <form action="reviewSearchResult.php" method="post" class="form-inline" role="form">
+                    <form action="searchResult.php" method="get" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
                         
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox5" name = "reviewType" value="option5" <?php if($reviewTp == "option5") echo "checked"; ?>> All
+                            <input type="radio" id="inlineCheckbox5" name = "type" value = "0" <?php if($_GET['type'] == "0") echo "checked"; ?>> All
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox1" name ="reviewType" value="option1" <?php if($reviewTp == "option1") echo "checked"; ?> > Attractions
+                            <input type="radio" id="inlineCheckbox1" name = "type" value = "1" <?php if($_GET['type'] == "1") echo "checked"; ?> > Attractions
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox2" name ="reviewType" value="option2" <?php if($reviewTp == "option2") echo "checked"; ?>> Restaurants
+                            <input type="radio" id="inlineCheckbox2" name = "type" value = "2" <?php if($_GET['type'] == "2") echo "checked"; ?>> Restaurants
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox3" name = "reviewType" value="option3" <?php if($reviewTp == "option3") echo "checked"; ?>> Hotels
+                            <input type="radio" id="inlineCheckbox3" name = "type" value = "3" <?php if($_GET['type'] == "3") echo "checked"; ?>> Hotels
                             
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox4" name = "reviewType" value="option4" <?php if($reviewTp == "option4") echo "checked"; ?>> Events
+                            <input type="radio" id="inlineCheckbox4" name = "type" value = "4" <?php if($_GET['type'] == "4") echo "checked"; ?>> Events
                         </label>
                         
                     </div>
                     
                         <div class="form-group" style="width:40%;">
-                          <input name="txtSearch" class="form-control"  placeholder="Enter search keywords" value="<?php echo $searchVal; ?>">
+                          <input name="searchString" class="form-control"  placeholder="Enter search keywords" value= "<?php echo $_GET['searchString']; ?>">
                         </div>
-                        <button type="submit" class="btn btn-default">Search</button>
+                        <button type="submit" class="btn btn-default">Search Destinations</button>
                     </form>
                 </div>
             </div>
@@ -91,111 +97,31 @@ $reviewTp = getValue("reviewType");
             
             <!-- List of Review Search Results start here -->
             
-    <div class ="box_reviewResult">
-            
-            <div class = "box_name">
-                <h4>(1) Marina Bay Sands</h4>
-                Landmark
-            </div>
-            
-            <div class = "box_addr">
-                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                <img src="../media/images/rate3.png"/><img src="../media/images/rate2.png"/>
-                <img src="../media/images/rate1.png"/> 7 reviews <br/>
-                10 Bayfront Avenue <br/>
-                Singapore 018956 <br/>
-                +65 6688 8868
-            </div>
-            <div class ="box_button">
-              <button type = "button" onclick = "window.open('review.php')" > Write a Review </button>
-            </div>
-            
-        </div>
-           
-        <div class ="box_reviewResult">
-            
-            <div class = "box_name">
-                <h4>(2) Marina Bay Sands</h4>
-                Landmark
-            </div>
-            
-            <div class = "box_addr">
-                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
-                <img src="../media/images/rate1.png"/> 20 reviews<br/>
-                10 Bayfront Avenue <br/>
-                Singapore 018956 <br/>
-                +65 6688 8868
-            </div>
-            <div class ="box_button">
-              <button  type = "button" onclick = "window.open('review.php')" > Write a Review </button>
-            </div>
-            
-        </div>
-            
+            <?php 
+                $no = 1;
+                foreach($result as $dest):
+                $dest . "<br>";
+            ?>
             
         <div class ="box_reviewResult">
             
             <div class = "box_name">
-                <h4>(3) Marina Bay Sands</h4>
-                Landmark
-            </div>
-            
-            <div class = "box_addr">
-                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                <img src="../media/images/rate1.png"/> 29 reviews<br/>
-                10 Bayfront Avenue <br/>
-                Singapore 018956 <br/>
-                +65 6688 8868
-            </div>
-            <div class ="box_button">
-              <button type = "button" onclick = "window.open('review.php')" > Write a Review </button>
-            </div>
-            
-        </div>
-            
-        <div class ="box_reviewResult">
-            
-            <div class = "box_name">
-                <h4>(4) Marina Bay Sands</h4>
-                Landmark
-            </div>
-            
-            <div class = "box_addr">
-                <img src="../media/images/rate3.png"/><img src="../media/images/rate1.png"/>
-                <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
-                <img src="../media/images/rate1.png"/> 11 reviews<br/>
-                10 Bayfront Avenue <br/>
-                Singapore 018956 <br/>
-                +65 6688 8868
-            </div>
-            <div class ="box_button">
-              <button type = "button" onclick = "window.open('review.php')" > Write a Review </button>
-            </div>
-            
-        </div>
-            
-        <div class ="box_reviewResult">
-            
-            <div class = "box_name">
-                <h4>(5) Marina Bay Sands</h4>
-                Landmark
+                <h4>(<?php echo $no++; ?>) <a href = "destinationDetail.php"> <?php echo $dest->getName(); ?> </a> </h4>
+                
             </div>
             
             <div class = "box_addr">
                 <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                 <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                 <img src="../media/images/rate3.png"/> 33 reviews<br/>
-                10 Bayfront Avenue <br/>
-                Singapore 018956 <br/>
-                +65 6688 8868
+                <?php echo $dest->getAddress(); ?>
             </div>
             <div class ="box_button">
               <button type = "button" onclick = "window.open('review.php')" > Write a Review </button>
             </div>
          </div>    
         
+            <?php endforeach; ?>
             
             <form action="createDestination.php" method="post" class="form-inline" role="form">
        <div class ="newDest">
