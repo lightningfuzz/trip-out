@@ -34,7 +34,7 @@
             <div class="row" align="center">
                 <!-- <div class="span6"> -->
                     <div align="center" style="border:2px solid; border-radius:25px; display: block;
-                      text-align: center; float: center; width: 30%; height: 50%">
+                      text-align: center; float: center; width: 30%; height: 65%">
                        <h3>Sign Up</h3>
                        <form class="form-horizontal" name="logon" action="index.php" method="POST" >
                            <div class="control-group">
