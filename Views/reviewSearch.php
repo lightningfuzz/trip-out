@@ -49,6 +49,10 @@
                 <div class="panel-body" align="center">
                      <form action="reviewSearchResult.php" method="post" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
+                        
+                        <label class="checkbox-inline">
+                            <input type="radio" id="inlineCheckbox5" name = "reviewType" value="option5"> All
+                        </label>
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox1" name ="reviewType" value="option1"> Attractions
                         </label>
@@ -61,9 +65,7 @@
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox4" name = "reviewType" value="option4"> Events
                         </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox5" name = "reviewType" value="option5"> All
-                        </label>
+                        
                     </div>
                    
                         <div class="form-group" style="width:40%;">

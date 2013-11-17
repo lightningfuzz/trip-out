@@ -56,6 +56,10 @@ $searchTp = getValue("searchType");
                 <div class="panel-body" align="center">
                     <form action="searchResult.php" method="post" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
+                        
+                        <label class="checkbox-inline">
+                            <input type="radio" id="inlineCheckbox5" name = "searchType" value="option5" <?php if($searchTp == "option5") echo "checked"; ?>> All
+                        </label>
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox1" name ="searchType" value="option1" <?php if($searchTp == "option1") echo "checked"; ?> > Attractions
                         </label>
@@ -69,9 +73,7 @@ $searchTp = getValue("searchType");
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox4" name = "searchType" value="option4" <?php if($searchTp == "option4") echo "checked"; ?>> Events
                         </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox5" name = "searchType" value="option5" <?php if($searchTp == "option5") echo "checked"; ?>> All
-                        </label>
+                        
                     </div>
                     
                         <div class="form-group" style="width:40%;">
@@ -98,7 +100,7 @@ $searchTp = getValue("searchType");
             -->
 		<div class = "content">
                     
-			<h3 style = "color: green"> Results of Search "<?php echo $searchVal;?>" </h3> 
+			<h3 style = "color: green"> Search Results of "<?php echo $searchVal;?>" </h3> 
 			<p style = "text-align: right; padding-right: 200px"> Showing 1 - 5 out of 10 </p> <br/>
 			<div class = "destination">
                                 <div class ="search_name"> 

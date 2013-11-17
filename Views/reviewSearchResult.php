@@ -59,6 +59,10 @@ $reviewTp = getValue("reviewType");
                 <div class="panel-body" align="center">
                     <form action="reviewSearchResult.php" method="post" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
+                        
+                        <label class="checkbox-inline">
+                            <input type="radio" id="inlineCheckbox5" name = "reviewType" value="option5" <?php if($reviewTp == "option5") echo "checked"; ?>> All
+                        </label>
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox1" name ="reviewType" value="option1" <?php if($reviewTp == "option1") echo "checked"; ?> > Attractions
                         </label>
@@ -72,9 +76,7 @@ $reviewTp = getValue("reviewType");
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox4" name = "reviewType" value="option4" <?php if($reviewTp == "option4") echo "checked"; ?>> Events
                         </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox5" name = "reviewType" value="option5" <?php if($reviewTp == "option5") echo "checked"; ?>> All
-                        </label>
+                        
                     </div>
                     
                         <div class="form-group" style="width:40%;">
@@ -192,9 +194,23 @@ $reviewTp = getValue("reviewType");
             <div class ="box_button">
               <button type = "button" onclick = "window.open('review.php')" > Write a Review </button>
             </div>
+         </div>    
+        
             
+            <form action="createDestination.php" method="post" class="form-inline" role="form">
+       <div class ="newDest">
+           <p>
+               Can't find your destination? Create a new one!
+           </p>
+           <button type="submit" class="btn btn-default">Create Destination</button>    
+       </div>
+       </form> 
+           
         </div>
-            
-        </div>
+        
+        <!-- Can't find the destination? Create a new Destination -->
+       
+       
+        
     </body>
 </html>
