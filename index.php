@@ -40,7 +40,7 @@
                         <form action="Views/searchResult.php" method="get" class="form-inline" role="form">
                             <div style="padding-bottom:10px;">
                                 <label class="checkbox-inline">
-                                    <input type="radio" id="inlineCheckbox5" name = "type" value="0"> All
+                                    <input type="radio" id="inlineCheckbox5" name = "type" value="0" checked> All
                                 </label>
                                 <label class="checkbox-inline">
                                     <input type="radio" id="inlineCheckbox1" name ="type" value="1"> Attractions
