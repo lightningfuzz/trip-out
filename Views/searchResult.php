@@ -117,21 +117,28 @@ $result = $search->run();
                         ?>
                         <div class = "destination">
                                 <div class ="search_name"> 
-                                    <img src = <?php echo $dest->getImageUrl(); ?>  width = "150" height = "100" style = "float: left; margin: 5px;">			
+                                    <img src = <?php echo $dest->getImageUrl(); ?>  width = "150" height = "100" style = "float: left; margin: 5px;"/>			
 				<a href = "destinationDetail.php" style = "text-decoration: none"> 			
-                                    <h4> (<?php echo $no++; ?>) <?php echo $dest->getName(); ?> </h4> 
+                                    <h4> (<?php echo $no++; ?>) 
+                                        <?php echo $dest->getName();?> 
+                                        <?php echo $dest->getDescription(); ?>
+                                        
+                                    </h4> 
 				</a>
+                                <div class = "search_addr">
+                                    <?php echo $dest->getAddress();
+                                          echo '<br/>';
+                                          echo $dest->getCity(); 
+                                          echo $dest->getState(); 
+                                          echo $dest->getZipCode(); ?> 
+                                 </div>
                                  <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                                  <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                                  <img src="../media/images/rate2.png"/> 55 reviews<br/>
 				
                             </div>
-                                        <div class ="search_addr">
-                                          <?php echo $dest->getAddress(); ?>
-                                        </div>
-					<p style = "float: left; clear: both">
-						<?php echo $dest->getDescription(); ?>
-					</p>			
+                                        
+                         			
 			</div>
                         <?php endforeach; ?>
 
