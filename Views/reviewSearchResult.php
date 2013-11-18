@@ -135,6 +135,12 @@ $result = $search->run();
        </form> 
            
         </div>
+              <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+                <div class ="footer">
+                    SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 
+                </div>
+            </nav>
+        </div>
         
         <!-- Can't find the destination? Create a new Destination -->
        
