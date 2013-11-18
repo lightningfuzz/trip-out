@@ -50,10 +50,6 @@ $result = $search->run();
                 </form>
             </nav>
             <div class ="mainContent">
-                <div class ="overview">
-                    <h1>Welcome to Trip Out!</h1>
-                    Plan your trip, read reviews, share your experiences
-                </div>
             
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
                 <div class="panel-heading">Plan Your Trip </div>
