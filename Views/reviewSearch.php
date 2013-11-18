@@ -38,7 +38,6 @@
                 <div class="panel-body" align="center">
                      <form action="reviewSearchResult.php" method="get" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
-                        
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox5" name="type" value="0" checked> All
                         </label>
