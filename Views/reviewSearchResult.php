@@ -18,7 +18,7 @@ $reviewTp = getValue("reviewType");
 <?php
 
 require_once '../Controllers/SearchController.php';
-$search = new Search("San Francisco");
+$search = new Search($_GET['searchString']);
 $result = $search->run();
 
 ?>
@@ -63,32 +63,29 @@ $result = $search->run();
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
                 <div class="panel-heading">Plan Your Trip </div>
                 <div class="panel-body" align="center">
-                    <form action="searchResult.php" method="get" class="form-inline" role="form">
+                    <form action="reviewSearchResult.php" method="get" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
                         
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox5" name = "type" value = "0" <?php if($_GET['type'] == "0") echo "checked"; ?>> All
+                            <input type="radio" id="inlineCheckbox5" name="type" value="0" checked> All
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox1" name = "type" value = "1" <?php if($_GET['type'] == "1") echo "checked"; ?> > Attractions
+                            <input type="radio" id="inlineCheckbox1" name="type" value="1"> Attractions
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox2" name = "type" value = "2" <?php if($_GET['type'] == "2") echo "checked"; ?>> Restaurants
+                            <input type="radio" id="inlineCheckbox2" name="type" value="2"> Restaurants
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox3" name = "type" value = "3" <?php if($_GET['type'] == "3") echo "checked"; ?>> Hotels
-                            
+                            <input type="radio" id="inlineCheckbox3" name="type" value="3"> Hotels
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox4" name = "type" value = "4" <?php if($_GET['type'] == "4") echo "checked"; ?>> Events
+                            <input type="radio" id="inlineCheckbox4" name="type" value="4"> Events
                         </label>
-                        
                     </div>
-                    
                         <div class="form-group" style="width:40%;">
-                          <input name="searchString" class="form-control"  placeholder="Enter search keywords" value= "<?php echo $_GET['searchString']; ?>">
+                          <input name="searchString" class="form-control"  placeholder="Enter search keywords" value="">
                         </div>
-                        <button type="submit" class="btn btn-default">Search Destinations</button>
+                        <button type="submit" class="btn btn-default">Search</button>
                     </form>
                 </div>
             </div>
@@ -123,7 +120,7 @@ $result = $search->run();
         
             <?php endforeach; ?>
             
-            <form action="createDestination.php" method="post" class="form-inline" role="form">
+            <form action="createDestination.php" method="get" class="form-inline" role="form">
        <div class ="newDest">
            <p>
                Can't find your destination? Create a new one!

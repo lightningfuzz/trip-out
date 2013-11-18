@@ -36,27 +36,27 @@
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
                 <div class="panel-heading">What would you like to review?</div>
                 <div class="panel-body" align="center">
-                     <form action="reviewSearchResult.php" method="post" class="form-inline" role="form">
+                     <form action="reviewSearchResult.php" method="get" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
                         
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox5" name = "reviewType" value="option5" checked> All
+                            <input type="radio" id="inlineCheckbox5" name="type" value="0" checked> All
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox1" name ="reviewType" value="option1"> Attractions
+                            <input type="radio" id="inlineCheckbox1" name="type" value="1"> Attractions
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox2" name ="reviewType" value="option2"> Restaurants
+                            <input type="radio" id="inlineCheckbox2" name="type" value="2"> Restaurants
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox3" name = "reviewType" value="option3"> Hotels
+                            <input type="radio" id="inlineCheckbox3" name="type" value="3"> Hotels
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox4" name = "reviewType" value="option4"> Events
+                            <input type="radio" id="inlineCheckbox4" name="type" value="4"> Events
                         </label>
                     </div>
                         <div class="form-group" style="width:40%;">
-                          <input name="txtSearch" class="form-control"  placeholder="Enter search keywords">
+                          <input name="searchString" class="form-control"  placeholder="Enter search keywords" value="">
                         </div>
                         <button type="submit" class="btn btn-default">Search</button>
                     </form>
