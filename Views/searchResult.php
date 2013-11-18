@@ -121,23 +121,27 @@ $result = $search->run();
 				<a href = "destinationDetail.php" style = "text-decoration: none"> 			
                                     <h4> (<?php echo $no++; ?>) 
                                         <?php echo $dest->getName();?> 
-                                        <?php echo $dest->getDescription(); ?>
+                                        
                                         
                                     </h4> 
 				</a>
-                                <div class = "search_addr">
-                                    <?php echo $dest->getAddress();
-                                          echo '<br/>';
-                                          echo $dest->getCity(); 
-                                          echo $dest->getState(); 
-                                          echo $dest->getZipCode(); ?> 
-                                 </div>
+                                
                                  <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                                  <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                                  <img src="../media/images/rate2.png"/> 55 reviews<br/>
+                                 <br/>
 				
                             </div>
-                                        
+                            <div class = "search_addr">
+                                    <?php echo $dest->getAddress();
+                                          echo '<br/>';
+                                          echo $dest->getCity() . ', '; 
+                                          echo $dest->getState() . ', '; 
+                                          echo $dest->getZipCode(); ?> 
+                            </div>
+                            <div style ="float: left"> 
+                                    <?php echo $dest->getDescription(); ?>
+                            </div>   
                          			
 			</div>
                         <?php endforeach; ?>
