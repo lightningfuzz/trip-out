@@ -25,29 +25,28 @@ $result = $search->run();
         <title>TRIP OUT!</title>    
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
-        <link rel ="stylesheet" type ="text/css" href ="css/index.css">
+        <link rel ="stylesheet" type ="text/css" href ="../css/index.css">
         <link rel = "stylesheet" type = "text/css" href = "../css/searchResult.css">
         <script src="js/bootstrap.js"></script>
         <script src="js/script.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
     </head>
 
     <body> 
          <div class ="container">
             <nav class="navbar navbar-inverse" role="navigation">
-                <a class="navbar-brand" href="#">TRIP OUT!</a>
+                <a class="navbar-brand" href="../index.php">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="Views/reviewSearch.php">Write a Review</a></li>
-                    <li><a href="Views/about.html">About</a></li>
+                    <li class="active"><a href="../index.php">Home</a></li>
+                    <li><a href="reviewSearch.php">Write a Review</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
                 <form class="navbar-form navbar-right">
-                    <a type="submit" class="btn btn-default" href="Views/signIn.php">Sign In</a>
-                    <a type="submit" class="btn btn-default" href="Views/signUp.php">Register</a>
+                    <a type="submit" class="btn btn-default" href="signIn.php">Sign In</a>
+                    <a type="submit" class="btn btn-default" href="signUp.php">Register</a>
                 </form>
             </nav>
             <div class ="mainContent">
@@ -78,9 +77,7 @@ $result = $search->run();
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox4" name = "type" value = "4" <?php if($_GET['type'] == "4") echo "checked"; ?>> Events
                         </label>
-                        
                     </div>
-                    
                         <div class="form-group" style="width:40%;">
                           <input name="searchString" class="form-control"  placeholder="Enter search keywords" value= "<?php echo $_GET['searchString']; ?>">
                         </div>
