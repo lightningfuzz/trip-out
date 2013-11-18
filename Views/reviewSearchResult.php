@@ -103,7 +103,7 @@ $result = $search->run();
             <div class = "box_name">
                 <h4>(<?php echo $no++; ?>) <a href = "destinationDetail.php"> <?php echo $dest->getName(); ?> </a> </h4>
                 <div class = "search_addr">
-                       echo '<br/>'; echo $dest->getCity(); echo $dest->getState(); echo $dest->getZipCode(); ?> 
+                       <?php echo '<br/>'; echo $dest->getCity(); echo $dest->getState(); echo $dest->getZipCode(); ?> 
                 </div>
                 
             </div>
