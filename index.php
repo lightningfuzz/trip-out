@@ -5,7 +5,7 @@
     <head>
         <title>TRIP OUT!</title>    
         <link rel ="stylesheet" type ="text/css" href ="css/bootstrap.css">
-        <link rel ="stylesheet" type ="text/css" href ="css/bootstrap-responsive.css">
+        <link rel ="stylesheet" type ="text/css" href ="css/bootstrap-responsive.css"> 
         <link rel ="stylesheet" type ="text/css" href ="css/index.css">
         <script src="js/bootstrap.js"></script>
         <script src="js/script.js"></script>
@@ -50,10 +50,12 @@
                                 </label>
                                 <label class="checkbox-inline">
                                     <input type="radio" id="inlineCheckbox3" name = "type" value="3"> Hotels
-
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" id="inlineCheckbox4" name = "type" value="4"> Events
+                                    <input type="radio" id="inlineCheckbox4" name = "type" value="4"> Shopping
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" id="inlineCheckbox6" name = "type" value="5"> Events
                                 </label>
                             </div>
                             <div class="form-group" style="width:40%;">
@@ -70,5 +72,6 @@
                 </div>
             </nav>
         </div>
+        <a href>
     </body>
 </html>

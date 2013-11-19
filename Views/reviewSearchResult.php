@@ -77,7 +77,10 @@ $result = $search->run();
                             <input type="radio" id="inlineCheckbox3" name="type" value="3"> Hotels
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox4" name="type" value="4"> Events
+                            <input type="radio" id="inlineCheckbox4" name = "type" value = "4"> Shopping
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" id="inlineCheckbox4" name="type" value="5"> Events
                         </label>
                     </div>
                         <div class="form-group" style="width:40%;">
