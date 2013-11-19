@@ -10,7 +10,7 @@
         /* position: relative; */
 	float: none;
 	/* width: 83%; */
-        width: 870px;
+        width: 900px;
         padding: 5px;
         margin-left: auto;
         margin-right: auto;
@@ -37,7 +37,7 @@
 .search_addr {
     width: 300px;
     float: right;
-    
+        
 }
 
 .newDest {
@@ -48,4 +48,11 @@
         width: 900px;
         padding: 5px;
 
+}
+
+.description {
+    float: left;
+    clear: both;
+    width: 900px;
+    
 }
