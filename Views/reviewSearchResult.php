@@ -30,7 +30,7 @@ $result = $search->run();
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/index.css">
-        <link rel = "stylesheet" type = "text/css" href = "../css/searchResult.css">
+        <link rel = "stylesheet" type = "text/css" href = "../css/reviewSearchResult.css">
         <script src="../js/bootstrap.js"></script>
         <script src="../js/script.js"></script>
         <meta charset="utf-8">
@@ -104,18 +104,22 @@ $result = $search->run();
         <div class ="box_reviewResult">
             
             <div class = "box_name">
-                <h4>(<?php echo $no++; ?>) <a href = "destinationDetail.php"> <?php echo $dest->getName(); ?> </a> </h4>
-                <div class = "search_addr">
-                       <?php echo '<br/>'; echo $dest->getCity(); echo $dest->getState(); echo $dest->getZipCode(); ?> 
-                </div>
-                
+                <h4>(<?php echo $no++; ?>) <a href = "destinationDetail.php"> <?php echo $dest->getName(); ?> </a> </h4>                
             </div>
             
             <div class = "box_addr">
                 <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                 <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                 <img src="../media/images/rate3.png"/> 33 reviews<br/>
-                <?php echo $dest->getAddress(); echo '<br/>'; echo $dest->getCity(); echo $dest->getState(); echo $dest->getZipCode(); ?>
+               <?php echo $dest->getAddress(); 
+                     echo '<br/>'; 
+                     echo $dest->getCity(); 
+                     echo '<br/>';
+                     echo $dest->getState(); 
+                     echo ' - ' . $dest->getZipCode(); 
+                     echo '<br/>';
+                     echo $dest->getPhoneNumber();
+               ?>
             </div>
             <div class ="box_button">
               <button type = "button" onclick = "window.open('review.php')"> Write a Review </button>
@@ -124,7 +128,7 @@ $result = $search->run();
         
             <?php endforeach; ?>
             
-            <form action="createDestination.php" method="get" class="form-inline" role="form">
+       <form action="createDestination.php" method="get" class="form-inline" role="form">
        <div class ="newDest">
            <p>
                Can't find your destination? Create a new one!
