@@ -112,7 +112,7 @@ $result = $search->run();
                              
                         ?>
                         <div class = "destination">
-                                <div class ="search_name"> 
+                            <div class ="search_name"> 
                                     <img src = <?php echo $dest->getImageUrl(); ?>  width = "150" height = "100" style = "float: left; margin: 5px;"/>			
 				<a href = "destinationDetail.php" style = "text-decoration: none"> 			
                                     <h4> (<?php echo $no++; ?>) 
@@ -132,11 +132,12 @@ $result = $search->run();
                                     <?php echo $dest->getAddress();
                                           echo '<br/>';
                                           echo $dest->getCity() . ', '; 
-                                          echo $dest->getState() . ', '; 
+                                          echo '<br/>';
+                                          echo $dest->getState() . ' - '; 
                                           echo $dest->getZipCode(); ?> 
                             </div>
-                            <div style ="float: left"> 
-                                    <?php echo $dest->getDescription(); ?>
+                            <div class ="description"> 
+                                    <?php echo '<br/>' . $dest->getDescription(); ?>
                             </div>   
                          			
 			</div>
