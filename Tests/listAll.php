@@ -3,7 +3,13 @@ To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<?php require_once("../dbConnect.php"); ?>
+<?php require_once("../dbConnect.php"); 
+
+ require_once '../DAOs/DestinationDAO.php';
+ require_once '../DAOs/RegisteredUserDAO.php';
+
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -71,11 +77,14 @@ and open the template in the editor.
                 <?php
                 $reviews = dbConnect::getInstance()->query("SELECT * FROM review");
                 while($row = mysqli_fetch_array($reviews)):
-                    echo "<tr><td>".$row['dest_id']."</td>";
+                    $dest = DestinationDAO::getByID($row['dest_id']);
+                    $user = RegisteredUserDAO::getByID($row['user_id']);
+                    echo "<tr><td>".$dest->getName()."</td>";
                     echo "<td>". $row['rating'] . "</td>";
                     echo "<td>". $row['comment'] . "</td>";
-                    echo "<td>". $row['user_id'] . "</td>";
-                    $id = $row['review_id'];
+                    echo "<td>". $user->getUserName() . "</td>";
+                    $userId = $row['user_id'];
+                    $destId = $row['dest_id'];
                 ?>
                 
                 <td>
@@ -87,7 +96,8 @@ and open the template in the editor.
                 
                 <td>
                     <form name="deleteReview" action="deleteReview.php" method="POST">
-                        <input type="hidden" name="reviewId" value="<?php echo $id; ?>">
+                        <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+                        <input type="hidden" name="destId" value="<?php echo $destId; ?>">
                         <input type="submit" name="deleteReview" value="Delete">
                     </form>
                 </td>

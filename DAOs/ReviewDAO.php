@@ -42,11 +42,13 @@ class ReviewDAO {
         //query
         $q = "SELECT * FROM review WHERE user_id = "
                 . $uid . " AND dest_id = " . $did;
+        
+        $result = $db->query($q);
+        
+        if(!$arr = mysqli_fetch_array($result))
+                return null;
 
-        if (!$result = $db->query($q))
-            return null;
-
-        $arr = mysqli_fetch_array($result);
+        
         $rev = new Review();
         $rev->setComment($arr["comment"]);
         $rev->setDestId($arr["dest_id"]);

@@ -11,6 +11,7 @@
  * @author deon
  */
 require_once("../DAOs/ReviewDAO.php");
+require_once '../Exceptions/ReviewException.php';
 
 class ReviewController {
 
