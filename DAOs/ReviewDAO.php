@@ -68,22 +68,22 @@ class ReviewDAO {
 
         $db = dbConnect::getInstance();
         //query
-        $q = "SELECT * FROM review WHERE user_id = " . $id;
+        $q = "SELECT * FROM review WHERE dest_id = " . $id;
 
         if (!$result = $db->query($q))
             return null;
 
-        $rev = array();
+        $revs = array();
 
         while ($row = mysqli_fetch_array($result)) {
             $rev = new Review();
-            $rev->setComment($arr["comment"]);
-            $rev->setDestId($arr["dest_id"]);
-            $rev->setUserId($arr["user_id"]);
-            $rev->setNumNoHelpful($arr["num_no_helpful"]);
-            $rev->setNumYesHelpful($arr["num_yes_helpful"]);
-            $rev->setRating($arr["rating"]);
-            $rev->setTime($arr["time"]);
+            $rev->setComment($row["comment"]);
+            $rev->setDestId($row["dest_id"]);
+            $rev->setUserId($row["user_id"]);
+            $rev->setNumNoHelpful($row["num_no_helpful"]);
+            $rev->setNumYesHelpful($row["num_yes_helpful"]);
+            $rev->setRating($row["rating"]);
+            $rev->setTime($row["time"]);
             $revs[] = $rev;
         }
 

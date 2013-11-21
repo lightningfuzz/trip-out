@@ -33,7 +33,9 @@ class ReviewController {
             throw new ReviewException(); //review exists
        
         //save the review time
-        $rev->setTime(date("F j, Y, g:i:s a"));
+        $rev->setTime(date("Y-m-d H:i:s"));
+        //$rev->setTime(date("F j, Y, g:i:s a"));
+        
         return ReviewDAO::create($rev);
     }
     
