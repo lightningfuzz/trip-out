@@ -34,11 +34,15 @@ class ReviewController {
        
         //save the review time
         $rev->setTime(date("Y-m-d H:i:s"));
-        //$rev->setTime(date("F j, Y, g:i:s a"));
         
         return ReviewDAO::create($rev);
     }
     
+    /**
+     * retrieves all reviews for a given destination
+     * @param $dest the Destination object
+     * @return the array of Review objects if success. Empty array or null upon failure.
+     */
     public static function getDestinationReviews(Destination $dest) {
 
         return ReviewDAO::getByDestId($dest->getDestId());
