@@ -3,6 +3,7 @@
     require_once("../Models/Review.php");
     require_once '../DAOs/RegisteredUserDAO.php';
     require_once '../DAOs/DestinationDAO.php';
+    require_once '../Exceptions/ReviewException.php';
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $review = new Review();
@@ -17,7 +18,7 @@
             $result = ReviewController::add($review);
          }
         catch(Exception $e){
-            echo $e;
+            echo $e . $e->getMessage();
             exit;
         }
         header('Location: listAll.php');

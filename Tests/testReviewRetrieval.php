@@ -18,4 +18,6 @@ foreach($reviews as $rev){
     echo $rev;
 }
 
+echo DestinationController::getById(24);
+
 ?>

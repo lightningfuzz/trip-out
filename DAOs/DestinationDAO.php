@@ -140,6 +140,75 @@ class DestinationDAO {
         else
             return false;
     }
+    
+    
+    /**
+     * searches the destination table by id and updates 'num_reviews'
+     * @param Destination object
+     * @return true if succesful; else return false
+     */
+    public static function updateNumReviews(Destination $dest){
+
+        $db = dbConnect::getInstance();
+        //query
+        $q = "UPDATE destination SET num_reviews = '" . $dest->getNumReviews()
+                . "' WHERE dest_id = " . $dest->getDestId() . "";
+
+        if(!$db->query($q)) return false;
+
+        return true;
+    }
+    
+    /**
+     * searches the destination table by id and updates 'avg_rating'
+     * @param Destination object
+     * @return true if succesful; else return false
+     */
+    public static function updateAvgRating(Destination $dest){
+
+        $db = dbConnect::getInstance();
+        //query
+        $q = "UPDATE destination SET avg_rating = '" . $dest->getAvgRating()
+                . "' WHERE dest_id = " . $dest->getDestId() . "";
+
+        if(!$db->query($q)) return false;
+
+        return true;
+    }
+    
+    /**
+     * searches the destination table by id and updates 'num_images'
+     * @param Destination object
+     * @return true if succesful; else return false
+     */
+    public static function updateNumImages(Destination $dest){
+
+        $db = dbConnect::getInstance();
+        //query
+        $q = "UPDATE destination SET num_images = '" . $dest->getNumImages()
+                . "' WHERE dest_id = " . $dest->getDestId() . "";
+
+        if(!$db->query($q)) return false;
+
+        return true;
+    }
+    
+    /**
+     * searches the destination table by id and updates 'num_videos'
+     * @param Destination object
+     * @return true if succesful; else return false
+     */
+    public static function updateNumVideos(Destination $dest){
+
+        $db = dbConnect::getInstance();
+        //query
+        $q = "UPDATE destination SET num_videos = '" . $dest->getNumVideos()
+                . "' WHERE dest_id = " . $dest->getDestId() . "";
+
+        if(!$db->query($q)) return false;
+
+        return true;
+    }
 }
 
 ?>

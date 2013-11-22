@@ -14,7 +14,7 @@ class ReviewException extends Exception {
 
     // custom string representation of object
     public function __toString() {
-        return "<b style='color:red'> Review already exists</b>";
+        return "<b style='color:red'> Review Error: </b>";
     }
 
 }
