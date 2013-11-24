@@ -40,7 +40,7 @@ class VideoDAO {
     public static function getByDestId() {
         $db = dbConnect::getInstance();
         //query
-        $q = "SELECT * FROM registered_user WHERE user_id =" . $integer;
+        $q = "SELECT * FROM Video WHERE user_id =" . $integer;
 
         if (!$result = $db->query($q))
             return null;

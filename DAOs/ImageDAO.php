@@ -44,7 +44,7 @@ class ImageDAO {
     public static function getByDestId($integer) {
         $db = dbConnect::getInstance();
         //query
-        $q = "SELECT * FROM registered_user WHERE user_id =" . $integer;
+        $q = "SELECT * FROM Image WHERE user_id =" . $integer;
 
         if (!$result = $db->query($q))
             return null;
