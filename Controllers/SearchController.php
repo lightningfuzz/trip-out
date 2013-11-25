@@ -10,9 +10,11 @@ require_once '../DAOs/TagDAO.php';
 class Search {
     
     private $searchString;
+    private $destType;
     
-    public function __construct($string) {
+    public function __construct($string, $type) {
         $this->searchString = $string;
+        $this->destType = $type;
     }
     
     //Returns an array of sorted destination objects sorted by relevence.
@@ -56,7 +58,8 @@ class Search {
         foreach($destinationIds as $destId => $count){
             $destObject = DestinationDAO::getByID($destId);
             if($destObject != null){
-                $destinations[] = $destObject;
+                if($this->destType == 0 || $destObject->getType() == $this->destType)
+                    $destinations[] = $destObject;
             }
         }
         
