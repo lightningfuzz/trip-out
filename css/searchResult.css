@@ -50,6 +50,16 @@
 
 }
 
+.box_button {
+    float: right;
+    width: 190px;
+    height: 100px;
+    padding-top: 10px;
+    padding-right: 10px;
+    text-align: right;
+    
+}
+
 .description {
     float: left;
     clear: both;

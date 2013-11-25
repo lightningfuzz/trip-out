@@ -80,7 +80,7 @@ $result = $search->run();
                         <div class="form-group" style="width:40%;">
                           <input name="searchString" class="form-control"  placeholder="Enter search keywords" value= "<?php echo $_GET['searchString']; ?>">
                         </div>
-                        <button type="submit" class="btn btn-default">Search Destinations</button>
+                        <button type="submit" class="btn btn-default">Search</button>
                     </form>
                 </div>
             </div>
@@ -113,7 +113,7 @@ $result = $search->run();
                         ?>
                         <div class = "destination">
                             <div class ="search_name"> 
-                                    <img src = <?php echo $dest->getImageUrl(); ?>  width = "150" height = "100" style = "float: left; margin: 5px;"/>			
+                                    <img src = <?php echo $dest->getImageUrl(); ?>  width = "200" height = "150" style = "float: left; margin: 5px;"/>			
 				<a href = "destinationDetail.php" style = "text-decoration: none"> 			
                                     <h4> (<?php echo $no++; ?>) 
                                         <?php echo $dest->getName();?> 
@@ -126,15 +126,22 @@ $result = $search->run();
                                  <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                                  <img src="../media/images/rate2.png"/> 55 reviews<br/>
                                  <br/>
-				
-                            </div>
-                            <div class = "search_addr">
-                                    <?php echo $dest->getAddress();
+                                 
+                                 <!-- Address -->
+                                      <?php
+                                          echo $dest->getAddress();
                                           echo '<br/>';
                                           echo $dest->getCity() . ', '; 
                                           echo '<br/>';
                                           echo $dest->getState() . ' - '; 
-                                          echo $dest->getZipCode(); ?> 
+                                          echo $dest->getZipCode();  
+                                          echo '<br/>';
+                                          echo $dest->getPhoneNumber();
+                                      ?>
+				
+                            </div>
+                            <div class ="box_button">
+                                 <button type = "button" onclick = "window.open('review.php')"> Write a Review </button>
                             </div>
                             <div class ="description"> 
                                     <?php echo '<br/>' . $dest->getDescription(); ?>
