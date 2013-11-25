@@ -22,11 +22,11 @@ class ReviewDAO {
         $db = dbConnect::getInstance();
         //query
         $q = "INSERT INTO review (user_id, dest_id, rating, "
-                . "num_yes_helpful, num_no_helpful, comment, time) VALUES ('"
+                . "num_yes_helpful, num_no_helpful, comment, time, title) VALUES ('"
                 . $rev->getUserId() . "', '" . $rev->getDestId() . "', '"
                 . $rev->getRating() . "', '" . $rev->getNumYesHelpful() . "', '"
                 . $rev->getNumNoHelpful() . "', '" . $rev->getComment() . "', '"
-                . $rev->getTime() . "')";
+                . $rev->getTime() . "', '" . $rev->getTitle() . "')";
 
         if (!$db->query($q))
             return null;
@@ -58,6 +58,7 @@ class ReviewDAO {
         $rev->setNumYesHelpful($arr["num_yes_helpful"]);
         $rev->setRating($arr["rating"]);
         $rev->setTime($arr["time"]);
+        $rev->setTitle($arr["title"]);
 
         return $rev;
     }
@@ -85,6 +86,7 @@ class ReviewDAO {
             $rev->setNumYesHelpful($row["num_yes_helpful"]);
             $rev->setRating($row["rating"]);
             $rev->setTime($row["time"]);
+            $rev->setTitle($row["title"]);
             $revs[] = $rev;
         }
 

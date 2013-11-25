@@ -13,6 +13,7 @@ class Review {
     private $numNoHelpful;
     private $comment;
     private $time;
+    private $title;
     
     public function setUserId($userId){
         $this->userId = $userId;
@@ -36,6 +37,10 @@ class Review {
         $this->time = $time;
     }
     
+    public function setTitle($title){
+        $this->title = $title;
+    }
+    
     public function getUserId(){
         return $this->userId;
     }
@@ -57,6 +62,11 @@ class Review {
     public function getTime(){
         return $this->time;
     }
+    
+    public function getTitle(){
+        return $this->title;
+    }
+    
     public function __toString() {
         $s = "";
         $s .= "<table>\n";
