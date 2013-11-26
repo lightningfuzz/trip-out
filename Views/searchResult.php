@@ -11,12 +11,53 @@ $searchVal = getValue("txtSearch");
 $searchTp = getValue("searchType");
    */ ?>
 
-
 <?php
 
 require_once '../Controllers/SearchController.php';
-$search = new Search($_GET['searchString']);
+$search = new Search($_GET['searchString'], $_GET['type']);
 $result = $search->run();
+
+$totalRecord = count($result);
+$noOfRecord = 3;
+$page = 1;
+if(isset($_GET['page'])) {
+    $page = $_GET['page'];
+} 
+if($page < 1) {
+    $page = 1;
+}
+
+
+$noOfPage = ceil($totalRecord / $noOfRecord);
+$start = (($page-1) * $noOfRecord ) + 1;
+$end = $page * $noOfRecord;
+if($end > $totalRecord) {
+    $end = $totalRecord;
+}
+
+ function showType ($type) {
+     if ($type == 0){
+         return 'All';
+     }
+     else if ($type == 1) {
+         return 'Attractions';
+     }
+     else if ($type == 2) {
+         return 'Restaurants';
+     }
+     else if ($type == 3) {
+         return 'Hotels';
+     }
+     else if ($type == 4) {
+         return 'Shopping';
+     }
+     else if ($type == 5) {
+         return 'Events';
+     }
+     else {
+         return '---';
+     }
+}
 
 ?>
 
@@ -27,10 +68,33 @@ $result = $search->run();
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/index.css">
         <link rel = "stylesheet" type = "text/css" href = "../css/searchResult.css">
-        <script src="js/bootstrap.js"></script>
-        <script src="js/script.js"></script>
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/jquery.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../js/script.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+        $.fn.stars = function() {
+            return $(this).each(function() {
+                // Get the value
+                var val = parseFloat($(this).html());
+                // Make sure that the value is in 0 - 5 range, multiply to get width
+                val = Math.round(val * 2) / 2; /* To round to nearest half */
+                var size = Math.max(0, (Math.min(5, val))) * 16;
+                // Create stars holder
+                var $span = $('<span />').width(size);
+                // Replace the numerical value with stars
+                $(this).html($span);
+                
+            });
+        }
+        $(function() {
+        $('span.stars').stars();
+    });
+
+        </script>
     </head>
 
     <body> 
@@ -54,7 +118,8 @@ $result = $search->run();
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
                 <div class="panel-heading">Plan Your Trip </div>
                 <div class="panel-body" align="center">
-                    <form action="searchResult.php" method="get" class="form-inline" role="form">
+                    <form name="formSearch" action="searchResult.php" method="get" class="form-inline" role="form">
+                        
                     <div style="padding-bottom:10px;">
                         
                         <label class="checkbox-inline">
@@ -102,29 +167,66 @@ $result = $search->run();
 		<div class = "content">
                     
 			<h3 style = "color: green"> Search Results for "<?php echo $_GET['searchString']; ?>" </h3> 
-			<p style = "text-align: right; padding-right: 200px"> Showing 1 - 5 out of 10 </p> <br/>
+			<p style = "text-align: right; padding-right: 200px"> 
+                                
+                        <!-- Showing ... - ... out of ... -->
+                        <div class ="showing">
+                            <?php 
+                                
+                                echo 'Showing ' . $start . ' - ' . $end . ' out of ' . $totalRecord . '<br/>'; 
+                                
+                                    if($page > 1) {
+                                        echo ' <a href="searchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page-1) . '">Previous</a> | ';
+                                    }
+                                    echo 'Page ' . $page;
+                                    if($noOfPage > $page) {
+                                        echo ' | <a href="searchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page+1) . '">Next</a>';
+                                        //echo ' <a href="fnNexPage()">Next</a>';
+                                    }
+                                                              
+                                ?>
+                         </div>
+                        <br/>
+                        
+                        </p> <br/>
 			
                         
                         <?php 
-                             $no = 1;
-                             foreach($result as $dest):
+                             $no = $start;
+                             //foreach($result as $dest):
+                             for ($i = $start - 1; $i < $end; $i++) :
+                                 $dest = $result[$i];
+                             
                              $dest . "<br>";
                              
                         ?>
                         <div class = "destination">
+                            <div class ="search_pic"> 
+                            <a href = "destinationDetail.php" style = "text-decoration: none"> 			    
+                                <img src = <?php echo $dest->getImageUrl(); ?>  width = "170" height = "130" style = "float: left; margin: 5px;"/>			
+                            </a>    
+                            </div>
                             <div class ="search_name"> 
-                                    <img src = <?php echo $dest->getImageUrl(); ?>  width = "200" height = "150" style = "float: left; margin: 5px;"/>			
+                                    
 				<a href = "destinationDetail.php" style = "text-decoration: none"> 			
                                     <h4> (<?php echo $no++; ?>) 
-                                        <?php echo $dest->getName();?> 
-                                        
+                                        <?php 
+                                            echo $dest->getName() . '<br/>';                                              
+                                        ?>                                     
                                         
                                     </h4> 
 				</a>
                                 
+                                 <?php echo showType($dest->getType()) . '<br/>'; ?>
+<!--                             <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                                  <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                                 <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                                 <img src="../media/images/rate2.png"/> 55 reviews<br/>
+                                 <img src="../media/images/rate3.png"/> -->
+                                  
+                                    
+                                  
+                                <br/>
+                                 <span class="stars"><?php echo $dest->getAvgRating(); ?></span>
+                                 <?php echo ' ' . $dest->getNumReviews() . ' reviews'; ?>
                                  <br/>
                                  
                                  <!-- Address -->
@@ -137,18 +239,24 @@ $result = $search->run();
                                           echo $dest->getZipCode();  
                                           echo '<br/>';
                                           echo $dest->getPhoneNumber();
+                                          
+                                          
                                       ?>
 				
                             </div>
-                            <div class ="box_button">
+                            <!-- "Write a Review" button -->
+                            <div class ="box_review">
                                  <button type = "button" onclick = "window.open('review.php')"> Write a Review </button>
+                                 <br/><br/>                                 
+                                 <button type = "button" onclick = "window.open('review.php')"> Book Now </button>
                             </div>
+                                                       
                             <div class ="description"> 
                                     <?php echo '<br/>' . $dest->getDescription(); ?>
                             </div>   
                          			
 			</div>
-                        <?php endforeach; ?>
+                        <?php endfor; ?>
 
 		
 
@@ -162,6 +270,20 @@ $result = $search->run();
            <button type="submit" class="btn btn-default">Create Destination</button>    
        </div>
        </form> 
+       <div class ="showing">
+            <?php
+                 echo 'Showing ' . $start . ' - ' . $end . ' out of ' . $totalRecord . '<br/>';
+
+                 if ($page > 1) {
+                     echo ' <a href="searchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page - 1) . '">Previous</a> | ';
+                 }
+                 echo 'Page ' . $page;
+                 if ($noOfPage > $page) {
+                     echo ' | <a href="searchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page + 1) . '">Next</a>';
+                     //echo ' <a href="fnNexPage()">Next</a>';
+                 }
+            ?>
+       </div>
        </div>
         </div>
     </body>
