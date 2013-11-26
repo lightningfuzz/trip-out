@@ -74,14 +74,15 @@ and open the template in the editor.
                 </form>
             </nav>
          <!-- END BANNER -->
+         <!-- begin body of site -->
         <h2 align="center">Create a Destination</h2>
         <div align="center">
              <div style="border:2px solid; border-radius:25px; display: block;
                text-align: center; float: center; width: 55%; height: 50%">
         <p><br>Name of Destination</p>
-
+        <!-- all must be in a form -->
         <form class="create_dest_form" method="POST" action="createDestination.php">
-            <input class="input-medium" name ="destName" type="text" placeholder="Name" >
+            <input class="input-medium" name ="destName" type="text" placeholder="Name" required>
             <br>
             <select name="destType" class="input-small">
                 <option value="">-Category-</option>
@@ -89,17 +90,18 @@ and open the template in the editor.
                 <option value="2">Restaurants</option>
                 <option value="3">Hotels</option>   
                 <option value="4">Events</option>
+                <!-- need to add option for shopping -->
             </select> 
             <!--<input type="submit" value="search!" /> <br><br> -->
             <p><br>Address</p>
-            <input class="input-large" name="destAddress" type="text" placeholder="Address">
+            <input class="input-large" type="text" placeholder="Address" name="destAddress" required>
             <p></p>
-            <input class="input-large" name="destCity" type="text" placeholder="City">
+            <input class="input-large" name="destCity" type="text" placeholder="City" required>
             <p></p>
-            <input class="input-mini" name="destZip"type="text" placeholder="Zip">
+            <input class="input-mini" name="destZip" type="number" placeholder="Zip" required pattern="\d{5}" required>
             <p></p>
             <!-- from http://chrishacia.com/2012/10/html-select-box-country-list-with-iso-codes-as-values/ -->
-            <select name="destState"> 
+            <select name="destState" required> 
                 <option> - Select Province/State - </option>
                 <option value="Alabama">Alabama</option> 
                 <option value="Alaska">Alaska</option> 
@@ -170,12 +172,12 @@ and open the template in the editor.
             
            
             <p><br>Additional Info</p>
-            <input class="input-large" name="destPhone" type="text" placeholder="Phone #"> 
+            <input type="tel" class="input-large" placeholder="Phone Num" name="destPhone"> 
             <p></p>
-            <input class="input-large" name="destWebsite" type="text" placeholder="website">
+            <input class="input-large" name="destWebsite" type="url" placeholder="website" pattern="https?://.+">
             <p></p>
             <p>Description</p>
-            <textarea class="input-xxlarge" name="destDescription" style="resize: none; width: 40%;"></textarea>
+            <textarea class="input-xxlarge" name="destDescription" style="resize: none; width: 40%;" required></textarea>
             <!-- <input type="submit" value="Submit" />  -->
             <p>Select an image to upload</p>
              <input type="file" name="destImage" style="position: relative; left: 40%;">
