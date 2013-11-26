@@ -30,6 +30,9 @@
     </head>
     <body> 
         <!-- using jquery -->
+        <!-- just in case we want to use CDN:        
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        -->
         <script src="js/jquery.js"></script>
         <!-- load custom javascript -->
         <script>
@@ -37,18 +40,18 @@
         </script>
         <div class ="container">
             <nav class="navbar navbar-inverse" role="navigation">
-                <a class="navbar-brand" href="#">TRIP OUT!</a>
+                <a class="navbar-brand" href="#" id ="logo">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
                     <li name = "home" class="active"><a href="#" id="homeLink">Home</a></li>
                     <li name = "writeReview"><a href="#" id ="writeReviewLink">Write a Review</a></li>
-                    <li name = "addDestination"><a href="#" id="addDestinationLink">Add a Destination</a></li>
+                    <li name = "createDestination"><a href="Views/createDestination.php" id="createDestinationLink">Create a Destination</a></li>
                     <li name = "about"><a href="#" id="aboutLink">About</a></li>
                     <li name = "contact"><a href="#" id ="contactLink">Contact</a></li>
                     <li name = "FAQ"><a href="#" id ="faqLink">FAQ</a></li>
                 </ul>
                 <form class="navbar-form navbar-right">
-                    <a type="submit" class="btn btn-default" href="Views/signIn.php">Sign In</a>
-                    <a type="submit" class="btn btn-default" href="Views/signUp.php">Register</a>
+                    <a type="submit" class="btn btn-default" href="#" id ="signInButton">Sign In</a>
+                    <a type="submit" class="btn btn-default" href="#" id ="registerButton">Register</a>
                 </form>
             </nav>
             <div id = "mainContent">
@@ -64,7 +67,5 @@
                 </div>
             </nav>
         </div>
-        <!-- <a href>  -->
     </body>
-
 </html>
