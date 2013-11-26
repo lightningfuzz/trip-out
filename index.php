@@ -40,11 +40,11 @@
                 <a class="navbar-brand" href="#">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
                     <li name = "home" class="active"><a href="#" id="homeLink">Home</a></li>
-                    <li name = "writeReview"><a href="Views/reviewSearch.php">Write a Review</a></li>
-                    <li name = "addDestination"><a href="Views/createDestination.php">Add a Destination</a></li>
+                    <li name = "writeReview"><a href="#" id ="writeReviewLink">Write a Review</a></li>
+                    <li name = "addDestination"><a href="#" id="addDestinationLink">Add a Destination</a></li>
                     <li name = "about"><a href="#" id="aboutLink">About</a></li>
-                    <li name = "contact"><a href="#">Contact</a></li>
-                    <li name = "FAQ"><a href="#">FAQ</a></li>
+                    <li name = "contact"><a href="#" id ="contactLink">Contact</a></li>
+                    <li name = "FAQ"><a href="#" id ="faqLink">FAQ</a></li>
                 </ul>
                 <form class="navbar-form navbar-right">
                     <a type="submit" class="btn btn-default" href="Views/signIn.php">Sign In</a>
