@@ -8,12 +8,11 @@
         <link rel ="stylesheet" type ="text/css" href ="css/bootstrap-responsive.css"> 
         <link rel ="stylesheet" type ="text/css" href ="css/index.css">
         <script src="js/bootstrap.js"></script>
-        <script src="js/script.js"></script>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                
-         <!-- Start: Google Analytics Code -->
-        
+
+        <!-- Start: Google Analytics Code -->
          <script>
              
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -30,13 +29,20 @@
         
     </head>
     <body> 
+        <!-- using jquery -->
+        <script src="js/jquery.js"></script>
+        <!-- load custom javascript -->
+        <script>
+            $.getScript( "js/script.js");
+        </script>
         <div class ="container">
             <nav class="navbar navbar-inverse" role="navigation">
                 <a class="navbar-brand" href="#">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="Views/reviewSearch.php">Write a Review</a></li>
-                    <li><a href="Views/about.html">About</a></li>
+                    <li><a href="Views/createDestination.php">Add a Destination</a></li>
+                    <li name ="about"><a href="#" id="aboutLink">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
@@ -45,7 +51,7 @@
                     <a type="submit" class="btn btn-default" href="Views/signUp.php">Register</a>
                 </form>
             </nav>
-            <div class ="mainContent">
+            <div id = "mainContent">
                 <div class ="overview">
                     <h1>Welcome to Trip Out!</h1>
                     Plan your trip, read reviews, share your experiences
@@ -90,8 +96,6 @@
             </nav>
         </div>
         <!-- <a href>  -->
-        
-               
-            
     </body>
+
 </html>
