@@ -158,7 +158,6 @@ $searchTp = getValue("searchType");
         <a href = "destinationDetail.php" style = "text-decoration: none"> 			    
             <img src = <?php echo $dest->getImageUrl(); ?> width = "170" height = "130" style = "float: left; margin: 5px;"/>			
         </a>    
-            <?php echo $dest->getImageUrl(); ?> 
         </div>
         <div class ="search_name"> 
             <a href = "#" id ="destinationDetailLink"style = "text-decoration: none"> 			
@@ -238,7 +237,7 @@ $searchTp = getValue("searchType");
         
         //jQuery to destinationDetail_DRY.php into mainContent div of index.php
         $('#destinationDetailLink').on("click",function(){
-            $('div.searchResults').parent().load('Views/destinationDetail_DRY.php');
+            $('div.searchResults').load('Views/destinationDetail_DRY.php');
         });
     });
 </script>
