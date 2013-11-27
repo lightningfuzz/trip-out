@@ -80,10 +80,8 @@ $searchTp = getValue("searchType");
 <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
     <div class="panel-heading">Plan Your Trip </div>
     <div class="panel-body" align="center">
-        <form name="formSearch" action="searchResult.php" method="get" class="form-inline" role="form">
-
+        <form name="formSearch" action="#" method="get" class="form-inline" role="form" id="srSearchForm">
         <div style="padding-bottom:10px;">
-
             <label class="checkbox-inline">
                 <input type="radio" id="inlineCheckbox5" name = "type" value = "0" <?php if($_GET['type'] == "0") echo "checked"; ?>> All
             </label>
@@ -166,7 +164,7 @@ $searchTp = getValue("searchType");
             <?php echo $dest->getImageUrl(); ?> 
         </div>
         <div class ="search_name"> 
-            <a href = "destinationDetail.php" style = "text-decoration: none"> 			
+            <a href = "Views/destinationDetail.php" style = "text-decoration: none"> 			
                 <h4> (<?php echo $no++; ?>) 
                     <?php 
                         echo $dest->getName() . '<br/>';                                              
@@ -174,9 +172,6 @@ $searchTp = getValue("searchType");
                 </h4> 
             </a>
             <?php echo showType($dest->getType()) . '<br/>'; ?>
-<!--                             <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                 <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                 <img src="../media/images/rate3.png"/> -->
 
                 <br/>
                  <span class="stars"><?php echo $dest->getAvgRating(); ?></span>
@@ -208,9 +203,6 @@ $searchTp = getValue("searchType");
 
         </div>
         <?php endfor; ?>
-
-
-
        <!-- Can't find the destination? Create a new Destination -->
        
             <form action="createDestination.php" method="get" class="form-inline">
@@ -236,4 +228,15 @@ $searchTp = getValue("searchType");
                  ?>
             </div>
         </div>
+<!-- jQuery to load searchResults_DRY.php page into mainContent div of index.php -->
+<script>
+    $(document).ready(function(){
+        $("#srSearchForm").submit(function(event){
+            event.preventDefault();
+            $.get( 'Views/searchResult_DRY.php', $("#srSearchForm").serialize(), function(data){
+                $("#mainContent").html(data);
+            });
+        });
+    });
+</script>
 
