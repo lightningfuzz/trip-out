@@ -7,7 +7,9 @@
 
 /**
  * Description of accountManager
- *
+ * private function __construct() {
+        
+    }
  * @author deon
  */
 require_once("../DAOs/ReviewDAO.php");
@@ -31,7 +33,7 @@ class ReviewController {
      */
     public static function add(Review $rev) {
         
-        if (ReviewDAO::getByUserIdAndDestId($rev->getUserId(), $rev->getDestId()))
+        if (ImageDAO::getByUserIdAndDestId($rev->getUserId(), $rev->getDestId()))
             throw new ReviewException("Review already exists <br>"); //review exists
         
         if (!$rev->getRating())

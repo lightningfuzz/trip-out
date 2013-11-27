@@ -17,7 +17,48 @@ require_once '../DAOs/ImageDAO.php';
 require_once '../DAOs/VideoDAO.php';
 
 class mediaController {
+     private function __construct() {
+        
+    }
     
+     public static function addImage(Image $img) {
+        
+        if (ImageDAO::getByDestId($img->getDestId()))
+            throw new ReviewException("Image already exists <br>"); //review exists
+        
+                //save the review time
+        $img->setUploadTime(date("Y-m-d H:i:s"));
+        
+        if (!$img = ImageDAO::create($rev))
+            throw new ReviewException("Image could not be added to database");
+        
+        $dest = DestinationController::getById($img->getDestId());
+        //increment numReviews of destination
+        $dest = DestinationController::incrementNumReviews($dest);
+        //calculate and update avg_rating of destination
+        
+        return $img;
+    }
+    
+    public static function addVideo(Video $vid) {
+        
+        if (VideoDAO::getByDestId($vid->getDestId()))
+            throw new ReviewException("The Video already exists <br>"); //review exists
+       
+        //save the review time
+        $vid->setUploadTime(date("Y-m-d H:i:s"));
+        
+        if (!$vid = VideoDAO::create($rev))
+            throw new ReviewException("Review could not be added to database");
+        
+        $dest = DestinationController::getById($vid->getDestId());
+        //increment numReviews of destination
+        $dest = DestinationController::incrementNumReviews($dest);
+        //calculate and update avg_rating of destination
+        DestinationController::calcAvgRating($dest);
+        
+        return $vid;
+    }
    
 }
 

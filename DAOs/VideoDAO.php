@@ -37,7 +37,7 @@ class VideoDAO {
      * @param $id the user id
      * @return a Video object if found; else return null
      */
-    public static function getByDestId() {
+    public static function getByDestId($ingeter) {
         $db = dbConnect::getInstance();
         //query
         $q = "SELECT * FROM Video WHERE user_id =" . $integer;
