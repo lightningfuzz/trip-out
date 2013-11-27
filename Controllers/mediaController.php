@@ -7,7 +7,9 @@
 
 /**
  * Description of mediaController
- *
+ * This file user shall control the media such as video or image
+ * add video, add image, delte video, delte video depending on destination.
+ * 
  * @author Jung Hwan Kim
  */
 require_once '../Models/Image.php';
