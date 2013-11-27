@@ -18,10 +18,53 @@ $reviewTp = getValue("reviewType");
 <?php
 
 require_once '../Controllers/SearchController.php';
-$search = new Search($_GET['searchString']);
+$search = new Search($_GET['searchString'], $_GET['type']);
 $result = $search->run();
 
+$totalRecord = count($result);
+$noOfRecord = 3;
+$page = 1;
+if(isset($_GET['page'])) {
+    $page = $_GET['page'];
+} 
+if($page < 1) {
+    $page = 1;
+}
+
+
+$noOfPage = ceil($totalRecord / $noOfRecord);
+$start = (($page-1) * $noOfRecord ) + 1;
+$end = $page * $noOfRecord;
+if($end > $totalRecord) {
+    $end = $totalRecord;
+}
+
+ function showType ($type) {
+     if ($type == 0){
+         return 'All';
+     }
+     else if ($type == 1) {
+         return 'Attractions';
+     }
+     else if ($type == 2) {
+         return 'Restaurants';
+     }
+     else if ($type == 3) {
+         return 'Hotels';
+     }
+     else if ($type == 4) {
+         return 'Shopping';
+     }
+     else if ($type == 5) {
+         return 'Events';
+     }
+     else {
+         return '---';
+     }
+}
+
 ?>
+
 
 
 <html>
@@ -33,9 +76,29 @@ $result = $search->run();
         <link rel = "stylesheet" type = "text/css" href = "../css/reviewSearchResult.css">
         <script src="../js/bootstrap.js"></script>
         <script src="../js/script.js"></script>
+        <script src="../js/jquery.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+        <script>
+            $.fn.stars = function() {
+                return $(this).each(function() {
+                    // Get the value
+                    var val = parseFloat($(this).html());
+                    // Make sure that the value is in 0 - 5 range, multiply to get width
+                    val = Math.round(val * 2) / 2; /* To round to nearest half */
+                    var size = Math.max(0, (Math.min(5, val))) * 16;
+                    // Create stars holder
+                    var $span = $('<span />').width(size);
+                    // Replace the numerical value with stars
+                    $(this).html($span);
+
+                });
+            }
+            $(function() {
+                $('span.stars').stars();
+            });
+        </script>	
     </head>
 
     <body> 
@@ -93,11 +156,34 @@ $result = $search->run();
             <hr>
             <br/>
             
+            <div class ="content">
+            
+            <!-- Showing ... - ... out of ... -->
+            <div class ="showing">
+                <?php
+                echo 'Showing ' . $start . ' - ' . $end . ' out of ' . $totalRecord . '<br/>';
+
+                if ($page > 1) {
+                    echo ' <a href="reviewSearchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page - 1) . '">Previous</a> | ';
+                }
+                echo 'Page ' . $page;
+                if ($noOfPage > $page) {
+                    echo ' | <a href="reviewSearchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page + 1) . '">Next</a>';
+                    //echo ' <a href="fnNexPage()">Next</a>';
+                }
+             ?>
+            </div>
+            
+            <br/> <br/> <br/>
+            
             <!-- List of Review Search Results start here -->
             
-            <?php 
-                $no = 1;
-                foreach($result as $dest):
+            <?php
+                $no = $start;
+                //foreach($result as $dest):
+                for ($i = $start - 1; $i < $end; $i++) :
+                $dest = $result[$i];
+
                 $dest . "<br>";
             ?>
             
@@ -105,12 +191,17 @@ $result = $search->run();
             
             <div class = "box_name">
                 <h4>(<?php echo $no++; ?>) <a href = "destinationDetail.php"> <?php echo $dest->getName(); ?> </a> </h4>                
+                <?php echo showType($dest->getType()) . '<br/>'; ?>
             </div>
             
             <div class = "box_addr">
+<!--            <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                 <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                <img src="../media/images/rate3.png"/> 33 reviews<br/>
+                <img src="../media/images/rate3.png"/> 33 reviews<br/>-->
+                <br/>
+                <span class="stars"><?php echo $dest->getAvgRating(); ?></span>
+                <?php echo ' ' . $dest->getNumReviews() . ' reviews'; ?>
+                <br/>
                <?php echo $dest->getAddress(); 
                      echo '<br/>'; 
                      echo $dest->getCity(); 
@@ -126,8 +217,10 @@ $result = $search->run();
             </div>
          </div>    
         
-            <?php endforeach; ?>
+       <?php endfor; ?>
             
+       <!-- Can't find the destination? Create a new Destination -->
+       
        <form action="createDestination.php" method="get" class="form-inline" role="form">
        <div class ="newDest">
            <p>
@@ -136,18 +229,30 @@ $result = $search->run();
            <button type="submit" class="btn btn-default">Create Destination</button>    
        </div>
        </form> 
+       
+       <!-- Showing ... - ... out of ... -->
+            <div class ="showing">
+                <?php
+                echo 'Showing ' . $start . ' - ' . $end . ' out of ' . $totalRecord . '<br/>';
+
+                if ($page > 1) {
+                    echo ' <a href="reviewSearchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page - 1) . '">Previous</a> | ';
+                }
+                echo 'Page ' . $page;
+                if ($noOfPage > $page) {
+                    echo ' | <a href="reviewSearchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page + 1) . '">Next</a>';
+                    //echo ' <a href="fnNexPage()">Next</a>';
+                }
+             ?>
+            </div>
            
         </div>
-              <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+        </div>
+          <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
                 <div class ="footer">
                     SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 
                 </div>
-            </nav>
-        </div>
-        
-        <!-- Can't find the destination? Create a new Destination -->
-       
-       
-        
+          </nav>
+        </div>      
     </body>
 </html>

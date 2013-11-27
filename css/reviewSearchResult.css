@@ -1,22 +1,32 @@
+.content {
+        /* position: relative; */
+	float: none;
+	/* width: 83%; */
+        width: 900px;
+        padding: 5px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
 .box_reviewResult {
     border-bottom: solid 1px green;
     margin-left:auto;
     margin-right:auto;
     width: 900px;
     padding: 5px;
-    height: 110px;
+    height: 140px;
 }
 
 .box_name {
     float: left;
     width: 348px;
-    height: 100px;
+    height: 140px;
 }
 
 .box_addr {
     float: left;
     width: 348px;
-    height: 100px;
+    height: 140px;
 }
 
 .box_button {
@@ -29,6 +39,11 @@
     
 }
 
+.showing {
+    float: right;
+    clear: left;
+}
+
 .newDest {
     margin-left:auto;
     margin-right:auto;
@@ -37,4 +52,15 @@
     width: 850px;
     padding: 5px;
 
+}
+
+span.stars, span.stars span {
+    display: inline-block;
+    background: url(../media/images/stars.png) 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
 }

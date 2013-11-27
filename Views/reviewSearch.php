@@ -5,7 +5,7 @@
 <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
     <div class="panel-heading">What would you like to review?</div>
     <div class="panel-body" align="center">
-         <form action="reviewSearchResult.php" method="get" class="form-inline" role="form">
+         <form action="Views/reviewSearchResult.php" method="get" class="form-inline" role="form">
         <div style="padding-bottom:10px;">
             <label class="checkbox-inline">
                 <input type="radio" id="inlineCheckbox5" name="type" value="0" checked> All

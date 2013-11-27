@@ -48,6 +48,7 @@
                     <li name = "about"><a href="#" id="aboutLink">About</a></li>
                     <li name = "contact"><a href="#" id ="contactLink">Contact</a></li>
                     <li name = "FAQ"><a href="#" id ="faqLink">FAQ</a></li>
+                    
                 </ul>
                 <form class="navbar-form navbar-right">
                     <a type="submit" class="btn btn-default" href="#" id ="signInButton">Sign In</a>

@@ -76,24 +76,30 @@ if($end > $totalRecord) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <script>
-        $.fn.stars = function() {
-            return $(this).each(function() {
-                // Get the value
-                var val = parseFloat($(this).html());
-                // Make sure that the value is in 0 - 5 range, multiply to get width
-                val = Math.round(val * 2) / 2; /* To round to nearest half */
-                var size = Math.max(0, (Math.min(5, val))) * 16;
-                // Create stars holder
-                var $span = $('<span />').width(size);
-                // Replace the numerical value with stars
-                $(this).html($span);
-                
-            });
-        }
-        $(function() {
-        $('span.stars').stars();
-    });
+            $.fn.stars = function() {
+                return $(this).each(function() {
+                    // Get the value
+                    var val = parseFloat($(this).html());
+                    // Make sure that the value is in 0 - 5 range, multiply to get width
+                    val = Math.round(val * 2) / 2; /* To round to nearest half */
+                    var size = Math.max(0, (Math.min(5, val))) * 16;
+                    // Create stars holder
+                    var $span = $('<span />').width(size);
+                    // Replace the numerical value with stars
+                    $(this).html($span);
 
+                });
+            }
+            $(function() {
+                $('span.stars').stars();
+            });
+            
+            /* "Book Now" button alert dialog box */
+            function myFunction()
+            {
+                alert("Hello! You booked this! ");
+            }
+            
         </script>
     </head>
 
@@ -208,7 +214,7 @@ if($end > $totalRecord) {
                             </div>
                             <div class ="search_name"> 
                                     
-				<a href = "destinationDetail.php" style = "text-decoration: none"> 			
+                                <a href = "destinationDetail.php?destinationId=<?php echo $dest->getDestId()?>" style = "text-decoration: none"> 			
                                     <h4> (<?php echo $no++; ?>) 
                                         <?php 
                                             echo $dest->getName() . '<br/>';                                              
@@ -244,11 +250,17 @@ if($end > $totalRecord) {
                                       ?>
 				
                             </div>
+                            
                             <!-- "Write a Review" button -->
+                            
                             <div class ="box_review">
+                                
                                  <button type = "button" onclick = "window.open('review.php')"> Write a Review </button>
-                                 <br/><br/>                                 
-                                 <button type = "button" onclick = "window.open('review.php')"> Book Now </button>
+                                 <br/><br/>                        
+                                 <button type = "button" onclick = "window.open('review.php')"> Read Reviews</button>
+                                 <br/><br/>
+                                 <button type = "button" onclick="myFunction()"> Book Now </button>
+                                                                 
                             </div>
                                                        
                             <div class ="description"> 
@@ -285,6 +297,12 @@ if($end > $totalRecord) {
             ?>
        </div>
        </div>
-        </div>
+       </div>
+         <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+                <div class ="footer">
+                    SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 
+                </div>
+         </nav>
+       </div>
     </body>
 </html>
