@@ -27,16 +27,15 @@ class mediaController {
 
         if (ImageDAO::getByDestId($img->getDestId()))
             throw new ReviewException("Image already exists <br>"); //review exists
-//save the review time
+        //save the image time
         $img->setUploadTime(date("Y-m-d H:i:s"));
 
         if (!$img = ImageDAO::create($img))
             throw new ReviewException("Image could not be added to database");
 
         $dest = DestinationController::getById($img->getDestId());
-//increment numReviews of destination
-        $dest = DestinationController::incrementNumReviews($dest);
-//calculate and update avg_rating of destination
+        //increment numReviews of destination
+       
 
         return $img;
     }
@@ -44,18 +43,17 @@ class mediaController {
     
     public static function getDestinationImages(Destination $dest) {
 
-        return ReviewDAO::getByDestId($dest->getDestId());
+        return ImageDAO::getByDestId($dest->getDestId());
     }
 
     public static function deleteImage(Image $img) {
 
-        if (!$img = ReviewDAO::delete($img))
+        if (!$img = ImageDAO::delete($img))
             return $img;
 
         $dest = DestinationController::getById($img->getDestId());
 
-        //calculate and update average rating of destination
-        DestinationController::calcAvgRating($dest);
+        
 
         return $img;
     }
@@ -64,7 +62,7 @@ class mediaController {
 
         if (VideoDAO::getByDestId($vid->getDestId()))
             throw new ReviewException("The Video already exists <br>"); //review exists
-        //save the image time
+        //save the video time
         $vid->setUploadTime(date("Y-m-d H:i:s"));
 
         if (!$vid = VideoDAO::create($vid))
@@ -88,7 +86,7 @@ class mediaController {
 
     public static function deleteVideo(Video $vid) {
 
-        if (!$vid = ReviewDAO::delete($vid))
+        if (!$vid = VideoDAO::delete($vid))
             return $vid;
 
         $dest = DestinationController::getById($vid->getDestId());
