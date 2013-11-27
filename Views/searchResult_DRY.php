@@ -77,6 +77,7 @@ $searchTp = getValue("searchType");
         $('span.stars').stars();
     });
 </script>
+<div class ="searchResults">
 <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
     <div class="panel-heading">Plan Your Trip </div>
     <div class="panel-body" align="center">
@@ -131,9 +132,7 @@ $searchTp = getValue("searchType");
     <!-- Showing ... - ... out of ... -->
     <div class ="showing">
         <?php 
-
             echo 'Showing ' . $start . ' - ' . $end . ' out of ' . $totalRecord . '<br/>'; 
-
                 if($page > 1) {
                     echo ' <a href="searchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page-1) . '">Previous</a> | ';
                 }
@@ -142,7 +141,6 @@ $searchTp = getValue("searchType");
                     echo ' | <a href="searchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page+1) . '">Next</a>';
                     //echo ' <a href="fnNexPage()">Next</a>';
                 }
-
             ?>
      </div>
     <br/>
@@ -154,7 +152,6 @@ $searchTp = getValue("searchType");
              $dest = $result[$i];
 
          $dest . "<br>";
-
     ?>
     <div class = "destination">
         <div class ="search_pic"> 
@@ -164,7 +161,7 @@ $searchTp = getValue("searchType");
             <?php echo $dest->getImageUrl(); ?> 
         </div>
         <div class ="search_name"> 
-            <a href = "Views/destinationDetail.php" style = "text-decoration: none"> 			
+            <a href = "#" id ="destinationDetailLink"style = "text-decoration: none"> 			
                 <h4> (<?php echo $no++; ?>) 
                     <?php 
                         echo $dest->getName() . '<br/>';                                              
@@ -228,14 +225,20 @@ $searchTp = getValue("searchType");
                  ?>
             </div>
         </div>
-<!-- jQuery to load searchResults_DRY.php page into mainContent div of index.php -->
+</div>
 <script>
     $(document).ready(function(){
+        //jQuery to load searchResults_DRY.php page into mainContent div of index.php
         $("#srSearchForm").submit(function(event){
             event.preventDefault();
             $.get( 'Views/searchResult_DRY.php', $("#srSearchForm").serialize(), function(data){
                 $("#mainContent").html(data);
             });
+        });
+        
+        //jQuery to destinationDetail_DRY.php into mainContent div of index.php
+        $('#destinationDetailLink').on("click",function(){
+            $('div.searchResults').parent().load('Views/destinationDetail_DRY.php');
         });
     });
 </script>
