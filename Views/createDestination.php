@@ -99,6 +99,8 @@ and open the template in the editor.
                 </form>
             </nav>
          <!-- END BANNER -->
+         
+         
          <!-- begin body of site -->
         <h2 align="center">Create a Destination</h2>
         <div align="center">
@@ -214,7 +216,12 @@ and open the template in the editor.
             </a>
         </form>
         <br/><br/>
+        
+        
         <!-- file uploader stuff -->
+        
+        
+        
         <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
             <!-- Redirect browsers with JavaScript disabled to the origin page -->
             <noscript><input type="hidden" name="redirect" value="http://blueimp.github.io/jQuery-File-Upload/"></noscript>
