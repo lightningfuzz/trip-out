@@ -1,18 +1,29 @@
 <!-- Author:Matthew Rutherford 
 Nav bar: Marcian Diamond/Help with Fancy Box
 Stars:Khine-->
+
+<?php
+    require_once("../Controllers/ReviewController.php");
+    require_once("../Models/Destination.php");
+    require_once("../DAOs/DestinationDAO.php");
+        $destin = DestinationDAO::getByID(33);
+        $reviews = ReviewController::getDestinationReviews($destin);
+    ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
             <link rel="shortcut icon" href="../media/assets/images/TripoutIcon.ico">
-            <title>Alcatraz</title> 
-            <link rel ="stylesheet" type="type/css" href ="../css/destinationDetail.css" /> 
+            <title><?php echo $destin->getName(); ?></title> 
+            <link rel ="stylesheet" type="text/css" href ="../css/destinationDetail.css" /> 
             <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
             <link rel ="stylesheet" type ="text/css" href ="../css/index.css">
             <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css"> 
             
+            <script src="../js/jquery.js"></script>
             <script src="../js/bootstrap.js"></script>
+            <script src="../js/bootstrap.min.js"></script>
             <script src="../js/script.js"></script>
+           
 
             <!--FANCY BOX FILES-->
             <!-- Add jQuery library -->
@@ -29,6 +40,7 @@ Stars:Khine-->
             <!--END FANCYBOX FILES-->
 	</head>
 	<body>
+            <!--container holds all the content of the page-->
             <div class ="container">
                 <!-- BEGIN BANNER -->
                 <nav class="navbar navbar-inverse" role="navigation">
@@ -46,71 +58,56 @@ Stars:Khine-->
                     </form>
                 </nav>
                 <!-- END BANNER -->
-		<div id = 'photo'>
+                <!--Photo is the main photo of the destination and has buttons for uploading media or seeing more-->
+                <div id ='tooper'>
+		<div id = 'photo' class='top'>
+                    <div id="mainphoto">
                     <a href="../media/images/alcatraz/alcatraz1.jpg" title="Arriving on the ferry">
-                            <img src="../media/images/alcatraz/alcatraz1.jpg" alt="" class="img-thumbnail" height="100px" width ="300px">
+                            <img src="../media/images/alcatraz/alcatraz1.jpg" alt="" class="img-thumbnail" width ="300px">
                     </a>
-                    <a class="btn btn-primary fancybox fancybox.iframe" href="../Views/uploadMedia.php">Upload Media!</a>
-                    <a class="btn btn-info"href="../Views/mediaViewer.php">More media of Alcatraz</a>
+                    </div>
+                    <div id="media">
+                    <a class="btn btn-primary fancybox fancybox.iframe" href="../Views/uploadMedia.php">Upload Picture/Video</a>
+                    <a class="btn btn-info" href="../Views/mediaViewer.php">More Pictures/Videos</a>
+                    </div>
 		</div>
-		<div class = 'info'>
-                    <h1>Alcatraz</h1>
+                <!-- holds all the information about a locations(rating, description, name, ...)-->
+		<div id = 'info' class='top'>
+                    <h1><?php echo $destin->getName(); ?></h1>
                     <p>
                         <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                         <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                         <img src="../media/images/rate1.png"/><span class="badge badge-info">123 Ratings</span>
                     </p>
-                    <p><b>Category: </b> Attraction/Park</p>
-                    <p><b>City: </b>San Francisco</p>
-                    <p><b>Address: </b>Just north of San Francisco</p>
-                    <p><b>Phone Number: </b>(123)123-1234</p>
-                    <p><b>Description: </b>One of the most famous prisons in the world.  It was originally just a rock with very little plant life.  But it was eventually
-                    turned into a military base.  It was then turned into a prison, and is now a national park.</p>
+                    <p><b>Category: </b> <?php echo $destin->getType(); ?></p>
+                    <p><b>City: </b><?php echo $destin->getCity(); ?></p>
+                    <p><b>Address: </b><?php echo $destin->getAddress(); ?></p>
+                    <p><b>Phone Number: </b><?php echo $destin->getPhoneNumber(); ?></p>
+                    <p><b>Description: </b><?php echo $destin->getDescription(); ?></p>
 		</div>
                 <br>
-                <div id =".destReviews">
+                </div>
+                <p></p>
+                <div id ='destReviews'>
                     <h3>Reviews</h3>
                     <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/review.php" title="Write a review">Write a review!</a>
+                    
                     <p>Showing 1-4 out of 15 Reviews</p>
                     <ul>
-                        <li><p>Very Educational! 
+                        <?php
+                        foreach($reviews as $rev):
+                        ?>
+                        <li><p><?php echo $rev->getTitle() ?>
                                 <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                                 <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
                                 <img src="../media/images/rate1.png"/><br/>
                             </p>
-                            <p>There was plenty to discover on this rock.</p>
-                            <p class = "byline">by user2</p>
+                            <p><?php echo $rev->getComment() ?></p>
+                            <p class = "byline"><?php require_once("../DAOs/RegisteredUserDAO.php");
+                             echo RegisteredUserDAO::getByID($rev->getUserId())->getUserName(); ?></p>
                             <hr>
                         </li>
-                            <li><p>Boring!
-                                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                                <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
-                                <img src="../media/images/rate1.png"/><br/>
-                                </p>
-                            <p>Just a bunch of history about a famous prison.</p>
-                            <p class = "byline">by trippin</p>
-                            <hr>
-                        </li>
-                         </li>
-                            <li><p>Lots of birds! 
-                                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                                <img src="../media/images/rate3.png"/><img src="../media/images/rate1.png"/>
-                                <img src="../media/images/rate1.png"/><br/>
-                                </p>
-                            <p>This is a nesting ground for birds, so be careful where you have your food.</p>
-                            <p class = "byline">by strebek</p>
-                            <hr>
-                        </li>
-                        </li>
-                            <li><p>Crowded but worth it 
-                                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                                <img src="../media/images/rate3.png"/><img src="../media/images/rate1.png"/>
-                                <img src="../media/images/rate1.png"/><br/>
-                                </p>
-                            <p>This is a nesting ground for birds, so be careful where you have your food.</p>
-                            <p class = "byline">by user3</p>
-                            <hr>
-                        </li>
+                        <?php endforeach; ?>
                     </ul>
                     <ul class="pager">
                         <!--<li><a href="#">Previous</a></li>-->

@@ -5,20 +5,37 @@
     Description:
         Purpose of the stylesheet follows.
 */
-.blorb{
+root { 
+    //display: block;
 }
-.info{
-    width:400px;
+div{
+}
+.top{
+    //color:blue;
+}
+#info{
+    //float:right;
+    //color:blue;
     display:inline-block;
-}
-.byline{
-    color:#808080;
+    //position:absolute;
+    margin-left:10px;
+    margin-top:-25px;
 }
 #photo{
-    float:left
-    margin:auto;
-    height:200px;
-    width:300px;
-    display:inline-block;
+    float:left;
+    //float:left;
 }
-
+#destReviews{
+    display:block;
+    clear:both;
+}
+#tooper{
+    display:block;
+}
+#media{
+    display:block;
+}
+#mainphoto{
+    margin-left:auto;
+    margin-right:auto;
+}
