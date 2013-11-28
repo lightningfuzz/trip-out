@@ -28,25 +28,25 @@
              <div class="control-group">
                  <label class="control-label" for="inputUsername">Username:</label>
                      <div class="controls">
-                         <input type="text" id="inputUsername" placeholder="username" required>
+                         <input type="text" name="inputUsername" placeholder="username" required>
                      </div>
              </div>
              <div class="control-group">
                  <label class="control-label" for="inputEmail">Email:</label>
                      <div class="controls">
-                         <input type="text" id="inputEmail" placeholder="email" required>
+                         <input type="text" name="inputEmail" placeholder="email" required>
                      </div>
              </div>
              <div class="control-group">
                  <label class="control-label" for="inputPassword">Password:</label>
                      <div class="controls">
-                         <input type="text" id="inputPassword" placeholder="password" required>
+                         <input type="text" name="inputPassword" placeholder="password" required>
                      </div>
              </div>
              <div class="control-group">
                  <label class="control-label" for="confirmPassword">Confirm Password:</label>
                      <div class="controls">
-                         <input type="text" id="confirmpassword" placeholder="confirm password" required>
+                         <input type="text" name="confirmpassword" placeholder="confirm password" required>
                      </div>
              </div>
              <br>
