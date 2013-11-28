@@ -6,17 +6,15 @@
         $user->setUserName($_POST['inputUsername']); //getting from the POST
         $user->setEmail($_POST['inputEmail']);
         $user->setPassword($_POST['inputPassword']);
-        
-        echo "testing";
 
         try{
-            $result = AccountController::create($user);
+            $result = AccountController::register($user);
          }
         catch(AccountException $e){
             echo $e;
             exit;
         }
-        //header('Location: index.php');
+        header('Location: ../index.php');
         exit;
     }?>
 <<!-- Borrowed from Marcians original signup page
@@ -42,13 +40,13 @@
              <div class="control-group">
                  <label class="control-label" for="inputPassword">Password:</label>
                      <div class="controls">
-                         <input type="text" name="inputPassword" placeholder="password" required>
+                         <input type="password" name="inputPassword" placeholder="password" required>
                      </div>
              </div>
              <div class="control-group">
                  <label class="control-label" for="confirmPassword">Confirm Password:</label>
                      <div class="controls">
-                         <input type="text" name="confirmpassword" placeholder="confirm password" required>
+                         <input type="password" name="confirmpassword" placeholder="confirm password" required>
                      </div>
              </div>
              <br>
