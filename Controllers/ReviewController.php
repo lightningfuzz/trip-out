@@ -1,17 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of accountManager
- * private function __construct() {
-        
-    }
- * @author deon
- */
 require_once("../DAOs/ReviewDAO.php");
 require_once '../Exceptions/ReviewException.php';
 require_once '../Controllers/DestinationController.php';
