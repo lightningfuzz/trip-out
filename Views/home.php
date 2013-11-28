@@ -6,11 +6,10 @@
         <h1>Welcome to Trip Out!</h1>
         Plan your trip, read reviews, share your experiences
     </div>
-
     <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;vertical-align:middle">
         <div class="panel-heading">Plan Your Trip</div>
         <div class="panel-body" align="center">
-            <form action='#' method="get" class="form-inline" role="form" id ="searchForm">
+            <form action='Views/searchResult_DRY.php' method="get" class="form-inline" role="form" id ="searchForm">
                 <div style="padding-bottom:10px;">
                     <label class="checkbox-inline">
                         <input type="radio" id="inlineCheckbox5" name = "type" value="0" checked> All
@@ -42,12 +41,13 @@
 
 <!-- jQuery to load searchResults_DRY.php page into mainContent div of index.php -->
 <script>
+    /*
     $(document).ready(function(){
         $("#searchForm").submit(function(event){
             event.preventDefault();
             $.get( 'Views/searchResult_DRY.php', $("#searchForm").serialize(), function(data){
-                $("#mainContent").html(data);
+                $("#content").html(data);
             });
         });
-    });
+    });*/
 </script>
