@@ -23,6 +23,8 @@ class mediaController {
         
     }
 
+/************************************************************************/
+// methods for image
     public static function addImage(Image $img) {
 
         if (ImageDAO::getByDestId($img->getDestId()))
@@ -34,8 +36,8 @@ class mediaController {
             throw new ReviewException("Image could not be added to database");
 
         $dest = DestinationController::getById($img->getDestId());
-        //increment numReviews of destination
-       
+        //increment num of destination
+        $dest = DestinationController::incrementNumImages($dest);
 
         return $img;
     }
@@ -54,10 +56,23 @@ class mediaController {
         $dest = DestinationController::getById($img->getDestId());
 
         
-
+    
         return $img;
     }
-
+    
+    public static function incrementNumImages(Destination $dest ){
+        $num = $dest->getNumImages();
+        $num++;
+        $dest->setNumImages($num);
+        
+        if(!DestinationDAO::updateNumImages($dest))
+            throw new DestinationException("Could not update numImages <br>");
+        
+        return $dest;
+    }
+    
+    /************************************************************************/
+    // methods for video
     public static function addVideo(Video $vid) {
 
         if (VideoDAO::getByDestId($vid->getDestId()))
@@ -69,8 +84,8 @@ class mediaController {
             throw new ReviewException("Review could not be added to database");
 
         $dest = DestinationController::getById($vid->getDestId());
-        //increment numReviews of destination
-        
+        //increment number of video at the destination
+        $dest = DestinationController::incrementNumVideos($dest);
 
         return $vid;
     }
@@ -90,11 +105,21 @@ class mediaController {
             return $vid;
 
         $dest = DestinationController::getById($vid->getDestId());
-
-        //calculate and update average rating of destination
-        DestinationController::calcAvgRating($dest);
+        $dest = DestinationController::incrementNumReviews($dest);
+        
 
         return $vid;
+    }
+    
+    public static function incrementNumVideos(Destination $dest ){
+        $num = $dest->getNumVideos();
+        $num++;
+        $dest->setNumVideos($num);
+        
+        if(!DestinationDAO::updateNumVideos($dest))
+            throw new DestinationException("Could not update numVideos <br>");
+        
+        return $dest;
     }
 
 }
