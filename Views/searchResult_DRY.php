@@ -201,13 +201,13 @@ $searchTp = getValue("searchType");
         <?php endfor; ?>
        <!-- Can't find the destination? Create a new Destination -->
        
-            <form action="createDestination.php" method="get" class="form-inline">
-            <div class ="newDest">
-                <p>
-                    Can't find your destination? Create a new one!
-                </p>
-                <button type="submit" class="btn btn-default">Create Destination</button>    
-            </div>
+            <form action="#" method="" class="form-inline" id ="createDestForm">
+                <div class ="newDest">
+                    <p>
+                        Can't find your destination? Create a new one!
+                    </p>
+                    <button type="submit" class="btn btn-default" id ="createDestButton">Create Destination</button>    
+                </div>
             </form> 
             <div class ="showing">
                  <?php
@@ -239,6 +239,14 @@ $searchTp = getValue("searchType");
         $('#destinationDetailLink').on("click",function(){
             $('div.searchResults').load('Views/destinationDetail_DRY.php');
         });
+        
+        /*
+        $("#createDestForm").submit(function(event){
+            event.preventDefault();
+            //alert("tst");
+            //load unDRY createDestination.php into browser window
+            $('div.searchResults').parent().load('Views/createDestination.php');
+        });*/
     });
 </script>
 
