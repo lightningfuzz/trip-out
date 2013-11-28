@@ -6,6 +6,8 @@
         $user->setUserName($_POST['inputUsername']); //getting from the POST
         $user->setEmail($_POST['inputEmail']);
         $user->setPassword($_POST['inputPassword']);
+        
+        echo "testing";
 
         try{
             $result = AccountController::create($user);
@@ -14,7 +16,7 @@
             echo $e;
             exit;
         }
-        header('Location: index.php');
+        //header('Location: index.php');
         exit;
     }?>
 <<!-- Borrowed from Marcians original signup page
@@ -50,9 +52,7 @@
                      </div>
              </div>
              <br>
-             <a href="http://sfsuswe.com/~rpenno/index.php" class="btn btn-primary" id="signUpButton">
-             Register Now
-             </a>
+             <input class ="btn btn-primary" type="submit"/>
         </form>
     </div>
 </div>
