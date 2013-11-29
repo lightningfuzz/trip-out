@@ -1,3 +1,15 @@
+<!-- 
+
+Levels of <div> explanations for this page:
+1) "container" div is the largest outer div which has everything in this page
+2) "mainContent" div is the second largest outer div which has search bar and everything except menu bar
+3) "content" div is the third outer div which has all the contents of the page except menu bar and search bar
+4) "destination" div is the fourth div which is to enclose for each result destination
+5) "search_pic," "search_name," "stars," "box_review," "description" div are inside the "destination" div
+
+-->
+
+
 <?php /*
 function getValue($_GET['searchString']) {
         if(isset($_GET['searchString']){
@@ -17,8 +29,8 @@ require_once '../Controllers/SearchController.php';
 $search = new Search($_GET['searchString'], $_GET['type']);
 $result = $search->run();
 
-$totalRecord = count($result);
-$noOfRecord = 3;
+$totalRecord = count($result); //total records in the database/result
+$noOfRecord = 3; //no of record per page
 $page = 1;
 if(isset($_GET['page'])) {
     $page = $_GET['page'];
@@ -27,14 +39,15 @@ if($page < 1) {
     $page = 1;
 }
 
-
-$noOfPage = ceil($totalRecord / $noOfRecord);
-$start = (($page-1) * $noOfRecord ) + 1;
-$end = $page * $noOfRecord;
+//Calculating for "showing" pages
+$noOfPage = ceil($totalRecord / $noOfRecord); //calculating no of page
+$start = (($page-1) * $noOfRecord ) + 1; //calculating the start record no for a specific page
+$end = $page * $noOfRecord; //calculating the end record no for a specific page
 if($end > $totalRecord) {
     $end = $totalRecord;
 }
 
+//Assigning type numbers into real category names
  function showType ($type) {
      if ($type == 0){
          return 'All';
@@ -76,6 +89,7 @@ if($end > $totalRecord) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <script>
+            /* Script for showing Average Rating Stars */
             $.fn.stars = function() {
                 return $(this).each(function() {
                     // Get the value
@@ -94,7 +108,7 @@ if($end > $totalRecord) {
                 $('span.stars').stars();
             });
             
-            /* "Book Now" button alert dialog box */
+            /* Script for "Book Now" button alert dialog box */
             function myFunction()
             {
                 alert("Hello! You booked this! ");
@@ -144,7 +158,6 @@ if($end > $totalRecord) {
                         </label>
                         <label class="checkbox-inline">
                             <input type="radio" id="inlineCheckbox4" name = "type" value = "5" <?php if($_GET['type'] == "5") echo "checked"; ?>> Events
-                        </label>
                         </label>
                     </div>
                         <div class="form-group" style="width:40%;">
@@ -207,13 +220,13 @@ if($end > $totalRecord) {
                         ?>
                         <div class = "destination">
                             <div class ="search_pic"> 
-                            <a href = "destinationDetail.php" style = "text-decoration: none"> 			    
+                                <a href = "destinationDetail.php?destinationId=<?php echo $dest->getDestId();?>" style = "text-decoration: none"> 			    
                                 <img src = <?php echo $dest->getImageUrl(); ?>  width = "170" height = "130" style = "float: left; margin: 5px;"/>			
                             </a>    
                             </div>
                             <div class ="search_name"> 
                                     
-                                <a href = "destinationDetail.php?destinationId=<?php echo $dest->getDestId()?>" style = "text-decoration: none"> 			
+                                <a href = "destinationDetail.php?destinationId=<?php echo $dest->getDestId();?>" style = "text-decoration: none"> 			
                                     <h4> (<?php echo $no++; ?>) 
                                         <?php 
                                             echo $dest->getName() . '<br/>';                                              
@@ -256,13 +269,13 @@ if($end > $totalRecord) {
                                 
                                  <button type = "button" onclick = "window.open('review.php')"> Write a Review </button>
                                  <br/><br/>                        
-                                 <button type = "button" onclick = "window.open('review.php')"> Read Reviews</button>
+                                 <button type = "button" onclick = "window.open('destinationDetail.php?destinationId=<?php echo $dest->getDestId();?>#destReviews')"> Read Reviews</button>
                                  <br/><br/>
                                  <button type = "button" onclick="myFunction()"> Book Now </button>
                                                                  
                             </div>
                                                        
-                            <div class ="description"> 
+                            <div class ="description" <?php if($i==0) echo 'id="mytest"'?>> 
                                     <?php echo '<br/>' . $dest->getDescription(); ?>
                             </div>   
                          			

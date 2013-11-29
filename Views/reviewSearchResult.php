@@ -123,32 +123,32 @@ if($end > $totalRecord) {
             <div class ="mainContent">
                 
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
-                <div class="panel-heading">Plan Your Trip </div>
+                <div class="panel-heading"> What would you like to review? </div>
                 <div class="panel-body" align="center">
                     <form action="reviewSearchResult.php" method="get" class="form-inline" role="form">
                     <div style="padding-bottom:10px;">
                         
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox5" name="type" value="0" checked> All
+                            <input type="radio" id="inlineCheckbox5" name = "type" value = "0" <?php if($_GET['type'] == "0") echo "checked"; ?>> All
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox1" name="type" value="1"> Attractions
+                            <input type="radio" id="inlineCheckbox1" name = "type" value = "1" <?php if($_GET['type'] == "1") echo "checked"; ?> > Attractions
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox2" name="type" value="2"> Restaurants
+                            <input type="radio" id="inlineCheckbox2" name = "type" value = "2" <?php if($_GET['type'] == "2") echo "checked"; ?>> Restaurants
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox3" name="type" value="3"> Hotels
+                            <input type="radio" id="inlineCheckbox3" name = "type" value = "3" <?php if($_GET['type'] == "3") echo "checked"; ?>> Hotels        
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox4" name = "type" value = "4"> Shopping
+                            <input type="radio" id="inlineCheckbox4" name = "type" value = "4" <?php if($_GET['type'] == "4") echo "checked"; ?>> Shopping
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="inlineCheckbox4" name="type" value="5"> Events
+                            <input type="radio" id="inlineCheckbox4" name = "type" value = "5" <?php if($_GET['type'] == "5") echo "checked"; ?>> Events
                         </label>
                     </div>
                         <div class="form-group" style="width:40%;">
-                          <input name="searchString" class="form-control"  placeholder="Enter search keywords" value="">
+                          <input name="searchString" class="form-control"  placeholder="Enter search keywords" value="<?php echo $_GET['searchString']; ?>">
                         </div>
                         <button type="submit" class="btn btn-default">Search</button>
                     </form>
