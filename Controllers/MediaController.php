@@ -64,7 +64,7 @@ class MediaController {
         $dest->setNumImages($num);
         
         if(!DestinationDAO::updateNumImages($dest))
-            throw new IException("Could not update numImages <br>");
+            throw new ImageException("Could not update numImages <br>");
         
         return $dest;
     }
@@ -85,12 +85,12 @@ class MediaController {
     public static function addVideo(Video $vid) {
 
         if (VideoDAO::getByDestId($vid->getDestId()))
-            throw new ReviewException("The Video already exists <br>"); //review exists
+            throw new VideoException("The Video already exists <br>"); //review exists
         //save the video time
         $vid->setUploadTime(date("Y-m-d H:i:s"));
 
         if (!$vid = VideoDAO::create($vid))
-            throw new ReviewException("Review could not be added to database");
+            throw new VideoException("Review could not be added to database");
 
         $dest = DestinationController::getById($vid->getDestId());
         //increment number of video at the destination
