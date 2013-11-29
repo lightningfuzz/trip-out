@@ -126,7 +126,7 @@ class MediaController {
         $dest->setNumVideos($num);
         
         if(!DestinationDAO::updateNumVideos($dest))
-            throw new VideoException("Could not update numVideos <br>");
+            throw newVideoExceptio("Could not update numVideos <br>");
         
         return $dest;
     }
