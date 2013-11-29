@@ -23,7 +23,7 @@ class ImageDAO {
      * @param $user is the new image object
      * @return the $image object with a new user id; return null if failed
      */
-    public static function create($image) {
+    public static function create(Image $image) {
         $db = dbConnect::getInstance();
         $q = "INSERT INTO image (user_id, dest_id, rel_url, "
                 . "title, description, upload_time) VALUES ('"
@@ -64,6 +64,19 @@ class ImageDAO {
         }
 
         return $images;
+    }
+    
+     public static function delete(Image $img) {
+
+        $db = dbConnect::getInstance();
+
+        $q = "DELETE FROM review WHERE dest_id = " . $img->getDestId()
+                . " AND user_id = " . $img->getUserId();
+
+        if ($db->query($q))
+            return true;
+        else
+            return false;
     }
 
 }

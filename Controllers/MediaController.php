@@ -17,7 +17,7 @@ require_once '../Models/Video.php';
 require_once '../DAOs/ImageDAO.php';
 require_once '../DAOs/VideoDAO.php';
 
-class mediaController {
+class MediaController {
 
     private function __construct() {
         
@@ -28,12 +28,12 @@ class mediaController {
     public static function addImage(Image $img) {
 
         if (ImageDAO::getByDestId($img->getDestId()))
-            throw new ReviewException("Image already exists <br>"); //review exists
+            throw new ImageException("Image already exists <br>"); //review exists
         //save the image time
         $img->setUploadTime(date("Y-m-d H:i:s"));
 
         if (!$img = ImageDAO::create($img))
-            throw new ReviewException("Image could not be added to database");
+            throw new ImageException("Image could not be added to database");
 
         $dest = DestinationController::getById($img->getDestId());
         //increment num of destination
@@ -54,8 +54,6 @@ class mediaController {
             return $img;
 
         $dest = DestinationController::getById($img->getDestId());
-
-        
     
         return $img;
     }
@@ -66,7 +64,18 @@ class mediaController {
         $dest->setNumImages($num);
         
         if(!DestinationDAO::updateNumImages($dest))
-            throw new DestinationException("Could not update numImages <br>");
+            throw new IException("Could not update numImages <br>");
+        
+        return $dest;
+    }
+    
+     public static function decrementNumImage(Destination $dest){
+        $num = $dest->getNumImages();
+        $num--;
+        $dest->setNumImages($num);
+        
+        if(!DestinationDAO::updateNumImages($dest))
+           throw new ImageException("Could not update numVideos <br>");
         
         return $dest;
     }
@@ -105,7 +114,7 @@ class mediaController {
             return $vid;
 
         $dest = DestinationController::getById($vid->getDestId());
-        $dest = DestinationController::incrementNumReviews($dest);
+        $dest = DestinationController::incrementNumVideos($dest);
         
 
         return $vid;
@@ -117,7 +126,18 @@ class mediaController {
         $dest->setNumVideos($num);
         
         if(!DestinationDAO::updateNumVideos($dest))
-            throw new DestinationException("Could not update numVideos <br>");
+            throw newVideoExceptio("Could not update numVideos <br>");
+        
+        return $dest;
+    }
+    
+    public static function decrementNumVideo(Destination $dest){
+        $num = $dest->getNumVideos();
+        $num--;
+        $dest->setNumVideos($num);
+        
+        if(!DestinationDAO::updateNumVideos($dest))
+           throw new VideoException("Could not update numVideos <br>");
         
         return $dest;
     }

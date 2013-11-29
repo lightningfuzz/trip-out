@@ -20,7 +20,7 @@ class VideoDAO {
      * @param $user is the new image object
      * @return the $video object with a new user id; return null if failed
      */
-    public static function create($video) {
+    public static function create(Video $video) {
         $db = dbConnect::getInstance();
         $q = "INSERT INTO video (user_id, dest_id, rel_url, "
                 . "title, description, upload_time) VALUES ('"
@@ -61,6 +61,19 @@ class VideoDAO {
         }
 
         return $videos;
+    }
+    
+     public static function delete(Video $vid) {
+
+        $db = dbConnect::getInstance();
+
+        $q = "DELETE FROM review WHERE dest_id = " . $vid->getDestId()
+                . " AND user_id = " . $vid->getUserId();
+
+        if ($db->query($q))
+            return true;
+        else
+            return false;
     }
 
 }
