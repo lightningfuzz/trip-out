@@ -63,8 +63,8 @@ Stars:Khine-->
                 <div id ='tooper'>
 		<div id = 'photo' class='top'>
                     <div id="mainphoto">
-                    <a href="../media/images/alcatraz/alcatraz1.jpg" title="Arriving on the ferry">
-                            <img src="../media/images/alcatraz/alcatraz1.jpg" alt="" class="img-thumbnail" width ="300px">
+                        <a href="<?php echo $destin->getImageUrl()?>" title="Arriving on the ferry">
+                            <img src="<?php echo $destin->getImageUrl()?>" alt="" class="img-thumbnail" width ="300px">
                     </a>
                     </div>
                     <div id="media">
@@ -104,8 +104,8 @@ Stars:Khine-->
                                 <img src="../media/images/rate1.png"/><br/>
                             </p>
                             <p><?php echo $rev->getComment() ?></p>
-                            <p class = "byline"><?php require_once("../DAOs/RegisteredUserDAO.php");
-                             echo RegisteredUserDAO::getByID($rev->getUserId())->getUserName(); ?></p>
+                            <p class = "byline"><font color="grey"<?php require_once("../DAOs/RegisteredUserDAO.php");
+                            echo RegisteredUserDAO::getByID($rev->getUserId())->getUserName(); ?><font></p>
                             <hr>
                         </li>
                         <?php endforeach; ?>
