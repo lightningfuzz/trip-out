@@ -10,6 +10,9 @@
  *
  * @author Jung Hwan Kim
  */
+require_once("../dbConnect.php");
+require_once '../Models/Image.php';
+
 class ImageDAO {
     
     private function __construct(){
@@ -21,9 +24,9 @@ class ImageDAO {
      * @return the $image object with a new user id; return null if failed
      */
     public static function create($image) {
-        $db = dbConnet::getInstance();
-        $q = "INSERT INTO review (user_id, dest_id, relUrl, "
-                . "title, description, uploadTime,) VALUES ('"
+        $db = dbConnect::getInstance();
+        $q = "INSERT INTO image (user_id, dest_id, rel_url, "
+                . "title, description, upload_time) VALUES ('"
                 . $image->getUserId() . "', '" . $image->getDestId() . "', '"
                 . $image->getRelUrl() . "', '" . $image->getTitle() . "', '"
                 . $image->getDescription() . "', '" . $image->getUploadTime() . "')";
@@ -44,7 +47,7 @@ class ImageDAO {
     public static function getByDestId($integer) {
         $db = dbConnect::getInstance();
         //query
-        $q = "SELECT * FROM Image WHERE user_id =" . $integer;
+        $q = "SELECT * FROM image WHERE dest_id =" . $integer;
 
         if (!$result = $db->query($q))
             return null;
@@ -53,10 +56,10 @@ class ImageDAO {
             $image = new Image();
             $image->setUserId($arr["user_id"]);
             $image->setDestId($arr["dest_id"]);
-            $image->setRelUrl($arr["relUrl"]);
+            $image->setRelUrl($arr["rel_url"]);
             $image->setTitle($arr["title"]);
             $image->setDescription($arr["description"]);
-            $image->setUploadTime($arr["uploadTime"]);
+            $image->setUploadTime($arr["upload_time"]);
             $images[] = $image;
         }
 

@@ -10,6 +10,9 @@
  *
  * @author Jung Hwan Kim
  */
+require_once("../dbConnect.php");
+require_once '../Models/Video.php';
+
 class VideoDAO {
 
     /**
@@ -17,12 +20,12 @@ class VideoDAO {
      * @param $user is the new image object
      * @return the $video object with a new user id; return null if failed
      */
-    public static function create() {
-        $db = dbConnet::getInstance();
-        $q = "INSERT INTO review (user_id, dest_id, relUrl, "
-                . "title, description, uploadTime,) VALUES ('"
+    public static function create($video) {
+        $db = dbConnect::getInstance();
+        $q = "INSERT INTO video (user_id, dest_id, rel_url, "
+                . "title, description, upload_time) VALUES ('"
                 . $video->getUserId() . "', '" . $video->getDestId() . "', '"
-                . $video->getRelUrl() . "', '" . $video>getTitle() . "', '"
+                . $video->getRelUrl() . "', '" . $video->getTitle() . "', '"
                 . $video->getDescription() . "', '" . $video->getUploadTime() . "')";
 
 
@@ -37,10 +40,10 @@ class VideoDAO {
      * @param $id the user id
      * @return a Video object if found; else return null
      */
-    public static function getByDestId($ingeter) {
+    public static function getByDestId($integer) {
         $db = dbConnect::getInstance();
         //query
-        $q = "SELECT * FROM Video WHERE user_id =" . $integer;
+        $q = "SELECT * FROM video WHERE dest_id =" . $integer;
 
         if (!$result = $db->query($q))
             return null;
@@ -50,11 +53,11 @@ class VideoDAO {
             $video = new Image();
             $video->setUserId($arr["user_id"]);
             $video->setDestId($arr["dest_id"]);
-            $video->setRelUrl($arr["relUrl"]);
+            $video->setRelUrl($arr["rel_url"]);
             $video->setTitle($arr["title"]);
             $video->setDescription($arr["description"]);
-            $video->setUploadTime($arr["uploadTime"]);
-            $videos = $video;
+            $video->setUploadTime($arr["upload_time"]);
+            $videos[] = $video;
         }
 
         return $videos;
