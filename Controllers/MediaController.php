@@ -24,10 +24,10 @@ class MediaController {
     }
 
     /**
-     * adds a review to the database; currently only one review per destinatin is allowed
+     * adds a review to the database; currently only one image/video per destinatin is allowed
      * increments number of reviews for destination and updates average rating for destination
-     * @param $rev the Review object
-     * @throws ReviewException if review already exists, or rating is missing
+     * @param $rev the video/image object
+     * @throws MediaException if review already exists
      * @return the review object if success
      */
     public static function add(Media $media) {
@@ -71,6 +71,17 @@ class MediaController {
         
         
         return $media;
+    }
+    
+    public static function incrementNumMedia(Destination $dest){
+        $num = $dest->getNumReviews();
+        $num++;
+        $dest->setNumReviews($num);
+        
+        if(!DestinationDAO::updateNumReviews($dest))
+            throw new DestinationException("Could not update numReviews <br>");
+        
+        return $dest;
     }
 
 }
