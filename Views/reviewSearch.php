@@ -13,17 +13,17 @@
         <nav class="navbar navbar-inverse" role="navigation">
             <a class="navbar-brand" href="../index.php" id ="logo">TRIP OUT!</a>
             <ul class="nav navbar-nav">
-                <li name = "home"><a href="../index.php" id="homeLink">Home</a></li>
-                <li name = "writeReview" class="active"><a href="#" id ="writeReviewLink">Write a Review</a></li>
-                <li name = "createDestination"><a href="createDestination.php" id="createDestinationLink">Create a Destination</a></li>
-                <li name = "about"><a href="#" id="aboutLink">About</a></li>
-                <li name = "contact"><a href="#" id ="contactLink">Contact</a></li>
-                <li name = "FAQ"><a href="#" id ="faqLink">FAQ</a></li>
+                <li><a href="../index.php" id="homeLink">Home</a></li>
+                <li class="active"><a href="#" id ="writeReviewLink">Write a Review</a></li>
+                <li><a href="createDestination.php">Create a Destination</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">FAQ</a></li>
 
             </ul>
             <form class="navbar-form navbar-right">
-                <a type="submit" class="btn btn-default" href="#" id ="signInButton">Sign In</a>
-                <a type="submit" class="btn btn-default" href="#" id ="registerButton">Register</a>
+                <a type="submit" class="btn btn-default" href="signIn.php" id ="signInButton">Sign In</a>
+                <a type="submit" class="btn btn-default" href="signUp.php" id ="registerButton">Register</a>
             </form>
         </nav>
         <h3> Write a Review </h3> <br/>
@@ -32,7 +32,7 @@
         <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
             <div class="panel-heading">What would you like to review?</div>
             <div class="panel-body" align="center">
-                 <form action="Views/reviewSearchResult.php" method="get" class="form-inline" role="form">
+                 <form action="reviewSearchResult.php" method="get" class="form-inline" role="form">
                 <div style="padding-bottom:10px;">
                     <label class="checkbox-inline">
                         <input type="radio" id="inlineCheckbox5" name="type" value="0" checked> All
