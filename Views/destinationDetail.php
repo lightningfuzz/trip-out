@@ -6,7 +6,7 @@ Stars:Khine-->
     require_once("../Controllers/ReviewController.php");
     require_once("../Models/Destination.php");
     require_once("../DAOs/DestinationDAO.php");
-        $destin = DestinationDAO::getByID(33);
+        $destin = DestinationDAO::getByID($_GET['destinationId']);
         $reviews = ReviewController::getDestinationReviews($destin);
     ?>
 <!DOCTYPE HTML>
