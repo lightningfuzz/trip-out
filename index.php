@@ -38,12 +38,12 @@
             <nav class="navbar navbar-inverse" role="navigation">
                 <a class="navbar-brand" href="" id ="logo">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
-                    <li name = "home" class="active"><a href="" id="homeLink">Home</a></li>
-                    <li name = "writeReview" ><a href="Views/reviewSearch.php" id ="writeReviewLink">Write a Review</a></li>
-                    <li name = "createDestination"><a href="Views/createDestination.php" id="createDestinationLink">Create a Destination</a></li>
-                    <li name = "about"><a href="Views/about.html" id="aboutLink">About</a></li>
-                    <li name = "contact"><a href="#" id ="contactLink">Contact</a></li>
-                    <li name = "FAQ"><a href="#" id ="faqLink">FAQ</a></li>
+                    <li name = "home" class="active"><a href="">Home</a></li>
+                    <li><a href="Views/reviewSearch.php">Write a Review</a></li>
+                    <li><a href="Views/createDestination.php">Create a Destination</a></li>
+                    <li><a href="Views/about.html">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
                 </ul>
                 <form class="navbar-form navbar-right">
                     <a type="submit" class="btn btn-default" href="Views/signIn.php" id ="signInButton">Sign In</a>
