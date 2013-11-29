@@ -130,7 +130,7 @@ class MediaController {
         
         return $dest;
     }
-    
+    // decrement number of video for each destination if video is deleted 
     public static function decrementNumVideo(Destination $dest){
         $num = $dest->getNumVideos();
         $num--;
