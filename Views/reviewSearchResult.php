@@ -109,6 +109,7 @@ if($end > $totalRecord) {
                 <ul class="nav navbar-nav">
                     <li><a href="../index.php">Home</a></li>
                     <li><a href="reviewSearch.php">Write a Review</a></li>
+                    <li><a href="createDestination.php">Create a Destination</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">FAQ</a></li>

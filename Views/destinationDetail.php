@@ -48,6 +48,7 @@ Stars:Khine-->
                     <ul class="nav navbar-nav">
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="reviewSearch.php">Write a Review</a></li>
+                        <li><a href="createDestination.php">Create a Destination</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">FAQ</a></li>
@@ -67,8 +68,8 @@ Stars:Khine-->
                     </a>
                     </div>
                     <div id="media">
-                    <a class="btn btn-primary fancybox fancybox.iframe" href="../Views/uploadMedia.php">Upload Picture/Video</a>
-                    <a class="btn btn-info" href="../Views/mediaViewer.php">More Pictures/Videos</a>
+                        <a class="btn btn-primary fancybox fancybox.iframe" href="uploadMedia.php">Upload Picture/Video</a>
+                        <a class="btn btn-info" href="mediaViewer.php">More Pictures/Videos</a>
                     </div>
 		</div>
                 <!-- holds all the information about a locations(rating, description, name, ...)-->

@@ -102,14 +102,14 @@ if($end > $totalRecord) {
             
         </script>
     </head>
-
     <body> 
          <div class ="container">
             <nav class="navbar navbar-inverse" role="navigation">
                 <a class="navbar-brand" href="../index.php">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../index.php">Home</a></li>
+                    <li><a href="../index.php">Home</a></li>
                     <li><a href="reviewSearch.php">Write a Review</a></li>
+                    <li><a href="createDestination.php">Create a Destination</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">FAQ</a></li>
@@ -120,7 +120,6 @@ if($end > $totalRecord) {
                 </form>
             </nav>
             <div class ="mainContent">
-            
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
                 <div class="panel-heading">Plan Your Trip </div>
                 <div class="panel-body" align="center">

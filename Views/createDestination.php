@@ -38,7 +38,7 @@ and open the template in the editor.
         <script src="../js/jquery.js"></script>
         <link rel ="stylesheet" type ="text/css" href ="../css/custom>
         <!-- Add jQuery library -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script> type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- from the file uploader -->
         <meta name="description" content="File Upload widget with multiple file selection, drag&amp;drop support, progress bars, validation and preview images, audio and video for jQuery. Supports cross-domain, chunked and resumable file uploads and client-side image resizing. Works with any server-side platform (PHP, Python, Ruby on Rails, Java, Node.js, Go etc.) that supports standard HTML form file uploads.">
@@ -64,12 +64,10 @@ and open the template in the editor.
         <!-- CSS adjustments for browsers with JavaScript disabled -->
         <noscript><link rel="stylesheet" href="../jqueryFileUploader/css/jquery.fileupload-noscript.css"></noscript>
         <noscript><link rel="stylesheet" href="../jqueryFileUploader/css/jquery.fileupload-ui-noscript.css"></noscript>
-        
         <title>Create a Destination</title>
     </head>
     <body>
         <!-- BEGIN BANNER -->
-                <title>TRIP OUT!</title>    
         <!-- <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css"> -->
         <link rel ="stylesheet" type ="text/css" href ="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
@@ -85,22 +83,22 @@ and open the template in the editor.
         <div class="container">
             <!-- BEGIN BANNER -->
             <nav class="navbar navbar-inverse" role="navigation">
-                <a class="navbar-brand" href="../index.php">TRIP OUT!</a>
-                <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="reviewSearch.php">Write a Review</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-                <form class="navbar-form navbar-right">
-                    <a type="submit" class="btn btn-default" href="signIn.php">Sign In</a>
-                    <a type="submit" class="btn btn-default" href="signUp.php">Register</a>
-                </form>
-            </nav>
+            <a class="navbar-brand" href="../index.php" id ="logo">TRIP OUT!</a>
+            <ul class="nav navbar-nav">
+                <li name = "home"><a href="../index.php" id="homeLink">Home</a></li>
+                <li name = "writeReview" class="active"><a href="#" id ="writeReviewLink">Write a Review</a></li>
+                <li name = "createDestination"><a href="createDestination.php">Create a Destination</a></li>
+                <li name = "about"><a href="#" id="aboutLink">About</a></li>
+                <li name = "contact"><a href="#" id ="contactLink">Contact</a></li>
+                <li name = "FAQ"><a href="#" id ="faqLink">FAQ</a></li>
+
+            </ul>
+            <form class="navbar-form navbar-right">
+                <a type="submit" class="btn btn-default" href="#" id ="signInButton">Sign In</a>
+                <a type="submit" class="btn btn-default" href="#" id ="registerButton">Register</a>
+            </form>
+        </nav>
          <!-- END BANNER -->
-         
-         
          <!-- begin body of site -->
         <h2 align="center">Create a Destination</h2>
         <div align="center">
@@ -196,8 +194,6 @@ and open the template in the editor.
                 <option value="Saskatchewan">Saskatchewan</option>
                 <option value="Yukon">Yukon</option>
             </select>
-            
-           
             <p><br>Additional Info</p>
             <input type="tel" class="input-large" placeholder="Phone Num" name="destPhone"> 
             <p></p>
@@ -217,10 +213,7 @@ and open the template in the editor.
         </form>
         <br/><br/>
         
-        
         <!-- file uploader stuff -->
-        
-        
         
         <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
             <!-- Redirect browsers with JavaScript disabled to the origin page -->
@@ -369,5 +362,7 @@ and open the template in the editor.
           </nav>
         <!-- END FOOTER -->
       </div>
+    </div>
+    <!-- END CONTAINTER -->
     </body>
 </html>
