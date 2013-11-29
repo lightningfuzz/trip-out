@@ -6,84 +6,121 @@
  */
 
 /**
- * Description of MediaController
- *
+ * Description of mediaController
+ * This file user shall control the media such as video or image
+ * add video, add image, delte video, delte video depending on destination.
+ * 
  * @author Jung Hwan Kim
  */
+require_once '../Models/Image.php';
+require_once '../Models/Video.php';
+require_once '../DAOs/ImageDAO.php';
+require_once '../DAOs/VideoDAO.php';
 
-require_once("../DAOs/ImageDAO.php");
-require_once("../DAOs/VideoDAO.php");
-require_once '../Controllers/DestinationController.php';
-
-class MediaController {
-
-    //private construct
+class mediaController {
 
     private function __construct() {
         
     }
 
-    /**
-     * adds a review to the database; currently only one image/video per destinatin is allowed
-     * increments number of reviews for destination and updates average rating for destination
-     * @param $rev the video/image object
-     * @throws MediaException if review already exists
-     * @return the review object if success
-     */
-    public static function add(Media $media) {
-        
-        if (ImageDAO::getByUserIdAndDestId($media->getUserId(), $media->getDestId()))
-            throw new ReviewException("Review already exists <br>"); //review exists
-        
-        if (!$media->getRating())
-            throw new ReviewException("Missing rating <br>");
-       
-        //save the review time
-        $media->setUploadTime(date("Y-m-d H:i:s"));
-        
-        if (!$media = ImageDAO::create($media))
-            throw new ReviewException("Review could not be added to database");
-        
-        $dest = MediaController::getById($media->getDestId());
-        //increment numReviews of destination
-        $dest = MediaController::incrementNumMedia($dest);
-       
-        
-        return $media;
+/************************************************************************/
+// methods for image
+    public static function addImage(Image $img) {
+
+        if (ImageDAO::getByDestId($img->getDestId()))
+            throw new ReviewException("Image already exists <br>"); //review exists
+        //save the image time
+        $img->setUploadTime(date("Y-m-d H:i:s"));
+
+        if (!$img = ImageDAO::create($img))
+            throw new ReviewException("Image could not be added to database");
+
+        $dest = DestinationController::getById($img->getDestId());
+        //increment num of destination
+        $dest = DestinationController::incrementNumImages($dest);
+
+        return $img;
     }
     
-    /**
-     * retrieves all reviews for a given destination
-     * @param $dest the Destination object
-     * @return array of Review objects if success. Empty array or null upon failure.
-     */
-    public static function getDestinationMedia(Destination $dest) {
+    
+    public static function getDestinationImages(Destination $dest) {
 
         return ImageDAO::getByDestId($dest->getDestId());
     }
+
+    public static function deleteImage(Image $img) {
+
+        if (!$img = ImageDAO::delete($img))
+            return $img;
+
+        $dest = DestinationController::getById($img->getDestId());
+
+        
     
-    public static function delete(Media $media){
-        
-        if(!$media = ImageDAO::delete($media))
-                return $media;
-        
-        $dest = MediaController::getById($media->getDestId());
-        
-        
-        return $media;
+        return $img;
     }
     
-    public static function incrementNumMedia(Destination $dest){
-        $num = $dest->getNumReviews();
+    public static function incrementNumImages(Destination $dest ){
+        $num = $dest->getNumImages();
         $num++;
-        $dest->setNumReviews($num);
+        $dest->setNumImages($num);
         
-        if(!DestinationDAO::updateNumReviews($dest))
-            throw new DestinationException("Could not update numReviews <br>");
+        if(!DestinationDAO::updateNumImages($dest))
+            throw new DestinationException("Could not update numImages <br>");
+        
+        return $dest;
+    }
+    
+    /************************************************************************/
+    // methods for video
+    public static function addVideo(Video $vid) {
+
+        if (VideoDAO::getByDestId($vid->getDestId()))
+            throw new ReviewException("The Video already exists <br>"); //review exists
+        //save the video time
+        $vid->setUploadTime(date("Y-m-d H:i:s"));
+
+        if (!$vid = VideoDAO::create($vid))
+            throw new ReviewException("Review could not be added to database");
+
+        $dest = DestinationController::getById($vid->getDestId());
+        //increment number of video at the destination
+        $dest = DestinationController::incrementNumVideos($dest);
+
+        return $vid;
+    }
+    
+    
+    
+    
+
+    public static function getDestinationVideos(Destination $dest) {
+
+        return ImageDAO::getByDestId($dest->getDestId());
+    }
+
+    public static function deleteVideo(Video $vid) {
+
+        if (!$vid = VideoDAO::delete($vid))
+            return $vid;
+
+        $dest = DestinationController::getById($vid->getDestId());
+        $dest = DestinationController::incrementNumReviews($dest);
+        
+
+        return $vid;
+    }
+    
+    public static function incrementNumVideos(Destination $dest ){
+        $num = $dest->getNumVideos();
+        $num++;
+        $dest->setNumVideos($num);
+        
+        if(!DestinationDAO::updateNumVideos($dest))
+            throw new DestinationException("Could not update numVideos <br>");
         
         return $dest;
     }
 
 }
-
 ?>
