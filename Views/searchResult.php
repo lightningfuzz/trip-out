@@ -88,6 +88,13 @@ if($end > $totalRecord) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
+        <!-- Script for popover window for "Write a Review" page -->
+        <script type="text/javascript">
+            function popup(){
+              cuteLittleWindow = window.open("review.php", "littleWindow", "location=no,width=500,height=500"); 
+            }
+        </script>
+        
         <script>
             /* Script for showing Average Rating Stars */
             $.fn.stars = function() {
@@ -245,8 +252,9 @@ if($end > $totalRecord) {
                                 <br/>
                                  <span class="stars"><?php echo $dest->getAvgRating(); ?></span>
                                  <?php echo ' ' . $dest->getNumReviews() . ' reviews'; ?>
+                                 <a href ="destinationDetail.php?destinationId=<?php echo $dest->getDestId();?>#destReviews"> read reviews </a>
                                  <br/>
-                                 
+                                                                  
                                  <!-- Address -->
                                       <?php
                                           echo $dest->getAddress();
@@ -267,9 +275,9 @@ if($end > $totalRecord) {
                             
                             <div class ="box_review">
                                 
-                                 <button type = "button" onclick = "window.open('review.php')"> Write a Review </button>
-                                 <br/><br/>                        
-                                 <button type = "button" onclick = "window.open('destinationDetail.php?destinationId=<?php echo $dest->getDestId();?>#destReviews')"> Read Reviews</button>
+                                 <!-- <button type = "button" onclick = "window.open('review.php')"> Write a Review </button>
+                                 <br/><br/> -->
+                                 <a href="javascript:popup()"><button type = "button">Write a Review</button></a>
                                  <br/><br/>
                                  <button type = "button" onclick="myFunction()"> Book Now </button>
                                                                  

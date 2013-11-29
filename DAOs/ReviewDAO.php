@@ -34,7 +34,7 @@ class ReviewDAO {
         return $rev;
     }
 
-    /**
+    /**  
      * gets the user review for the destination
      */
     public static function getByUserIdAndDestId($uid, $did) {
