@@ -191,7 +191,7 @@ if($end > $totalRecord) {
         <div class ="box_reviewResult">
             
             <div class = "box_name">
-                <h4>(<?php echo $no++; ?>) <a href = "destinationDetail.php"> <?php echo $dest->getName(); ?> </a> </h4>                
+                <h4>(<?php echo $no++; ?>) <a href = "destinationDetail.php?destinationId=<?php echo $dest->getDestId();?>"> <?php echo $dest->getName(); ?> </a> </h4>                
                 <?php echo showType($dest->getType()) . '<br/>'; ?>
             </div>
             
