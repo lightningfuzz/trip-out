@@ -2,7 +2,7 @@
 
 
 class dbConnect extends mysqli {
-    
+     
     // single instance of self shared among all instances
     private static $instance = null;
     
@@ -17,7 +17,7 @@ class dbConnect extends mysqli {
         if (!self::$instance instanceof self) {
             self::$instance = new self;
         }
-        return self::$instance;
+        return self::$instance; 
     }
     
     // private constructor
@@ -33,7 +33,7 @@ class dbConnect extends mysqli {
     // The clone and wakeup methods prevents external instantiation of copies of the Singleton class,
     // thus eliminating the possibility of duplicate objects.
     public function __clone() {
-        trigger_error('Clone is not allowed.', E_USER_ERROR);
+        trigger_error('Clone is not allowed.', E_USER_ERROR); 
     }
 
     public function __wakeup() {

@@ -5,9 +5,12 @@ Made by Modifying signIn.php-Rob Pennock-->
         <title>TRIP OUT!</title>    
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
+        <link rel ="stylesheet" type ="text/css" href ="../rateit/src/rateit.css"> 
+        
         <script src="../js/bootstrap.js"></script>
         <script src="../js/script.js"></script>
         <script src="../js/jquery.js"></script>
+        <script src="../rateit/src/jquery.rateit.js"></script>
         <!-- Add jQuery library -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     </head>
@@ -17,9 +20,7 @@ Made by Modifying signIn.php-Rob Pennock-->
                 <h3>Write a Review</h3>
                 <form name="logon" action="index.php" method="POST" >
                     Title: <input type="text" name="reviewTitle"> 
-                                <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
-                                <img src="../media/images/rate1.png"/><img src="../media/images/rate1.png"/>
-                                <img src="../media/images/rate1.png"/><br/><br>
+                                <div class="rateit"></div><br/><br>
                     Review: <textarea rows="4" cols="50"></textarea><br>
                     <hr>
                     <p>Upload Media(Optional)</p> 

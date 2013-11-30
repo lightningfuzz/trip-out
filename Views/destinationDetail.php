@@ -8,18 +8,45 @@ Stars:Khine-->
     require_once("../DAOs/DestinationDAO.php");
         $destin = DestinationDAO::getByID($_GET['destinationId']);
         $reviews = ReviewController::getDestinationReviews($destin);
+        //Assigning type numbers into real category names
+ function showType ($type) {
+     if ($type == 0){
+         return 'All';
+     }
+     else if ($type == 1) {
+         return 'Attraction';
+     }
+     else if ($type == 2) {
+         return 'Restaurant';
+     }
+     else if ($type == 3) {
+         return 'Hotel';
+     }
+     else if ($type == 4) {
+         return 'Shopping';
+     }
+     else if ($type == 5) {
+         return 'Event';
+     }
+     else {
+         return '---';
+     }
+}
     ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
+            
             <link rel="shortcut icon" href="../media/assets/images/TripoutIcon.ico">
             <title><?php echo $destin->getName(); ?></title> 
             <link rel ="stylesheet" type="text/css" href ="../css/destinationDetail.css" /> 
             <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css">
             <link rel ="stylesheet" type ="text/css" href ="../css/index.css">
             <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css"> 
+            <link rel ="stylesheet" type ="text/css" href ="../rateit/src/rateit.css"> 
             
             <script src="../js/jquery.js"></script>
+            <script src="../rateit/src/jquery.rateit.js"></script>
             <script src="../js/bootstrap.js"></script>
             <script src="../js/bootstrap.min.js"></script>
             <script src="../js/script.js"></script>
@@ -76,15 +103,14 @@ Stars:Khine-->
 		<div id = 'info' class='top'>
                     <h1><?php echo $destin->getName(); ?></h1>
                     <p>
-                        <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                        <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                        <img src="../media/images/rate1.png"/><span class="badge badge-info">123 Ratings</span>
+                    <div class="rateit" data-rateit-value="<?php echo $destin->getAvgRating(); ?>" data-rateit-ispreset="true" data-rateit-readonly="true"></div><span class="badge badge-info">123 Ratings</span>
                     </p>
-                    <p><b>Category: </b> <?php echo $destin->getType(); ?></p>
+                    <p><b>Category: </b><?php echo showType($destin->getType()); ?></p>
                     <p><b>City: </b><?php echo $destin->getCity(); ?></p>
                     <p><b>Address: </b><?php echo $destin->getAddress(); ?></p>
                     <p><b>Phone Number: </b><?php echo $destin->getPhoneNumber(); ?></p>
-                    <p><b>Description: </b><?php echo $destin->getDescription(); ?></p>
+                    <p><b>Website: </b><a href=<?php echo $destin->getWebsite(); ?>><?php echo $destin->getWebsite(); ?></a></p>
+                    <p style="width:600px;"><b>Description: </b><?php echo $destin->getDescription(); ?></p>
 		</div>
                 <br>
                 </div>
@@ -98,14 +124,13 @@ Stars:Khine-->
                         <?php
                         foreach($reviews as $rev):
                         ?>
-                        <li><p><?php echo $rev->getTitle() ?>
-                                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                                <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                                <img src="../media/images/rate1.png"/><br/>
+                        <li><p><?php echo $rev->getTitle();?>
+                            <div class="rateit" data-rateit-value="<?php echo $rev->getRating(); ?>" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                                <br/>
                             </p>
                             <p><?php echo $rev->getComment() ?></p>
-                            <p class = "byline"><font color="grey"<?php require_once("../DAOs/RegisteredUserDAO.php");
-                            echo RegisteredUserDAO::getByID($rev->getUserId())->getUserName(); ?><font></p>
+                            <p class = "byline"><font color="grey">by <?php require_once("../DAOs/RegisteredUserDAO.php");
+                            echo RegisteredUserDAO::getByID($rev->getUserId())->getUserName(); ?></font></p>
                             <hr>
                         </li>
                         <?php endforeach; ?>

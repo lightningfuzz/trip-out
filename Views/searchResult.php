@@ -222,8 +222,6 @@ if($end > $totalRecord) {
                              for ($i = $start - 1; $i < $end; $i++) :
                                  $dest = $result[$i];
                              
-                             $dest . "<br>";
-                             
                         ?>
                         <div class = "destination">
                             <div class ="search_pic"> 

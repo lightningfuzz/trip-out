@@ -4,8 +4,9 @@ require_once '../Models/Destination.php';
 require_once '../DAOs/DestinationDAO.php';
 require_once '../Models/Keyword.php';
 require_once '../DAOs/KeywordDAO.php';
-require_once '../Models/Tag.php';
 require_once '../DAOs/TagDAO.php';
+require_once '../Models/Tag.php';
+
 
 class Search {
     
