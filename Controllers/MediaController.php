@@ -16,6 +16,7 @@ require_once '../Models/Image.php';
 require_once '../Models/Video.php';
 require_once '../DAOs/ImageDAO.php';
 require_once '../DAOs/VideoDAO.php';
+require_once '../Controllers/DestinationController.php';
 
 class MediaController {
 
@@ -27,8 +28,8 @@ class MediaController {
 // methods for image
     public static function addImage(Image $img) {
 
-        if (ImageDAO::getByDestId($img->getDestId()))
-            throw new ImageException("Image already exists <br>"); //review exists
+//        if (ImageDAO::getByDestId($img->getDestId()))
+//            throw new ImageException("Image already exists <br>"); //review exists
         //save the image time
         $img->setUploadTime(date("Y-m-d H:i:s"));
 
@@ -57,35 +58,13 @@ class MediaController {
     
         return $img;
     }
-    
-    public static function incrementNumImages(Destination $dest ){
-        $num = $dest->getNumImages();
-        $num++;
-        $dest->setNumImages($num);
-        
-        if(!DestinationDAO::updateNumImages($dest))
-            throw new ImageException("Could not update numImages <br>");
-        
-        return $dest;
-    }
-    
-     public static function decrementNumImage(Destination $dest){
-        $num = $dest->getNumImages();
-        $num--;
-        $dest->setNumImages($num);
-        
-        if(!DestinationDAO::updateNumImages($dest))
-           throw new ImageException("Could not update numVideos <br>");
-        
-        return $dest;
-    }
-    
+      
     /************************************************************************/
     // methods for video
     public static function addVideo(Video $vid) {
 
-        if (VideoDAO::getByDestId($vid->getDestId()))
-            throw new VideoException("The Video already exists <br>"); //review exists
+//        if (VideoDAO::getByDestId($vid->getDestId()))
+//            throw new VideoException("The Video already exists <br>"); //review exists
         //save the video time
         $vid->setUploadTime(date("Y-m-d H:i:s"));
 
@@ -98,14 +77,10 @@ class MediaController {
 
         return $vid;
     }
-    
-    
-    
-    
 
     public static function getDestinationVideos(Destination $dest) {
 
-        return ImageDAO::getByDestId($dest->getDestId());
+        return VideoDAO::getByDestId($dest->getDestId());
     }
 
     public static function deleteVideo(Video $vid) {
@@ -118,28 +93,6 @@ class MediaController {
         
 
         return $vid;
-    }
-    
-    public static function incrementNumVideos(Destination $dest ){
-        $num = $dest->getNumVideos();
-        $num++;
-        $dest->setNumVideos($num);
-        
-        if(!DestinationDAO::updateNumVideos($dest))
-            throw new VideoException("Could not update numVideos <br>");
-        
-        return $dest;
-    }
-    // decrement number of video for each destination if video is deleted 
-    public static function decrementNumVideo(Destination $dest){
-        $num = $dest->getNumVideos();
-        $num--;
-        $dest->setNumVideos($num);
-        
-        if(!DestinationDAO::updateNumVideos($dest))
-           throw new VideoException("Could not update numVideos <br>");
-        
-        return $dest;
     }
 
 }

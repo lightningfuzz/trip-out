@@ -93,7 +93,51 @@ class DestinationController{
          
         return $dest;
            
-    }   
+    }
+    
+    public static function incrementNumImages(Destination $dest ){
+        $num = $dest->getNumImages();
+        $num++;
+        $dest->setNumImages($num);
+        
+        if(!DestinationDAO::updateNumImages($dest))
+            throw new ImageException("Could not update numImages <br>");
+        
+        return $dest;
+    }
+    
+    public static function decrementNumImage(Destination $dest){
+        $num = $dest->getNumImages();
+        $num--;
+        $dest->setNumImages($num);
+        
+        if(!DestinationDAO::updateNumImages($dest))
+           throw new ImageException("Could not update numVideos <br>");
+        
+        return $dest;
+    }
+    
+    public static function incrementNumVideos(Destination $dest ){
+        $num = $dest->getNumVideos();
+        $num++;
+        $dest->setNumVideos($num);
+        
+        if(!DestinationDAO::updateNumVideos($dest))
+            throw new VideoException("Could not update numVideos <br>");
+        
+        return $dest;
+    }
+    // decrement number of video for each destination if video is deleted 
+    public static function decrementNumVideo(Destination $dest){
+        $num = $dest->getNumVideos();
+        $num--;
+        $dest->setNumVideos($num);
+        
+        if(!DestinationDAO::updateNumVideos($dest))
+           throw new VideoException("Could not update numVideos <br>");
+        
+        return $dest;
+    }
 }
 
 ?>

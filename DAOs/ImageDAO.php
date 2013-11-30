@@ -70,11 +70,11 @@ class ImageDAO {
 
         $db = dbConnect::getInstance();
 
-        $q = "DELETE FROM review WHERE dest_id = " . $img->getDestId()
+        $q = "DELETE FROM image WHERE dest_id = " . $img->getDestId()
                 . " AND user_id = " . $img->getUserId();
 
         if ($db->query($q))
-            return true;
+            return $img;
         else
             return false;
     }
