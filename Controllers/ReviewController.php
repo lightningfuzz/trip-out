@@ -21,7 +21,7 @@ class ReviewController {
      */
     public static function add(Review $rev) {
         
-        if (ImageDAO::getByUserIdAndDestId($rev->getUserId(), $rev->getDestId()))
+        if (ReviewDAO::getByUserIdAndDestId($rev->getUserId(), $rev->getDestId()))
             throw new ReviewException("Review already exists <br>"); //review exists
         
         if (!$rev->getRating())
