@@ -108,6 +108,11 @@ class AccountController {
             return true;
     }
     
+    /*
+     * gets the loggedin user object
+     * 
+     * @return RegisteredUser object if success; otherwise returns null.
+     */
     public static function getLoggedinUser() {
         $s = Session::getInstance();
         if (self::isLogin() == TRUE) {
