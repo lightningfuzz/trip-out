@@ -22,8 +22,10 @@ echo "passwrd = " . $s->password . "<br>";
 
 echo "Is Login? ------- " . AccountController::isLogin() . "<br>";
 
+echo "<br>" . "<br>";
+
 //AccountController::logout();
-AccountController::login("deon", "pass");
+echo AccountController::login("deon", "pass");
 
 echo "<br>" . "<br>";
 echo "After Login: " . "<br>";

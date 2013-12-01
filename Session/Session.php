@@ -15,7 +15,7 @@ class Session {
 
     const STARTED = TRUE;
     const NOT_STARTED = FALSE;
-    
+
     private static $instance;
     private $state = self::NOT_STARTED; //session state
 

@@ -39,7 +39,7 @@ class AccountController {
             throw new LoginException();
 
         //update the login time into the database
-        $user->setLastLoginTime(date("F j, Y, g:i:s a"));
+        $user->setLastLoginTime(date('Y-m-d H:i:s'));
         
         //saves user login info to SESSION
         $s = Session::getInstance();
@@ -69,7 +69,8 @@ class AccountController {
             throw new UsernameException();
 
         //save the registration time and create the user
-        $user->setRegTime(date("F j, Y, g:i:s a"));
+        //$currentDate = date('Y-m-d H:i:s');
+        $user->setRegTime(date('Y-m-d H:i:s'));
         return RegisteredUserDAO::create($user);
     }
     
