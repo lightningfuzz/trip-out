@@ -1,6 +1,13 @@
 <?php
     require_once("../Controllers/AccountController.php");
     require_once("../Models/RegisteredUser.php");
+    function do_alert($msg) 
+    {   echo
+        "<script type=\"text/javascript\">".
+        "window.alert(' . $msg . ');".
+        "top.location = 'signUp.php';".
+        "</script>"; 
+    }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pass1=$_POST['InputPassword'];
         $pass2=$_POST['ConfirmPassword'];
@@ -12,17 +19,20 @@
         //****fallback for safari support*****//
         //make sure fields are filled out
         if((strcmp( $userName , $blank )=== 0)||(strcmp( $userEmail , $blank )=== 0) || (strcmp( $pass1 , $blank )=== 0) || (strcmp( $pass2 , $blank )=== 0)){
-            echo "Error: Username, Email, and Password fields must be filled out";
+            $msg = "Error: Username, Email, and Password fields must be filled out";
+            do_alert($msg);
             exit;
         }
         //compare password fields for validation
         else if(strcmp($pass1, $pass2)!=0){
-            echo "Error: password fields do not match.";
+            $msg = "Error: password fields do not match.";
+            do_alert($msg);
             exit;
         }
         //check for password length of at least 6 characters
         else if(strlen ( $pass1 )<6){
-            echo "Error: password must be at least 6 characters in length";
+            $msg = "Error: password must be at least 6 characters in length";
+            do_alert($msg);
             exit;
         }
         //now register the user
@@ -52,6 +62,7 @@
         <script src="../js/bootstrap.js"></script>
         <script src="../js/script.js"></script>
         <script src="../js/jquery.js"></script>
+        <script src="../js/robcustom.js"></script>
         <!-- Add jQuery library -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <title></title>
@@ -61,7 +72,7 @@
         <!--script below checks to see if passwords match -->
         <!-- logic courtesy of
              http://www.sitepoint.com/using-the-html5-constraint-api-for-form-validation/-->
-
+        
         <script type="text/javascript">
             window.onload = function () {
                document.getElementById("InputPassword").onchange = validatePassword;
@@ -137,9 +148,40 @@
                      </div>
              </div>
 
-                 <br>
-                 <input class ="btn btn-primary" type="submit"/>
-            </form>
+                <br>
+                <input class ="btn btn-primary" type="submit"/>
+           </form>
+        <!-- 
+         <form class="cmxform" id="commentForm" method="get" action="">
+        <fieldset>
+          <legend>Please provide your name, email address (won't be published) and a comment</legend>
+          <p>
+            <label for="InputUsername">User Name: </label>
+            <input id="InputUsername" name="InputUsername" minlength="6" type="text" placeholder="username" required/>
+          </p>
+          <p>
+            <label for="InputEmail">E-Mail (required)</label>
+            <input id="InputEmail" type="email" name="email" required/>
+          </p>
+          <p>
+            <label for="curl">URL (optional)</label>
+            <input id="curl" type="password" name="url"/>
+          </p>
+          <p>
+            <label for="ccomment">Your comment (required)</label>
+            <textarea id="ccomment" name="comment" required></textarea>
+          </p>
+          <p>
+            <input class="submit" type="submit" value="Submit"/>
+          </p>
+        </fieldset>
+      </form>
+      <script>
+      $("#commentForm").validate();
+      </script>
+         -->
+         
+         
         </div>
     </body>            
 </html>
