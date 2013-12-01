@@ -81,10 +81,12 @@ if($end > $totalRecord) {
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/index.css">
         <link rel = "stylesheet" type = "text/css" href = "../css/searchResult.css">
+        <!-- <link rel ="stylesheet" type ="text/css" href ="../rateit/src/rateit.css"> --> <!-- for avg rating stars -->
         <script src="../js/bootstrap.js"></script>
         <script src="../js/jquery.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="../js/script.js"></script>
+        <!-- <script src="../rateit/src/jquery.rateit.js"></script> --> <!-- for avg rating stars -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -240,17 +242,17 @@ if($end > $totalRecord) {
                                     </h4> 
 				</a>
                                 
-                                 <?php echo showType($dest->getType()) . '<br/>'; ?>
-<!--                             <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                                 <img src="../media/images/rate3.png"/><img src="../media/images/rate3.png"/>
-                                 <img src="../media/images/rate3.png"/> -->
-                                  
-                                    
+                                 <?php echo showType($dest->getType()) . '<br/>'; ?>                                 
                                   
                                 <br/>
                                  <span class="stars"><?php echo $dest->getAvgRating(); ?></span>
-                                 <?php echo ' ' . $dest->getNumReviews() . ' reviews'; ?>
-                                 <a href ="destinationDetail.php?destinationId=<?php echo $dest->getDestId();?>#destReviews"> read reviews </a>
+                                 
+                                 <!-- Matt's stars -->
+                                 <!-- <span class="rateit" data-rateit-value="<?php /*echo $destin->getAvgRating(); */ ?>" data-rateit-ispreset="true" data-rateit-readonly="true"></span>-->
+                                 
+                                 <a href ="destinationDetail.php?destinationId=<?php echo $dest->getDestId();?>#destReviews">
+                                     <?php echo ' ' . $dest->getNumReviews() . ' reviews'; ?>
+                                 </a>
                                  <br/>
                                                                   
                                  <!-- Address -->
