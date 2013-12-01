@@ -4,7 +4,7 @@
     function do_alert($msg) 
     {   echo
         "<script type=\"text/javascript\">".
-        "window.alert(' . $msg . ');".
+        "alert('$msg');".
         "top.location = 'signUp.php';".
         "</script>"; 
     }
@@ -21,19 +21,19 @@
         if((strcmp( $userName , $blank )=== 0)||(strcmp( $userEmail , $blank )=== 0) || (strcmp( $pass1 , $blank )=== 0) || (strcmp( $pass2 , $blank )=== 0)){
             $msg = "Error: Username, Email, and Password fields must be filled out";
             do_alert($msg);
-            exit;
+            //exit;
         }
         //compare password fields for validation
         else if(strcmp($pass1, $pass2)!=0){
             $msg = "Error: password fields do not match.";
             do_alert($msg);
-            exit;
+            //exit;
         }
         //check for password length of at least 6 characters
         else if(strlen ( $pass1 )<6){
             $msg = "Error: password must be at least 6 characters in length";
             do_alert($msg);
-            exit;
+            //exit;
         }
         //now register the user
         else{
