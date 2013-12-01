@@ -12,11 +12,12 @@
  */
 require_once("../DAOs/RegisteredUserDAO.php");
 require_once("../Exceptions/UsernameException.php");
+require_once("../Exceptions/LoginException.php");
+require_once("../Session/Session.php");
 
 
 class AccountController {
 
-    private $user; //contains the current user
 
     //private construct
 
@@ -34,16 +35,25 @@ class AccountController {
     public static function login($username, $password) {
 
         //checks if the username and password pair exists
-        if (($this->user = RegisteredUserDAO::getByUsernameAndPassword($username, $password) ) == null)
+        if (($user = RegisteredUserDAO::getByUsernameAndPassword($username, $password) ) == null)
             throw new LoginException();
 
         //update the login time into the database
-        $this->user->setLastLoginTime(date("F j, Y, g:i:s a"));
-        return RegisteredUserDAO::update($this->user);
+        $user->setLastLoginTime(date("F j, Y, g:i:s a"));
+        
+        //saves user login info to SESSION
+        $s = Session::getInstance();
+        $s->isLogin = TRUE;
+        $s->username = $username;
+        $s->password = $password;
+        
+        return RegisteredUserDAO::update($user);
     }
 
     public static function logout() {
-        $this->user = null;
+        
+        $s = Session::getInstance();
+        $s->isLogin = FALSE;
     }
 
     /**
@@ -60,12 +70,13 @@ class AccountController {
 
         //save the registration time and create the user
         $user->setRegTime(date("F j, Y, g:i:s a"));
-        return ($user = RegisteredUserDAO::create($user));
+        return RegisteredUserDAO::create($user);
     }
     
     public static function isLogin() {
-        if ($this->user)
-            return true;
+        $s = Session::getInstance();
+        if (isset($s->isLogin))
+            return $s->isLogin;
         else
             return false;
     }
@@ -97,7 +108,11 @@ class AccountController {
     }
     
     public static function getLoggedinUser() {
-        return $this->user;
+        $s = Session::getInstance();
+        if (self::isLogin() == TRUE) {
+            return RegisteredUserDAO::getByUsername($s->username);
+        }
+        return null;
     }
     
     public static function delete(RegisteredUser $user){
