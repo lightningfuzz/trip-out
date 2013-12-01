@@ -4,11 +4,35 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pass1=$_POST['InputPassword'];
         $pass2=$_POST['ConfirmPassword'];
-        $user = new RegisteredUser();
-        $user->setUserName($_POST['InputUsername']); //getting from the POST
-        $user->setEmail($_POST['InputEmail']);
-        $user->setPassword($_POST['InputPassword']);
-        
+        $userEmail = $_POST['InputEmail'];
+        $userName = $_POST['InputUsername'];
+        $blank = "";
+       
+
+        //****fallback for safari support*****//
+        //make sure fields are filled out
+        if((strcmp( $userName , $blank )=== 0)||(strcmp( $userEmail , $blank )=== 0) || (strcmp( $pass1 , $blank )=== 0) || (strcmp( $pass2 , $blank )=== 0)){
+            echo "Error: Username, Email, and Password fields must be filled out";
+            exit;
+        }
+        //compare password fields for validation
+        else if(strcmp($pass1, $pass2)!=0){
+            echo "Error: password fields do not match.";
+            exit;
+        }
+        //check for password length of at least 6 characters
+        else if(strlen ( $pass1 )<6){
+            echo "Error: password must be at least 6 characters in length";
+            exit;
+        }
+        //now register the user
+        else{
+            $user = new RegisteredUser();
+            $user->setUserName($_POST['InputUsername']); //getting from the POST
+            $user->setEmail($_POST['InputEmail']);
+            $user->setPassword($_POST['InputPassword']); 
+        }
+        //create new account for $user
         try{
             $result = AccountController::register($user);
          }
@@ -16,6 +40,7 @@
             echo $e;
             exit;
         }
+        //redirect to index page
         header('Location: ../index.php');
         exit;
     }?>
@@ -42,6 +67,8 @@
                document.getElementById("InputPassword").onchange = validatePassword;
                document.getElementById("ConfirmPassword").onchange = validatePassword;
             }
+            //added for safari support
+           
             function validatePassword(){
             var pass2=document.getElementById("ConfirmPassword").value;
             var pass1=document.getElementById("InputPassword").value;
@@ -56,6 +83,7 @@
                document.getElementById("ConfirmPassword").setCustomValidity('');  
             //empty string means no validation error
             }
+            
         </script>
 
     <!-- Borrowed from Marcians original signup page
@@ -108,9 +136,6 @@
                          <input type="password" name="ConfirmPassword" id="ConfirmPassword" placeholder="confirm password" required>
                      </div>
              </div>
-                 <!--script below checks to see if passwords match -->
-                 <!-- logic courtesy of
-                      http://www.sitepoint.com/using-the-html5-constraint-api-for-form-validation/-->
 
                  <br>
                  <input class ="btn btn-primary" type="submit"/>
