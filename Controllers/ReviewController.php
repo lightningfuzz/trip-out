@@ -8,7 +8,7 @@ class ReviewController {
 
     //private construct
 
-    private function __construct() {
+    private function __construct() { 
         
     }
 
@@ -35,7 +35,7 @@ class ReviewController {
         
         $dest = DestinationController::getById($rev->getDestId());
         //increment numReviews of destination
-        $dest = DestinationController::incrementNumReviews($dest);
+        DestinationController::incrementNumReviews($dest);
         //calculate and update avg_rating of destination
         DestinationController::calcAvgRating($dest);
         
