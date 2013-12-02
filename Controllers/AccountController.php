@@ -15,7 +15,6 @@ require_once("../Exceptions/UsernameException.php");
 require_once("../Exceptions/LoginException.php");
 require_once("../Session/Session.php");
 
-
 class AccountController {
 
 

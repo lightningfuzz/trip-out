@@ -14,7 +14,7 @@ class LoginException extends Exception {
 
     // custom string representation of object
     public function __toString() {
-        return "<b style='color:red'> login failed</b>";
+        return "<b style='color:red;'> login failed</b>";
     }
 
 }

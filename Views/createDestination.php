@@ -49,8 +49,8 @@
             <a class="navbar-brand" href="../index.php" id ="logo">TRIP OUT!</a>
             <ul class="nav navbar-nav">
                 <li name = "home"><a href="../index.php" id="homeLink">Home</a></li>
-                <li name = "writeReview" class="active"><a href="#" id ="writeReviewLink">Write a Review</a></li>
-                <li name = "createDestination"><a href="createDestination.php">Create a Destination</a></li>
+                <li name = "writeReview"><a href="#" id ="writeReviewLink">Write a Review</a></li>
+                <li name = "createDestination"  class="active"><a href="createDestination.php">Create a Destination</a></li>
                 <li name = "about"><a href="#" id="aboutLink">About</a></li>
                 <li name = "contact"><a href="#" id ="contactLink">Contact</a></li>
                 <li name = "FAQ"><a href="#" id ="faqLink">FAQ</a></li>
