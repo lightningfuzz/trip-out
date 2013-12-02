@@ -130,7 +130,9 @@ class RegisteredUserDAO {
         if (!$result = $db->query($q))
             return null;
 
-        $arr = mysqli_fetch_array($result);
+        if (!($arr = mysqli_fetch_array($result)))
+                return null;
+        
         $ru = new RegisteredUser();
         $ru->setUserID($arr["user_id"]);
         $ru->setUserName($arr["user_name"]);

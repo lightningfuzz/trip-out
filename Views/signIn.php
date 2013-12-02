@@ -9,8 +9,8 @@
     $s->start();
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = ($_POST['user']);
-        $password = ($_POST['userpassword']);
+        $username = $_POST['user'];
+        $password = $_POST['userpassword'];
         //reverse logifc for isUsernameValid: see AccountController
         //check if user exists
         try{
@@ -18,12 +18,14 @@
             header('Location: ../index.php');
             exit;
          }
-        catch(LogicException $e){
-            echo "bad login credentials";
+        catch(LoginException $e){
+            echo $e;
+            exit;
         }
         
         catch(AccountException $e){
-            echo "account exception";
+            echo $e . $e;
+            exit;
         }
     }?>
 
@@ -36,9 +38,9 @@
         <script src="../js/bootstrap.js"></script>
         <script src="../js/script.js"></script>
         <script src="../js/jquery.js"></script>
-        <link rel ="stylesheet" type ="text/css" href ="../css/custom>
+        <link rel ="stylesheet" type ="text/css" href ="../css/custom">
         <!-- Add jQuery library -->
-        <script> type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     
 
         <title>Sign In</title>
@@ -65,12 +67,11 @@
                 <h3>Sign In</h3>
                 <p>
                 <form name="logon" id="logon" action="signIn.php" method="POST" >
-                    Username: <input type="text" name="user" id ="user"><br>
+                    Username: <input type="text" name="user"><br>
                     Password: <input type="password" name="userpassword" id="userpassword"><br>
                     <div class="btn-group">
                     <input class="btn btn-primary" type="submit" value="Sign In">
-                    </div> 
-                    <!-- <input class="btn btn-primary" type="submit" id="editButton" value="Sign In"> -->
+                    </div>
                 </form>
                 </p>
             </div>
@@ -84,7 +85,7 @@
             </div>
         </div>
 
-        <!-- jQuery to load signUp.php page into mainContent div of index.php -->
+<!--         jQuery to load signUp.php page into mainContent div of index.php -->
         <script>
             $('#registerGoButton').on("click",function(){
                 $('div.row').parent().load('Views/signUp.php');

@@ -25,7 +25,18 @@ echo "Is Login? ------- " . AccountController::isLogin() . "<br>";
 echo "<br>" . "<br>";
 
 //AccountController::logout();
-echo AccountController::login("deon", "pass");
+try{
+    echo AccountController::login("bleh", "bad");
+}
+catch(LogicException $e){
+    echo "bad login credentials";
+    exit;
+}
+
+catch(AccountException $e){
+    echo "account exception";
+    exit;
+}
 
 echo "<br>" . "<br>";
 echo "After Login: " . "<br>";
