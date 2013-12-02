@@ -1,6 +1,19 @@
 <?php
+
+    
     require_once("../Controllers/DestinationController.php");
     require_once("../Models/Destination.php");
+    require_once '../Session/Session.php';
+    require_once '../Controllers/AccountController.php';
+    
+    $s = Session::getInstance();
+    $s->start();
+    
+    //redirect to signIn page if user is not logged in
+    if(!AccountController::isLogin()){
+        header("Location: signIn.php");
+    }
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $destin = new Destination();
         $destin->setName($_POST['destName']);
