@@ -18,6 +18,7 @@ require_once '../DAOs/ImageDAO.php';
 require_once '../DAOs/VideoDAO.php';
 require_once '../Controllers/DestinationController.php';
 
+
 class MediaController {
 
     private function __construct() {
