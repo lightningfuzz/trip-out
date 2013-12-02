@@ -1,7 +1,7 @@
 <?php
 
-require_once("../dbConnect.php");
-require_once '../Models/RegisteredUser.php';
+require_once($_SERVER['DOCUMENT_ROOT']."/dbConnect.php");
+require_once $_SERVER['DOCUMENT_ROOT'].'/Models/RegisteredUser.php';
 
 //
 //singleton class  
