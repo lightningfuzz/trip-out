@@ -13,6 +13,13 @@
     if(!AccountController::isLogin()){
         header("Location: signIn.php");
     }
+    if(AccountController::isLogin()){
+        $user = AccountController::getLoggedinUser();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['logout']) {
+        AccountController::logout();
+    }
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $destin = new Destination();
