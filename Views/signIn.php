@@ -25,8 +25,6 @@
         catch(AccountException $e){
             echo "account exception";
         }
-        header('Location: ../index.php');
-        exit;
     }?>
 
 <!DOCTYPE html>
