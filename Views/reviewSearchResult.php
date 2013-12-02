@@ -259,7 +259,7 @@ require_once '../Controllers/SearchController.php';
                    <p>
                        Can't find your destination? Create a new one!
                    </p>
-                   <button type="submit" class="btn btn-default"> Create Destination </button>    
+                   <button type="submit" class ="btn btn-primary"> Create Destination </button>    
                 </div> <!-- End of "newDest" div within "content" div -->
              </form> <!-- End of form for creating a new destination if can't find -->
                 
