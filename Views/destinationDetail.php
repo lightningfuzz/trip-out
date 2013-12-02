@@ -96,7 +96,8 @@ Stars:Khine-->
                     </div>
                     <div id="media">
                         <a class="btn btn-primary fancybox fancybox.iframe" href="uploadMedia.php">Upload Picture/Video</a>
-                        <a class="btn btn-info" href="mediaViewer.php">More Pictures/Videos</a>
+                        <a class="btn btn-info" href = "mediaViewer.php?destinationId=<?php echo $destin->getDestId();?>" > More Pictures/Videos</a>
+                        <!--<a class="btn btn-info" href="mediaViewer.php">More Pictures/Videos</a>-->
                     </div>
 		</div>
                 <!-- holds all the information about a locations(rating, description, name, ...)-->

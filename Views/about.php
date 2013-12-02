@@ -1,3 +1,19 @@
+<?php
+
+    require_once '../Session/Session.php';
+    require_once '../Controllers/AccountController.php';
+
+    $s = Session::getInstance();
+    $s->start();
+    if(AccountController::isLogin()){
+        $user = AccountController::getLoggedinUser();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['logout']) {
+        AccountController::logout();
+    }
+?>
+
 <html>
     <head>
         <title>TRIP OUT!</title>    
@@ -20,10 +36,17 @@
                 <li><a href="#">Contact</a></li>
                 <li><a href="#">FAQ</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <a class="btn btn-default" href="signIn.php">Sign In</a>
-                <a class="btn btn-default" href="signUp.php">Register</a>
-            </form>
+            <?php if (AccountController::isLogin()): ?>
+                <form class = "navbar-form navbar-right" style ="color:white;" action ="../index.php" method="post">
+                    Hello, <?php echo $user->getUserName(); ?> | 
+                    <input class = "btn btn-default" type="submit" name = "logout" value ="logout"></input>
+                </form>
+             <?php else: ?>
+                <form class="navbar-form navbar-right">
+                    <a type="submit" class="btn btn-default" href="signIn.php" id ="signInButton">Sign In</a>;
+                    <a type="submit" class="btn btn-default" href="signUp.php" id ="registerButton">Register</a>;
+                </form>;
+            <?php endif ?>
         </nav>
         <h3>About Us</h3><hr>
         San Francisco State University<br>

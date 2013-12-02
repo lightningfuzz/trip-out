@@ -12,6 +12,18 @@ Levels of <div> explanations for this page:
 <?php
 
     require_once '../Controllers/SearchController.php';
+    require_once '../Session/Session.php';
+    require_once '../Controllers/AccountController.php';
+
+    $s = Session::getInstance();
+    $s->start();
+    if(AccountController::isLogin()){
+        $user = AccountController::getLoggedinUser();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['logout']) {
+        AccountController::logout();
+    }
     
     // Getting 'searchString' and 'type' parameters in URL from Home Page
     $search = new Search($_GET['searchString'], $_GET['type']);
@@ -123,21 +135,28 @@ Levels of <div> explanations for this page:
     </head>
     
     <body> 
-         <div class ="container"> <!-- 1st div -->
-            <nav class="navbar navbar-inverse" role="navigation">
-                <a class="navbar-brand" href="../index.php">TRIP OUT!</a>
+        <div class ="container">
+                <nav class="navbar navbar-inverse" role="navigation">
+                <a class="navbar-brand" href="../index.php" id ="logo">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
                     <li><a href="../index.php">Home</a></li>
                     <li><a href="reviewSearch.php">Write a Review</a></li>
                     <li><a href="createDestination.php">Create a Destination</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li class ="active"><a href="">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
-                <form class="navbar-form navbar-right">
-                    <a type="submit" class="btn btn-default" href="signIn.php">Sign In</a>
-                    <a type="submit" class="btn btn-default" href="signUp.php">Register</a>
-                </form>
+                <?php if (AccountController::isLogin()): ?>
+                    <form class = "navbar-form navbar-right" style ="color:white;" action ="../index.php" method="post">
+                        Hello, <?php echo $user->getUserName(); ?> | 
+                        <input class = "btn btn-default" type="submit" name = "logout" value ="logout"></input>
+                    </form>
+                 <?php else: ?>
+                    <form class="navbar-form navbar-right">
+                        <a type="submit" class="btn btn-default" href="signIn.php" id ="signInButton">Sign In</a>;
+                        <a type="submit" class="btn btn-default" href="signUp.php" id ="registerButton">Register</a>;
+                    </form>;
+                <?php endif ?>
             </nav>
              
             <div class ="mainContent"> <!-- 2nd div -->
@@ -215,6 +234,7 @@ Levels of <div> explanations for this page:
                      //foreach($result as $dest):
                      for ($i = $start - 1; $i < $end; $i++) :
                          $dest = $result[$i];
+                         
                 ?>                
                 
                 <!-- Displaying each destination result -->

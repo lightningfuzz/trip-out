@@ -43,12 +43,14 @@
         <!--<link rel ="stylesheet" type ="text/css" href ="../css/bootstrap.css"> -->
         <link rel ="stylesheet" type ="text/css" href ="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
+        <link rel ="stylesheet" type ="text/css" href ="../css/index.css">
+
         <script src="../js/bootstrap.js"></script>
         <script src="../js/script.js"></script>
         <script src="../js/jquery.js"></script>
         <link rel ="stylesheet" type ="text/css" href ="../css/custom>
         <!-- Add jQuery library -->
-        <script> type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     
         <!--Jquery fileuploader thingy -->
 
@@ -57,25 +59,30 @@
     <body> 
         <!-- BEGIN CONTAINER -->
         <div class="container">
-            <!-- BEGIN BANNER -->
-            <nav class="navbar navbar-inverse" role="navigation">
-            <a class="navbar-brand" href="../index.php" id ="logo">TRIP OUT!</a>
-            <ul class="nav navbar-nav">
-                <li name = "home"><a href="../index.php" id="homeLink">Home</a></li>
-                <li name = "writeReview"><a href="#" id ="writeReviewLink">Write a Review</a></li>
-                <li name = "createDestination"  class="active"><a href="createDestination.php">Create a Destination</a></li>
-                <li name = "about"><a href="#" id="aboutLink">About</a></li>
-                <li name = "contact"><a href="#" id ="contactLink">Contact</a></li>
-                <li name = "FAQ"><a href="#" id ="faqLink">FAQ</a></li>
-
-            </ul>
-            <form class="navbar-form navbar-right">
-                <a type="submit" class="btn btn-default" href="#" id ="signInButton">Sign In</a>
-                <a type="submit" class="btn btn-default" href="#" id ="registerButton">Register</a>
-            </form>
-        </nav>
-         <!-- END BANNER -->
+                <nav class="navbar navbar-inverse" role="navigation">
+                <a class="navbar-brand" href="" id ="logo">TRIP OUT!</a>
+                <ul class="nav navbar-nav">
+                    <li name = "home" class="active"><a href="">Home</a></li>
+                    <li><a href="reviewSearch.php">Write a Review</a></li>
+                    <li><a href="createDestination.php">Create a Destination</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+                    <?php if (AccountController::isLogin()): ?>
+                        <form class = "navbar-form navbar-right" style ="color:white;" action ="../index.php" method="post">
+                            Hello, <?php echo $user->getUserName(); ?> | 
+                            <input class = "btn btn-default" type="submit" name = "logout" value ="logout"></input>
+                        </form>
+                     <?php else: ?>
+                        <form class="navbar-form navbar-right">
+                            <a type="submit" class="btn btn-default" href="signIn.php" id ="signInButton">Sign In</a>;
+                            <a type="submit" class="btn btn-default" href="signUp.php" id ="registerButton">Register</a>;
+                        </form>;
+                    <?php endif ?>
+            </nav>
          <!-- begin body of site -->
+         
         <h2 align="center">Create a Destination</h2>
         <div align="center">
              <div style="border:2px solid; border-radius:25px; display: block;
@@ -208,7 +215,7 @@
             });
             </script>
         </div>
-\
+
         <!-- BEGIN FOOTER-->
           <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
              <div class ="footer">

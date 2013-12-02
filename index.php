@@ -1,6 +1,19 @@
 <?php
 
-    
+    require_once 'Session/Session.php';
+    require_once 'Models/RegisteredUser.php';
+    require_once 'DAOs/RegisteredUserDAO.php';
+    require_once 'Controllers/AccountController.php';
+
+    $s = Session::getInstance();
+    $s->start();
+    if(AccountController::isLogin()){
+        $user = AccountController::getLoggedinUser();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['logout']) {
+        AccountController::logout();
+    }
 ?>
 <html>
     <head>
@@ -42,14 +55,21 @@
                     <li name = "home" class="active"><a href="">Home</a></li>
                     <li><a href="Views/reviewSearch.php">Write a Review</a></li>
                     <li><a href="Views/createDestination.php">Create a Destination</a></li>
-                    <li><a href="Views/about.html">About</a></li>
+                    <li><a href="Views/about.php">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
-                <form class="navbar-form navbar-right">
-                    <a type="submit" class="btn btn-default" href="Views/signIn.php" id ="signInButton">Sign In</a>
-                    <a type="submit" class="btn btn-default" href="Views/signUp.php" id ="registerButton">Register</a>
-                </form>
+                    <?php if (AccountController::isLogin()): ?>
+                        <form class = "navbar-form navbar-right" style ="color:white;" action ="index.php" method="post">
+                            Hello, <?php echo $user->getUserName(); ?> | 
+                            <input class = "btn btn-default" type="submit" name = "logout" value ="logout"></input>
+                        </form>
+                     <?php else: ?>
+                        <form class="navbar-form navbar-right">
+                            <a type="submit" class="btn btn-default" href="Views/signIn.php" id ="signInButton">Sign In</a>;
+                            <a type="submit" class="btn btn-default" href="Views/signUp.php" id ="registerButton">Register</a>;
+                        </form>;
+                    <?php endif ?>
             </nav>
             <div class ="home">
                 <div class ="overview">
@@ -87,7 +107,9 @@
                         </form>
                     </div>
                 </div>
-            </div>
+                 <div class ="overview">
+                    <h3> SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 </h3>
+                </div>
             <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
                 <div class ="footer">
                     SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 

@@ -17,10 +17,7 @@ require_once(dirname(__FILE__). "/../Exceptions/LoginException.php");
 require_once(dirname(__FILE__). "/../Session/Session.php");
 
 class AccountController {
-
-
     //private construct
-
     private function __construct() {
         
     }
