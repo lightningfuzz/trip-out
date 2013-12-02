@@ -79,7 +79,7 @@ Stars:Khine-->
                         <li><a href="about.html">About</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">FAQ</a></li>
-                    </ul>
+                    </ul> 
                     <form class="navbar-form navbar-right">
                         <a type="submit" class="btn btn-default" href="signIn.php">Sign In</a>
                         <a type="submit" class="btn btn-default" href="signUp.php">Register</a>
@@ -103,7 +103,7 @@ Stars:Khine-->
 		<div id = 'info' class='top'>
                     <h1><?php echo $destin->getName(); ?></h1>
                     <p>
-                    <div class="rateit" data-rateit-value="<?php echo $destin->getAvgRating(); ?>" data-rateit-ispreset="true" data-rateit-readonly="true"></div><span class="badge badge-info">123 Ratings</span>
+                    <div class="rateit" data-rateit-value="<?php echo $destin->getAvgRating(); ?>" data-rateit-ispreset="true" data-rateit-readonly="true"></div><span class="badge badge-info"><?php echo $destin->getNumReviews(); ?></span>
                     </p>
                     <p><b>Category: </b><?php echo showType($destin->getType()); ?></p>
                     <p><b>City: </b><?php echo $destin->getCity(); ?></p>
@@ -117,7 +117,7 @@ Stars:Khine-->
                 <p></p>
                 <div id ='destReviews'>
                     <h3>Reviews</h3>
-                    <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/review.php" title="Write a review">Write a review!</a>
+                    <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/review.php?destid=<?php echo $destin->getDestId() ?>" title="Write a review">Write a review!</a>
                     
                     <p>Showing 1-4 out of 15 Reviews</p>
                     <ul>
