@@ -24,9 +24,8 @@ and open the template in the editor.
             echo $e;
             exit;
         }
-        $destinationId=$destin->getDestId();
-        echo $destinationId;
-        header('Location: destinationDetail.php? . $destinationId');
+        $destinationId=$result->getDestId();
+        header('Location: destinationDetail.php?' . $destinationId);
         exit;
     }?>
 <!DOCTYPE html>

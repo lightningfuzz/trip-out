@@ -50,7 +50,7 @@
             echo $e;
             exit;
         }
-        //redirect to index page
+        //redirect to index page  
         header('Location: ../index.php');
         exit;
     }?>
