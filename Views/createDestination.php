@@ -1,7 +1,3 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
     require_once("../Controllers/DestinationController.php");
     require_once("../Models/Destination.php");
@@ -25,7 +21,7 @@ and open the template in the editor.
             exit;
         }
         $destinationId=$result->getDestId();
-        header('Location: destinationDetail.php?' . $destinationId);
+        header('Location: destinationDetail.php?destinationId=' . $destinationId);
         exit;
     }?>
 <!DOCTYPE html>
