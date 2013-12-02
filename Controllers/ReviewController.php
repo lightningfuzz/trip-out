@@ -35,7 +35,7 @@ class ReviewController {
         
         $dest = DestinationController::getById($rev->getDestId());
         //increment numReviews of destination
-        DestinationController::incrementNumReviews($dest);
+        $dest = DestinationController::incrementNumReviews($dest);
         //calculate and update avg_rating of destination
         DestinationController::calcAvgRating($dest);
         
