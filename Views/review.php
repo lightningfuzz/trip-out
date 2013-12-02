@@ -1,5 +1,9 @@
 <!-- Author:Matthew Rutherford 
 Made by Modifying signIn.php-Rob Pennock-->
+
+<!--This php block is called when a review is submitted it takes the post variables
+and puts them into a review model.  this model is used by reviewController to add a review
+to the Database-->
 <?php
     require_once("../Controllers/ReviewController.php");
     require_once("../Models/Review.php");

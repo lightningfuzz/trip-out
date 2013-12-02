@@ -119,7 +119,15 @@ Stars:Khine-->
                     <h3>Reviews</h3>
                     <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/review.php?destid=<?php echo $destin->getDestId() ?>" title="Write a review">Write a review!</a>
                     
-                    <p>Showing 1-4 out of 15 Reviews</p>
+                    <p><?php $numRev=$destin->getNumReviews();
+                            if($numRev==0)
+                                   echo "No Reviews for this destination";
+                            elseif($numRev==1)
+                                    echo "Showing the only review of this destination";
+                            else
+                                    echo "Showing 1-".$numRev." of ".$numRev." Reviews";
+                                ?>
+                    </p>
                     <ul>
                         <?php
                         foreach($reviews as $rev):
