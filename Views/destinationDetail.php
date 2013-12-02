@@ -103,7 +103,7 @@ Stars:Khine-->
 		<div id = 'info' class='top'>
                     <h1><?php echo $destin->getName(); ?></h1>
                     <p>
-                    <div class="rateit" data-rateit-value="<?php echo $destin->getAvgRating(); ?>" data-rateit-ispreset="true" data-rateit-readonly="true"></div><span class="badge badge-info"><?php echo $destin->getNumReviews(); ?></span>
+                    <span class="rateit" data-rateit-value="<?php echo $destin->getAvgRating(); ?>" data-rateit-ispreset="true" data-rateit-readonly="true"></span><span class="badge badge-info"><?php echo $destin->getNumReviews(); ?></span>
                     </p>
                     <p><b>Category: </b><?php echo showType($destin->getType()); ?></p>
                     <p><b>City: </b><?php echo $destin->getCity(); ?></p>
@@ -125,7 +125,7 @@ Stars:Khine-->
                         foreach($reviews as $rev):
                         ?>
                         <li><p><?php echo $rev->getTitle();?>
-                            <div class="rateit" data-rateit-value="<?php echo $rev->getRating(); ?>" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                            <span class="rateit" data-rateit-value="<?php echo $rev->getRating(); ?>" data-rateit-ispreset="true" data-rateit-readonly="true"></span>
                                 <br/>
                             </p>
                             <p><?php echo $rev->getComment() ?></p>
@@ -136,7 +136,7 @@ Stars:Khine-->
                         <?php endforeach; ?>
                     </ul>
                     <ul class="pager">
-                        <!--<li><a href="#">Previous</a></li>-->
+                        <li><a href="#">Previous</a></li>
                         <li><a href="#">Next</a></li>
                     </ul>
                 </div>

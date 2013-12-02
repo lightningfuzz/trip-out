@@ -9,7 +9,7 @@ Made by Modifying signIn.php-Rob Pennock-->
         $rev->setComment($_POST['review']);
         $rev->setTitle($_POST['reviewTitle']);
         $rev->setUserId(4);
-        $rev->setRating(2);
+        $rev->setRating($_POST['rating']);
         
         try{
             ReviewController::add($rev);
@@ -18,11 +18,11 @@ Made by Modifying signIn.php-Rob Pennock-->
             echo $e;
             exit;
         }
+        echo "Review posted";
         exit;
     }
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $dest=$_GET['destid'];
-            echo $dest;
     }
  
  
@@ -48,8 +48,9 @@ Made by Modifying signIn.php-Rob Pennock-->
                 <h3>Write a Review!</h3>
                 <form name="logon" action="review.php" method="POST" >
                     <input type="hidden" name="destinationID" value="<?php echo $dest;?>">
-                    Title: <input type="text" name="reviewTitle"> 
-                                <div class="rateit"></div><br/><br>
+                    Title: <input type="text" name="reviewTitle">
+                    <input type="range" min="0" max="5" value="0" step="0.5" name="rating" id="backing2">
+                    <span class="rateit" data-rateit-backingfld="#backing2"></span><br/><br>
                     Review: <textarea name="review"rows="4" cols="50"></textarea><br>
                     <hr>
                     <p>Upload Media(Optional)</p> 
