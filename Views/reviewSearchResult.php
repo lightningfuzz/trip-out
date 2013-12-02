@@ -89,6 +89,20 @@ require_once '../Controllers/SearchController.php';
         </script>
         <!-- End of Script for "Write a Review" popover window -->
         
+        <!--FANCY BOX FILES-->
+        <!-- Add jQuery library -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <!-- Add fancyBox -->
+        <link rel="stylesheet" href="../fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+        <script type="text/javascript" src="../fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+        <!-- Optionally add helpers - button, thumbnail and/or media -->
+        <link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+        <script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+        <script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+        <link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+        <script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+        <!--END FANCYBOX FILES-->
+        
     </head>
 
     <body> 
@@ -231,7 +245,8 @@ require_once '../Controllers/SearchController.php';
 
                 <div class ="box_buttons"> <!-- 3rd div within "review_destination" div -->                     
                   <!-- "Write a Review" button link to a popup window -->
-                  <a href="javascript:popup('<?php $dest->getDestId() ?>')"><button type = "button">Write a Review</button></a>
+                  <a class ="btn btn-primary fancybox fancybox.iframe" href="../Views/review.php?destid=
+                             <?php echo $dest->getDestId() ?>" title="Write a review">Write a Review</a>                   
                 </div> <!-- End of "box_buttons" 3rd div within "review_destination" div -->
              </div>    
             
@@ -279,5 +294,13 @@ require_once '../Controllers/SearchController.php';
     <!-- End of Footer -->
     
     </div> <!-- End of "container" 1st div -->  
+    
+    <!-- Fancy Box Script -->
+    <script>
+        $(document).ready(function() {
+                    $(".fancybox").fancybox({"width":500,"height":200});
+        });
+    </script>
+    
 </body>
 </html>
