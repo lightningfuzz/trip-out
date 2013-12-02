@@ -26,7 +26,7 @@ echo "<br>" . "<br>";
 
 //AccountController::logout();
 try{
-    echo AccountController::login("bleh", "bad");
+    echo AccountController::login("mike", "hell");
 }
 catch(LogicException $e){
     echo "bad login credentials";

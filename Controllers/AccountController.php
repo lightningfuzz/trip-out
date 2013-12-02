@@ -11,10 +11,10 @@
  * @author deon
  */
 
-require_once($_SERVER['DOCUMENT_ROOT']."/DAOs/RegisteredUserDAO.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/Exceptions/UsernameException.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/Exceptions/LoginException.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/Session/Session.php");
+require_once(dirname(__FILE__). "/../DAOs/RegisteredUserDAO.php");
+require_once(dirname(__FILE__). "/../Exceptions/UsernameException.php");
+require_once(dirname(__FILE__). "/../Exceptions/LoginException.php");
+require_once(dirname(__FILE__). "/../Session/Session.php");
 
 class AccountController {
 
