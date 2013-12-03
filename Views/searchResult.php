@@ -10,7 +10,7 @@
         $user = AccountController::getLoggedinUser();
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['logout']) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists('logout', $_POST)) {
         AccountController::logout();
     }
     
@@ -141,7 +141,7 @@ Levels of <div> explanations for this page:
                     <li><a href="../index.php">Home</a></li>
                     <li><a href="reviewSearch.php">Write a Review</a></li>
                     <li><a href="createDestination.php">Create a Destination</a></li>
-                    <li class ="active"><a href="">About</a></li>
+                    <li><a href="">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>

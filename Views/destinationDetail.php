@@ -6,9 +6,23 @@ Stars:Khine-->
     require_once("../Controllers/ReviewController.php");
     require_once("../Models/Destination.php");
     require_once("../DAOs/DestinationDAO.php");
-        $destin = DestinationDAO::getByID($_GET['destinationId']);
-        $reviews = ReviewController::getDestinationReviews($destin);
-        //Assigning type numbers into real category names
+    require_once '../Session/Session.php';
+    require_once '../Controllers/AccountController.php';
+    $destin = DestinationDAO::getByID($_GET['destinationId']);
+    $reviews = ReviewController::getDestinationReviews($destin);
+    //Assigning type numbers into real category names
+    
+
+    $s = Session::getInstance();
+    $s->start();
+    
+    if(AccountController::isLogin()){
+        $user = AccountController::getLoggedinUser();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists('logout', $_POST)) {
+        AccountController::logout();
+    }
  function showType ($type) {
      if ($type == 0){
          return 'All';
@@ -71,19 +85,26 @@ Stars:Khine-->
             <div class ="container">
                 <!-- BEGIN BANNER -->
                 <nav class="navbar navbar-inverse" role="navigation">
-                    <a class="navbar-brand" href="../index.php">TRIP OUT!</a>
+                    <a class="navbar-brand" href="" id ="logo">TRIP OUT!</a>
                     <ul class="nav navbar-nav">
-                        <li><a href="../index.php">Home</a></li>
+                        <li><a href="">Home</a></li>
                         <li><a href="reviewSearch.php">Write a Review</a></li>
                         <li><a href="createDestination.php">Create a Destination</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="about.php">About</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">FAQ</a></li>
-                    </ul> 
-                    <form class="navbar-form navbar-right">
-                        <a type="submit" class="btn btn-default" href="signIn.php">Sign In</a>
-                        <a type="submit" class="btn btn-default" href="signUp.php">Register</a>
-                    </form>
+                    </ul>
+                    <?php if (AccountController::isLogin()): ?>
+                        <form class = "navbar-form navbar-right" style ="color:white;" action ="../index.php" method="post">
+                            Hello, <?php echo $user->getUserName(); ?> | 
+                            <input class = "btn btn-default" type="submit" name = "logout" value ="logout"></input>
+                        </form>
+                     <?php else: ?>
+                        <form class="navbar-form navbar-right">
+                            <a type="submit" class="btn btn-default" href="signIn.php" id ="signInButton">Sign In</a>;
+                            <a type="submit" class="btn btn-default" href="signUp.php" id ="registerButton">Register</a>;
+                        </form>;
+                    <?php endif ?>
                 </nav>
                 <!-- END BANNER -->
                 <!--Photo is the main photo of the destination and has buttons for uploading media or seeing more-->

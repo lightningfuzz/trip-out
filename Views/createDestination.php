@@ -70,9 +70,9 @@
                 <nav class="navbar navbar-inverse" role="navigation">
                 <a class="navbar-brand" href="" id ="logo">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
-                    <li name = "home" class="active"><a href="">Home</a></li>
+                    <li><a href="">Home</a></li>
                     <li><a href="reviewSearch.php">Write a Review</a></li>
-                    <li><a href="createDestination.php">Create a Destination</a></li>
+                    <li class ="active"><a href="createDestination.php">Create a Destination</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">FAQ</a></li>

@@ -1,4 +1,19 @@
 <?php
+    require_once '../Session/Session.php';
+    require_once '../Controllers/AccountController.php';
+    require_once("../DAOs/DestinationDAO.php");
+
+    $s = Session::getInstance();
+    $s->start();
+    if(AccountController::isLogin()){
+        $user = AccountController::getLoggedinUser();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists('logout', $_POST)) {
+        AccountController::logout();
+    }
+    
+    $destin = DestinationDAO::getByID($_GET['destinationId']);
 
 ?>
 <html>
@@ -34,26 +49,33 @@
         <div class ="container">
            <!-- BEGIN BANNER -->
             <nav class="navbar navbar-inverse" role="navigation">
-                <a class="navbar-brand" href="../index.php">TRIP OUT!</a>
-                <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="reviewSearch.php">Write a Review</a></li>
-                    <li><a href="createDestination.php">Create a Destination</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-                <form class="navbar-form navbar-right">
-                    <a type="submit" class="btn btn-default" href="signIn.php">Sign In</a>
-                    <a type="submit" class="btn btn-default" href="signUp.php">Register</a>
+            <a class="navbar-brand" href="../index.php" id ="logo">TRIP OUT!</a>
+            <ul class="nav navbar-nav">
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="reviewSearch.php">Write a Review</a></li>
+                <li><a href="createDestination.php">Create a Destination</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+            <?php if (AccountController::isLogin()): ?>
+                <form class = "navbar-form navbar-right" style ="color:white;" action ="../index.php" method="post">
+                    Hello, <?php echo $user->getUserName(); ?> | 
+                    <input class = "btn btn-default" type="submit" name = "logout" value ="logout"></input>
                 </form>
-            </nav>
+             <?php else: ?>
+                <form class="navbar-form navbar-right">
+                    <a type="submit" class="btn btn-default" href="signIn.php" id ="signInButton">Sign In</a>;
+                    <a type="submit" class="btn btn-default" href="signUp.php" id ="registerButton">Register</a>;
+                </form>;
+            <?php endif ?>
+        </nav>
             <!-- END BANNER -->
             <div class ="row" align ="center">
                 <div class ="col-md-3">
                 </div>
                 <div class ="col-md-2">
-                    <a class ="btn btn-default" href="../Views/destinationDetail.php">Back to Destination</a>
+                    <a class="btn btn-default" href = "destinationDetail.php?destinationId=<?php echo $destin->getDestId();?>" > Back to Destination</a>
                 </div>
                 <div class ="col-md-3">
                     <a href ="">All</a> | 

@@ -9,7 +9,7 @@
         $user = AccountController::getLoggedinUser();
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['logout']) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists('logout', $_POST)) {
         AccountController::logout();
     }
 ?>
