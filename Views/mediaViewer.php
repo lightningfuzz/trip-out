@@ -2,6 +2,7 @@
     require_once '../Session/Session.php';
     require_once '../Controllers/AccountController.php';
     require_once("../DAOs/DestinationDAO.php");
+    require_once("../DAOs/ImageDAO.php");
 
     $s = Session::getInstance();
     $s->start();
@@ -14,7 +15,7 @@
     }
     
     $destin = DestinationDAO::getByID($_GET['destinationId']);
-
+    $images = ImageDAO::getByDestId($destin->getDestId());
 ?>
 <html>
     <head>
@@ -86,66 +87,31 @@
             <hr>
             <table align="center" cellpadding="10px">
                 <tr>
-                    <td colspan ="4">Alcatraz- images</td>
-                    <td colspan="1"style="text-align:right;">Showing 1-10 of 200</td>
+                    <td colspan ="4"><?php echo $destin->getName(); ?> - images</td>
+                    <!--<td colspan="1"style="text-align:right;">Showing 1-10 of 200</td>-->
                 </tr>
-                <tr>
+                <?php
+                    $numImages = $destin->getNumImages();
+                    $imageIndex = 0;
+                    $rowImages = 0;
+                    $numRows = ceil($numImages/5);
+                  
+                    for($j=1; $j<=$numImages; $j++):
+                ?>
+                    <?php if ($j == 1 || $j%6 == 0): ?>
+                        <tr>
+                    <?php endif ?>
                     <td>
-                        <a href="../media/images/alcatraz/alcatraz1.jpg" title="Arriving on the ferry">
-                            <img src="../media/images/alcatraz/alcatraz1.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
+                        <a href="<?php echo $images[$imageIndex]->getRelUrl();?>">
+                            <img src="<?php echo $images[$imageIndex]->getRelUrl();?>" alt="" class="img-thumbnail" height="140px" width ="140px">
                         </a>
-                    </td>    
-                    <td>
-                        <a href="../media/images/alcatraz/alcatraz2.jpg" title="Indian Graffiti from when they owned the island">
-                            <img src="../media/images/alcatraz/alcatraz2.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="../media/images/alcatraz/alcatraz3.jpg" title="The power plant">
-                            <img src="../media/images/alcatraz/alcatraz3.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">                    
-                        </a>
-                    </td>
-                    <td>
-                        <a href="../media/images/alcatraz/alcatraz4.jpg" title="tunnel going through a part of the island">
-                            <img src="../media/images/alcatraz/alcatraz4.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">                    
-                        </a>
-                    </td>
-                    <td>
-                        <a href="../media/images/alcatraz/alcatraz5.jpg" title="Table in the morgue">
-                            <img src="../media/images/alcatraz/alcatraz5.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">                    
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="../media/images/alcatraz/alcatraz6.jpg" title="A prison hospital room">
-                            <img src="../media/images/alcatraz/alcatraz6.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="../media/images/alcatraz/alcatraz7.jpg" title="view from below of main prison block">
-                            <img src="../media/images/alcatraz/alcatraz7.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="../media/images/alcatraz/alcatraz8.jpg" title="Room">
-                            <img src="../media/images/alcatraz/alcatraz8.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="../media/images/alcatraz/alcatraz9.jpg" title="The Garden at alcatraz">
-                            <img src="../media/images/alcatraz/alcatraz9.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="../media/images/alcatraz/alcatraz10.jpg" title="Watertower with indian graffiti">
-                            <img src="../media/images/alcatraz/alcatraz10.jpg" alt="" class="img-thumbnail" height="140px" width ="140px">
-                        <a>
-                    </td>
-                </tr>
-                 <tr>
-                    <td colspan="5"style="text-align:right;"><a href="">Next>></a></td>
-                </tr>
+                    </td>  
+                    <?php if($j%5 == 0): ?>
+                        </tr>
+                    <?php endif ?>
+                    <?php 
+                        $imageIndex++;
+                    endfor; ?>
             </table>
             <!-- BEGIN FOOTER -->
             <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
