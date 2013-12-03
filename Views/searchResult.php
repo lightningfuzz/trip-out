@@ -1,14 +1,3 @@
-<!-- 
-
-Levels of <div> explanations for this page:
-1) "container" div is the largest outer div which has everything in this page
-2) "mainContent" div is the second largest outer div which has search bar and everything except menu bar
-3) "content" div is the third outer div which has all the contents of the page except menu bar and search bar
-4) "destination" div is the fourth div which is to enclose for each result destination
-5) "search_pic," "search_name," "stars," "box_review," "description" div are inside the "destination" div
-
--->
-
 <?php
 
     require_once '../Controllers/SearchController.php';
@@ -85,6 +74,16 @@ Levels of <div> explanations for this page:
     }
 
 ?>
+<!-- 
+
+Levels of <div> explanations for this page:
+1) "container" div is the largest outer div which has everything in this page
+2) "mainContent" div is the second largest outer div which has search bar and everything except menu bar
+3) "content" div is the third outer div which has all the contents of the page except menu bar and search bar
+4) "destination" div is the fourth div which is to enclose for each result destination
+5) "search_pic," "search_name," "stars," "box_review," "description" div are inside the "destination" div
+
+-->
 
 <html>
     <head>
