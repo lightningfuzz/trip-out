@@ -5,14 +5,23 @@ Made by Modifying signIn.php-Rob Pennock-->
 and puts them into a review model.  this model is used by reviewController to add a review
 to the Database-->
 <?php
+
     require_once("../Controllers/ReviewController.php");
     require_once("../Models/Review.php");
+    require_once '../Session/Session.php';
+    require_once '../Controllers/AccountController.php';
+    
+    $s = Session::getInstance();
+    $s->start();
+    if(AccountController::isLogin()){
+        $user = AccountController::getLoggedinUser();
+    }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $rev = new Review();
         $rev->setDestId($_POST['destinationID']);
         $rev->setComment($_POST['review']);
         $rev->setTitle($_POST['reviewTitle']);
-        $rev->setUserId(4);
+        $rev->setUserId($user->getUserID());
         $rev->setRating($_POST['rating']);
         
         try{

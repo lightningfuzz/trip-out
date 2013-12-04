@@ -140,8 +140,11 @@ Stars:Khine-->
                 <p></p>
                 <div id ='destReviews'>
                     <h3>Reviews</h3>
+                    <?php  if(AccountController::isLogin()):?>
                     <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/review.php?destid=<?php echo $destin->getDestId() ?>" title="Write a review">Write a review!</a>
-                    
+                    <?php  else:?>
+                    <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/signIn.php?destid=<?php echo $destin->getDestId() ?>" title="Sign In">Write a review!</a>
+                    <?php endif; ?>
                     <p><?php $numRev=$destin->getNumReviews();
                             if($numRev==0)
                                    echo "No Reviews for this destination";
@@ -181,15 +184,20 @@ Stars:Khine-->
             </div>
             <!-- END CONTAINER -->
 	</body>
-           <script type="text/javascript">
+        <script type="text/javascript">
 	$(document).ready(function() {
                 $("a[href$='.jpg']").attr('rel', 'gallery').fancybox();
 	});
         </script>
          <script type="text/javascript">
 	$(document).ready(function() {
-		$(".fancybox").fancybox({"width":500,"height":200});
+		$(".fancybox").fancybox({
+                    "width":500,
+                    "height":200,
+                    "afterClose":function(){
+                        parent.location.reload(true);
+                    }
+                });
 	});
         </script>
-    </script>
 </html>
