@@ -1,7 +1,3 @@
-<!-- Author:Matthew Rutherford 
-Nav bar: Marcian Diamond/Help with Fancy Box
-Stars:Khine-->
-
 <?php
     require_once("../Controllers/ReviewController.php");
     require_once("../Models/Destination.php");
@@ -47,6 +43,11 @@ Stars:Khine-->
      }
 }
     ?>
+
+<!-- Author:Matthew Rutherford 
+Nav bar: Marcian Diamond/Help with Fancy Box
+Stars:Khine-->
+
 <!DOCTYPE HTML>
 <html>
 	<head>
