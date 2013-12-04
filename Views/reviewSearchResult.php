@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& array_key_exists('logout', $_POST)) {
 
     //Getting page no from URL
     $totalRecord = count($result); //total records in the database/result
-    $noOfRecord = 3; //no of records per page to show
+    $noOfRecord = 10; //no of records per page to show
     $page = 1;
     //if there's a parameter called "page" in URL, assign it to variable $page
     if(isset($_GET['page'])) {
