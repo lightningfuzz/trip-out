@@ -182,12 +182,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& array_key_exists('logout', $_POST)) {
             
             <div class ="content"> <!-- 3rd div -->
                 
-                <!-- Title of "Search Results for" and shows 'searchString' -->
-                    <h3 style = "color: green"> Search Results for "<?php echo $_GET['searchString']; ?>" </h3> 
-            
-                <hr> <!-- horizontal line break -->
-                
-                <!-- "Showing... out of... pages: Previous, Next -->
+                <!-- Div for searchTitle and showing -->
+                <div class ="titleShowing">
+                    
+                    <!-- Title of "Search Results for" and shows 'searchString' -->                
+                    <div class = "searchTitle">
+                        <h3 style = "color: green"> Search Results for "<?php echo $_GET['searchString']; ?>" </h3>                 
+                    </div> <!-- End of "searchTitle" div -->
+                    
+                    <!-- "Showing... out of... pages: Previous, Next -->
                     <p style = "text-align: right; padding-right: 200px"> 
                         <!-- Previous | Page... | Next -->
                         <div class ="showing">
@@ -209,8 +212,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& array_key_exists('logout', $_POST)) {
                         <br/>
                     </p> 
                     <!-- End of Showing... out of... pages: Previous, Next -->
-            
-            <br/> <br/> <br/>
+                </div> <!-- End of "titleShowing" div -->
+                
+                <hr>
+                
+                <br/>
                              
             <!-- Using FOR loop to show the destination results from database -->
             <?php

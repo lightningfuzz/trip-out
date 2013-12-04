@@ -13,7 +13,7 @@
         width: 900px;
         padding: 5px;
         margin-left: auto;
-        margin-right: auto;
+        margin-right: auto;        
 }
 
 .destination {
@@ -82,19 +82,22 @@
     
 }
 
+.titleShowing {
+    clear: both;
+    float: left;
+    margin-top: 1px;
+    margin-bottom: 3px;
+    width: 900px;
+    height: 50px;
+}
+
+.searchTitle {
+    float: left;
+    width: 690px;
+}
+
 .showing {
     float: right;
-    clear: left;
-}
-
-span.stars, span.stars span {
-    display: inline-block;
-    background: url(../media/images/stars.png) 0 -16px repeat-x;
-    width: 80px;
-    height: 16px;
-}
-
-span.stars span {
-    background-position: 0 0;
+    width: 200px;    
 }
 

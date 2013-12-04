@@ -81,7 +81,6 @@ Levels of <div> explanations for this page:
 2) "mainContent" div is the second largest outer div which has search bar and everything except menu bar
 3) "content" div is the third outer div which has all the contents of the page except menu bar and search bar
 4) "destination" div is the fourth div which is to enclose for each result destination
-5) "search_pic," "search_name," "stars," "box_review," "description" div are inside the "destination" div
 
 -->
 
@@ -197,35 +196,41 @@ Levels of <div> explanations for this page:
             
             <div class = "content"> <!-- 3rd div -->
                 
-                <!-- Title of "Search Results for" and shows 'searchString' -->
-                <h3 style = "color: green"> Search Results for "<?php echo $_GET['searchString']; ?>" </h3> 
+                <!-- Div for searchTitle and showing -->
+                <div class ="titleShowing">
+                    
+                    <!-- Title of "Search Results for" and shows 'searchString' -->                
+                    <div class = "searchTitle">
+                        <h3 style = "color: green"> Search Results for "<?php echo $_GET['searchString']; ?>" </h3>                 
+                    </div> <!-- End of "searchTitle" div -->
+                    
+                    <!-- "Showing... out of... pages: Previous, Next -->
+                    <p style = "text-align: right; padding-right: 200px"> 
+                        <!-- Previous | Page... | Next -->
+                        <div class ="showing">
+                            <?php
+                                echo 'Showing ' . $start . ' - ' . $end . ' out of ' . $totalRecord . '<br/>';
+
+                                // Refresh the searchResult page, and send 'searchString' and 'type' parameters (Previous |)
+                                if ($page > 1) {
+                                    echo '<a href="searchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page - 1) . '">Previous</a> | ';
+                                }
+                                // (Page...)
+                                echo 'Page ' . $page;
+                                // Refresh the searchResult page, and send 'searchString' and 'type' parameters (| Next)
+                                if ($noOfPage > $page) {
+                                    echo ' | <a href="searchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page + 1) . '">Next</a>';
+                                }
+                            ?> 
+                        </div>
+                        <br/>
+                    </p> 
+                    <!-- End of Showing... out of... pages: Previous, Next -->
+                </div> <!-- End of "titleShowing" div -->
                 
-                <hr> <!-- horizontal line break -->
-                
-                <!-- "Showing... out of... pages: Previous, Next -->
-                <p style = "text-align: right; padding-right: 200px"> 
-                    <!-- Previous | Page... | Next -->
-                    <div class ="showing">
-                        <?php
-                            echo 'Showing ' . $start . ' - ' . $end . ' out of ' . $totalRecord . '<br/>';
-                               
-                            // Refresh the searchResult page, and send 'searchString' and 'type' parameters (Previous |)
-                            if ($page > 1) {
-                                echo '<a href="searchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page - 1) . '">Previous</a> | ';
-                            }
-                            // (Page...)
-                            echo 'Page ' . $page;
-                            // Refresh the searchResult page, and send 'searchString' and 'type' parameters (| Next)
-                            if ($noOfPage > $page) {
-                                echo ' | <a href="searchResult.php?searchString=' . $_GET['searchString'] . '&type=' . $_GET['type'] . '&page=' . ($page + 1) . '">Next</a>';
-                            }
-                        ?> 
-                    </div>
-                    <br/>
-                </p> 
-                <!-- End of Showing... out of... pages: Previous, Next -->
-                
-                <br/> <br/> <br/>
+                <hr>
+                                
+                <br/>
 
                 <!-- Using FOR loop to show the destination results from database -->
                 <?php 
