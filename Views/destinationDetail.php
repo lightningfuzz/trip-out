@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <?php
     require_once("../Controllers/ReviewController.php");
     require_once("../Models/Destination.php");
@@ -48,7 +49,7 @@
 Nav bar: Marcian Diamond/Help with Fancy Box
 Stars:Khine-->
 
-<!DOCTYPE HTML>
+
 <html>
 	<head>
             
@@ -98,7 +99,7 @@ Stars:Khine-->
                     <?php if (AccountController::isLogin()): ?>
                         <form class = "navbar-form navbar-right" style ="color:white;" action ="../index.php" method="post">
                             Hello, <?php echo $user->getUserName(); ?> | 
-                            <input class = "btn btn-default" type="submit" name = "logout" value ="logout"></input>
+                            <input class = "btn btn-default" type="submit" name = "logout" value ="logout">
                         </form>
                      <?php else: ?>
                         <form class="navbar-form navbar-right">
@@ -117,7 +118,11 @@ Stars:Khine-->
                     </a>
                     </div>
                     <div id="media">
-                        <a class="btn btn-primary fancybox fancybox.iframe" href="uploadMedia.php">Upload Picture/Video</a>
+                        <?php  if(AccountController::isLogin()):?>
+                        <a class="btn btn-primary fancybox fancybox.iframe" href="uploadMedia.php?destid=<?php echo $destin->getDestId()?>">Upload Picture/Video</a>
+                        <?php  else:?>
+                        <a class="btn btn-primary fancybox fancybox.iframe" href="signIn.php">Upload Picture/Video</a>
+                        <?php endif; ?>
                         <a class="btn btn-info" href = "mediaViewer.php?destinationId=<?php echo $destin->getDestId();?>" > More Pictures/Videos</a>
                         <!--<a class="btn btn-info" href="mediaViewer.php">More Pictures/Videos</a>-->
                     </div>
