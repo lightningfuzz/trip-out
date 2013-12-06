@@ -48,7 +48,7 @@
                 </form>;
             <?php endif ?>
         </nav>
-        <h3> Write a Review </h3> <br/>
+        <h3> Write a Review </h3> 
         <p> Review a Destination (e.g., Attractions, Restaurants, Hotels, Events, All) you visited... </p>
         <br/> <br/>
         <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">

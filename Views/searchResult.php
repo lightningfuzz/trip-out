@@ -160,7 +160,7 @@ Levels of <div> explanations for this page:
             <div class ="mainContent"> <!-- 2nd div -->
                 <!-- Plan Your Trip: Search box for Keywords and Categories -->
                 <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
-                    <div class="panel-heading">Plan Your Trip </div>
+                   <!-- <div class="panel-heading">Plan Your Trip </div> -->
                     <div class="panel-body" align="center">
                         <!-- Plan Your Trip FORM -->
                         <form name="formSearch" action="searchResult.php" method="get" class="form-inline" role="form">                    
@@ -288,10 +288,8 @@ Levels of <div> explanations for this page:
                          <?php
                             echo $dest->getAddress();
                             echo '<br/>';
-                            echo $dest->getCity() . ', '; 
-                            echo '<br/>';
-                            echo $dest->getState() . ' - '; 
-                            echo $dest->getZipCode();  
+                            echo $dest->getCity() . ', ' . 
+                                 $dest->getState() . ' - ' . $dest->getZipCode();  
                             echo '<br/>';
                             echo $dest->getPhoneNumber();
                          ?>

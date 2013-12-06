@@ -146,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& array_key_exists('logout', $_POST)) {
             <div class ="mainContent"> <!-- 2nd div -->
             <!-- Plan Your Trip: Search box for Keywords and Categories -->
             <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
-                <div class="panel-heading"> What would you like to review? </div>
+               <!-- <div class="panel-heading"> What would you like to review? </div> -->
                 <div class="panel-body" align="center">
                     <!-- Plan Your Trip FORM -->
                     <form action="reviewSearchResult.php" method="get" class="form-inline" role="form">
@@ -259,10 +259,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& array_key_exists('logout', $_POST)) {
                     <!-- Getting address and phone information from the database -->
                     <?php echo $dest->getAddress(); 
                          echo '<br/>'; 
-                         echo $dest->getCity(); 
-                         echo '<br/>';
-                         echo $dest->getState(); 
-                         echo ' - ' . $dest->getZipCode(); 
+                         echo $dest->getCity() . 
+                              $dest->getState() . ' - ' . $dest->getZipCode(); 
                          echo '<br/>';
                          echo $dest->getPhoneNumber();
                     ?>
