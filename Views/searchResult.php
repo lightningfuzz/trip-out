@@ -302,8 +302,12 @@ Levels of <div> explanations for this page:
                     <div class ="search_buttons"> <!-- 3rd div within "destination" div -->                     
                          
                          <!-- "Write a Review" button link to a popup window -->
+                         <?php  if(AccountController::isLogin()):?>
                          <a class ="btn btn-primary fancybox fancybox.iframe" href="../Views/review.php?destid=
                              <?php echo $dest->getDestId() ?>" title="Write a review">Write a Review</a>
+                         <?php  else:?>
+                         <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/signIn.php?destid=<?php echo $dest->getDestId() ?>" title="Sign In">Write a review!</a>
+                         <?php endif; ?>
                          <br/><br/>
                          <!-- "Book Now" button link to a popup alert box -->                         
                         
@@ -365,10 +369,16 @@ Levels of <div> explanations for this page:
     </div> <!-- End of "container" 1st div -->
     
     <!-- Fancy Box Script -->
-    <script>
-        $(document).ready(function() {
-                    $(".fancybox").fancybox({"width":500,"height":200});
-        });
+    <script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox({
+                    "width":500,
+                    "height":200,
+                    "afterClose":function(){ //refresh the page with username after signing in
+                        parent.location.reload(true);
+                    }
+                });
+	});
     </script>
 </body>
 </html>
