@@ -50,6 +50,16 @@
             echo $e;
             exit;
         }
+        try{
+            $log = AccountController::login($user->getUserName(), $user->getPassword());
+         }
+        catch(LoginException $e){
+            echo $e;
+        }
+        
+        catch(AccountException $e){
+            echo $e . $e;
+        }
         //redirect to index page  
         header('Location: ../index.php');
         exit;
@@ -64,7 +74,7 @@
         <script src="../js/bootstrap.js"></script>
         <script src="../js/script.js"></script>
         <script src="../js/jquery.js"></script>
-        <script src="../js/robcustom.js"></script>
+        <script src="../js/signup.js"></script>
         <!-- Add jQuery library -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <title></title>
@@ -74,30 +84,7 @@
         <!--script below checks to see if passwords match -->
         <!-- logic courtesy of
              http://www.sitepoint.com/using-the-html5-constraint-api-for-form-validation/-->
-        
-        <script type="text/javascript">
-            window.onload = function () {
-               document.getElementById("InputPassword").onchange = validatePassword;
-               document.getElementById("ConfirmPassword").onchange = validatePassword;
-            }
-            //added for safari support
-           
-            function validatePassword(){
-            var pass2=document.getElementById("ConfirmPassword").value;
-            var pass1=document.getElementById("InputPassword").value;
-            if (pass1.length < 6 )
-                document.getElementById("InputPassword").setCustomValidity("Password must be at least 6 characters long");
-            else
-                document.getElementById("InputPassword").setCustomValidity(''); 
-                //clear pass.length check
-            if(pass1!=pass2)
-               document.getElementById("ConfirmPassword").setCustomValidity("Passwords Don't Match");
-            else
-               document.getElementById("ConfirmPassword").setCustomValidity('');  
-            //empty string means no validation error
-            }
-            
-        </script>
+       
 
     <!-- Borrowed from Marcians original signup page
 
@@ -158,39 +145,8 @@
              </div>
 
                 <br>
-                <input class ="btn btn-primary" type="submit"/>
+                <input id="submit_sign_up" class="btn btn-primary" type="submit" value="submit" />
            </form>
-        <!-- 
-         <form class="cmxform" id="commentForm" method="get" action="">
-        <fieldset>
-          <legend>Please provide your name, email address (won't be published) and a comment</legend>
-          <p>
-            <label for="InputUsername">User Name: </label>
-            <input id="InputUsername" name="InputUsername" minlength="6" type="text" placeholder="username" required/>
-          </p>
-          <p>
-            <label for="InputEmail">E-Mail (required)</label>
-            <input id="InputEmail" type="email" name="email" required/>
-          </p>
-          <p>
-            <label for="curl">URL (optional)</label>
-            <input id="curl" type="password" name="url"/>
-          </p>
-          <p>
-            <label for="ccomment">Your comment (required)</label>
-            <textarea id="ccomment" name="comment" required></textarea>
-          </p>
-          <p>
-            <input class="submit" type="submit" value="Submit"/>
-          </p>
-        </fieldset>
-      </form>
-      <script>
-      $("#commentForm").validate();
-      </script>
-         -->
-         
-         
         </div>
             <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
             <div class ="footer">

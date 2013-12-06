@@ -8,9 +8,17 @@
     $s = Session::getInstance();
     $s->start();
     
+    function do_alert($msg) 
+    {   echo
+        "<script type=\"text/javascript\">".
+        "alert('$msg');".
+        "top.location = 'signIn.php';".
+        "</script>"; 
+    }
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = $_POST['user'];
-        $password = $_POST['userpassword'];
+        $username = $_POST['InputUsername'];
+        $password = $_POST['InputPassword'];
         //reverse logifc for isUsernameValid: see AccountController
         //check if user exists
         try{
@@ -18,14 +26,15 @@
             header('Location: ../index.php');
             exit;
          }
+         //error logging in or missmatched username and password fields
         catch(LoginException $e){
-            echo $e;
-            exit;
+            //echo $e;
+            $msg = "Login failed. Check username or password.";
+            do_alert($msg);
         }
         
-        catch(AccountException $e){
-            echo $e . $e;
-            exit;
+        catch(AccountException $e){ 
+            //echo $e . $e;
         }
     }?>
 
@@ -41,9 +50,11 @@
         <link rel ="stylesheet" type ="text/css" href ="../css/custom">
         <!-- Add jQuery library -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="../js/signin.js"></script>
         <title>Sign In</title>
     </head>
     <body>
+
         <div class ="container">
             <nav class="navbar navbar-inverse" role="navigation">
                 <a class="navbar-brand" href="../index.php" id ="logo">TRIP OUT!</a>
@@ -73,10 +84,10 @@
                     <h3>Sign In</h3>
                     <p>
                     <form name="logon" id="logon" action="signIn.php" method="POST" >
-                        Username: <input type="text" name="user"><br>
-                        Password: <input type="password" name="userpassword" id="userpassword"><br>
+                        Username: <input type="text" name="InputUsername" id="InputUsername" required><br>
+                        Password: <input type="password" name="InputPassword" id="InputPassword" required><br>
                         <div class="btn-group">
-                        <input class="btn btn-primary" type="submit" value="Sign In">
+                        <input id="submit_sign_in" class="btn btn-primary" type="submit" value="Sign In">
                         </div>
                     </form>
                     </p>
@@ -84,7 +95,7 @@
                 <div class ="span5">
                     <h3>Haven't Tripped Out?</h3>
                     <div class="btn-group">
-                        <a href="#" class="btn btn-primary" id="registerGoButton">
+                        <a href="signUp.php" class="btn btn-primary" id="registerGoButton">
                             Register Now
                         </a>
                     </div>
