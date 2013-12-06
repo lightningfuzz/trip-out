@@ -15,7 +15,6 @@
         "top.location = 'signIn.php';".
         "</script>"; 
     }
-    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['InputUsername'];
         $password = $_POST['InputPassword'];
@@ -23,7 +22,8 @@
         //check if user exists
         try{
             $result = AccountController::login($username, $password);
-            header('Location: ../index.php');
+            echo "<script type=\"text/javascript\"> parent.$.fancybox.close();</script>";
+            //('Location: ../index.php');
             exit;
          }
          //error logging in or missmatched username and password fields
@@ -31,6 +31,8 @@
             //echo $e;
             $msg = "Login failed. Check username or password.";
             do_alert($msg);
+            setcookie("error", $msg);
+            header("Location: ". $_SERVER['REQUEST_URI']);
         }
         
         catch(AccountException $e){ 
@@ -54,53 +56,54 @@
         <title>Sign In</title>
     </head>
     <body>
-
         <div class ="container">
-            <nav class="navbar navbar-inverse" role="navigation">
-                <a class="navbar-brand" href="../index.php" id ="logo">TRIP OUT!</a>
-                <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="reviewSearch.php">Write a Review</a></li>
-                    <li><a href="createDestination.php">Create a Destination</a></li>
-                    <li><a href="about.php">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-                <?php if (AccountController::isLogin()): ?>
-                    <form class = "navbar-form navbar-right" style ="color:white;" action ="../index.php" method="post">
-                        Hello, <?php echo $user->getUserName(); ?> | 
-                        <input class = "btn btn-default" type="submit" name = "logout" value ="logout"></input>
-                    </form>
-                 <?php else: ?>
-                    <form class="navbar-form navbar-right">
-                        <a type="submit" class="btn btn-default" href="signIn.php" id ="signInButton">Sign In</a>;
-                        <a type="submit" class="btn btn-default" href="signUp.php" id ="registerButton">Register</a>;
-                    </form>;
-                <?php endif ?>
-            </nav>
-
-            <div class="row">
                 <div class="span5">
                     <h3>Sign In</h3>
+                    <?php 
+                        if(array_key_exists('error', $_COOKIE)){
+                            echo "error: " . $_COOKIE['error'];
+                            setcookie ("error", "", time() - 3600);
+                        }
+                    ?>
                     <p>
+                        <!--
                     <form name="logon" id="logon" action="signIn.php" method="POST" >
                         Username: <input type="text" name="InputUsername" id="InputUsername" required><br>
                         Password: <input type="password" name="InputPassword" id="InputPassword" required><br>
                         <div class="btn-group">
-                        <input id="submit_sign_in" class="btn btn-primary" type="submit" value="Sign In">
+                        <div class ="row">
+                            <input id="submit_sign_in" class="btn btn-primary" type="submit" value="Sign In">
+                            Haven't Tripped Out? <a href ="/signUp.php" id="signUpLink">Sign Up Now</a>
+                        </div>
                         </div>
                     </form>
+                        -->
                     </p>
-                </div>
-                <div class ="span5">
-                    <h3>Haven't Tripped Out?</h3>
-                    <div class="btn-group">
-                        <a href="signUp.php" class="btn btn-primary" id="registerGoButton">
-                            Register Now
-                        </a>
+                    <form role="form" name="logon" id="logon" action="signIn.php" method="POST" >
+                    <div class="form-group">
+                      <label for="name">Username</label>
+                      <input type="text" class="form-control" name="InputUsername" id="inputUsername" placeholder="username">
                     </div>
+                    <div class="form-group">
+                      <label for="pw">Password</label>
+                      <input type="password" class="form-control" name="InputPassword" id="InputPassword" placeholder="password">
+                    </div>
+                    </div>
+                    <button id="submit_sign_in" class="btn btn-primary" type="submit" value="Sign In">Submit</button>
+                    <div class ="pull-right">
+                    Haven't Tripped Out? <a href ="/signUp.php" id="signUpLink">Sign Up Now</a>
+                    </div>
+                  </form>
                 </div>
             </div>
         </div>
+        <script>
+            $('#signUpLink').on("click", function(){
+                event.preventDefault();
+                var pathname = window.location.pathname;
+                pathname = pathname.replace("signIn.php", "signUp.php");
+                parent.window.location.href = pathname;
+            })
+        </script>
     </body>
 </html>

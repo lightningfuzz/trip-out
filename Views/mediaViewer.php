@@ -96,7 +96,7 @@
                     $rowImages = 0;
                     $numRows = ceil($numImages/5);
                   
-                    for($j=1; $j<=$numImages; $j++):
+                    for($j=1; $j<$numImages; $j++):
                 ?>
                     <?php if ($j == 1 || $j%6 == 0): ?>
                         <tr>
@@ -111,12 +111,12 @@
                     <?php endif ?>
                     <?php 
                         $imageIndex++;
-                    endfor; ?>
+                    endfor ?>
             </table>
             <!-- BEGIN FOOTER -->
             <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
                 <div class ="footer">
-                    SFSU-FAU-FULDA joint SW Engineering Project Fall 2013
+                    SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 | <a name ="privacyPolicy" class="fancybox fancybox.iframe" href ="privacyPolicy.html">Privacy Policy</a>
                 </div>
             </nav>
             <!-- END FOOTER -->
@@ -127,6 +127,13 @@
     <script type="text/javascript">
 	$(document).ready(function() {
                 $("a[href$='.jpg']").attr('rel', 'gallery').fancybox();
+                $(".fancybox").fancybox({
+                      "width":500,
+                      "height":200,
+                      "afterClose":function(){ //refresh the page with username after signing in
+                          parent.location.reload(true);
+                      }
+                  });
 	});
     </script>
 </html>

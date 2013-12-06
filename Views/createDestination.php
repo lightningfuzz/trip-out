@@ -227,12 +227,27 @@
         <!-- BEGIN FOOTER-->
           <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
              <div class ="footer">
-                 SFSU-FAU-FULDA joint SW Engineering Project Fall 2013
+                 SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 | <a name ="privacyPolicy" class="fancybox fancybox.iframe" href ="privacyPolicy.html">Privacy Policy</a>
              </div>
           </nav>
         <!-- END FOOTER -->
       </div>
     </div>
     <!-- END CONTAINTER -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+            <!-- Add fancyBox -->
+            <link rel="stylesheet" href="../fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+            <script type="text/javascript" src="../fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+             <script type="text/javascript">
+                 $(document).ready(function() {
+                     $(".fancybox").fancybox({
+                         "width":500,
+                         "height":200,
+                         "afterClose":function(){
+                             parent.location.reload(true);
+                         }
+                     });
+             });
+        </script>
     </body>
 </html>

@@ -66,7 +66,7 @@
                         </form>
                      <?php else: ?>
                         <form class="navbar-form navbar-right">
-                            <a type="submit" class="btn btn-default" href="Views/signIn.php" id ="signInButton">Sign In</a>;
+                            <a type="submit" class="btn btn-default fancybox fancybox.iframe" href="Views/signIn.php" id ="signInButton">Sign In</a>;
                             <a type="submit" class="btn btn-default" href="Views/signUp.php" id ="registerButton">Register</a>;
                         </form>;
                     <?php endif ?>

@@ -315,7 +315,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& array_key_exists('logout', $_POST)) {
     <!-- Footer -->
        <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
             <div class ="footer">
-                SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 
+                SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 | <a name ="privacyPolicy" class="fancybox fancybox.iframe" href ="privacyPolicy.html">Privacy Policy</a>
             </div>
        </nav>
     <!-- End of Footer -->
