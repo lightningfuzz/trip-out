@@ -22,6 +22,7 @@
         <link rel ="stylesheet" type ="text/css" href ="css/bootstrap-responsive.css"> 
         <link rel ="stylesheet" type ="text/css" href ="css/index.css">
         <script src="js/bootstrap.js"></script>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Start: Google Analytics Code -->
@@ -49,12 +50,12 @@
             $.getScript( "js/script.js");
         </script>-->
         <div class ="container">
-            <nav class="navbar navbar-inverse" role="navigation">
+            <nav class="navbar navbar-inverse" id="navbar" role="navigation">
                 <a class="navbar-brand" href="" id ="logo">TRIP OUT!</a>
                 <ul class="nav navbar-nav">
                     <li name = "home" class="active"><a href="">Home</a></li>
                     <li><a href="Views/reviewSearch.php">Write a Review</a></li>
-                    <li><a href="Views/createDestination.php">Create a Destination</a></li>
+                    <li><a href="Views/createDestination.php" id ="createDestinationLink">Create a Destination</a></li>
                     <li><a href="Views/about.php">About</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">FAQ</a></li>
@@ -66,7 +67,7 @@
                         </form>
                      <?php else: ?>
                         <form class="navbar-form navbar-right">
-                            <a type="submit" class="btn btn-default fancybox fancybox.iframe" href="Views/signIn.php" id ="signInButton">Sign In</a>;
+                            <a type="submit" name ="signIn" class="btn btn-default fancybox fancybox.iframe" href="Views/signIn.php" id ="signInButton">Sign In</a>;
                             <a type="submit" class="btn btn-default" href="Views/signUp.php" id ="registerButton">Register</a>;
                         </form>;
                     <?php endif ?>
@@ -117,11 +118,11 @@
             </nav>
         </div>
         <!--FANCY BOX FILES-->
-       <!-- Add jQuery library -->
-       <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-       <!-- Add fancyBox -->
-       <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-       <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+        <!-- Add jQuery library -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <!-- Add fancyBox -->
+        <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+        <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $(".fancybox").fancybox({
@@ -131,7 +132,9 @@
                         parent.location.reload(true);
                     }
                 });
-	});
+	})
         </script>
+        <script type="text/javascript" src="js/script.js"></script>
+
         </body>
 </html>

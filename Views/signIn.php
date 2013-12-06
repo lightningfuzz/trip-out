@@ -65,8 +65,8 @@
                             setcookie ("error", "", time() - 3600);
                         }
                     ?>
+                    <!-- old sign in code
                     <p>
-                        <!--
                     <form name="logon" id="logon" action="signIn.php" method="POST" >
                         Username: <input type="text" name="InputUsername" id="InputUsername" required><br>
                         Password: <input type="password" name="InputPassword" id="InputPassword" required><br>
@@ -77,16 +77,16 @@
                         </div>
                         </div>
                     </form>
-                        -->
+                       end old sign up code -->
                     </p>
                     <form role="form" name="logon" id="logon" action="signIn.php" method="POST" >
                     <div class="form-group">
                       <label for="name">Username</label>
-                      <input type="text" class="form-control" name="InputUsername" id="inputUsername" placeholder="username">
+                      <input type="text" class="form-control" name="InputUsername" id="inputUsername" required>
                     </div>
                     <div class="form-group">
                       <label for="pw">Password</label>
-                      <input type="password" class="form-control" name="InputPassword" id="InputPassword" placeholder="password">
+                      <input type="password" class="form-control" name="InputPassword" id="InputPassword" required>
                     </div>
                     </div>
                     <button id="submit_sign_in" class="btn btn-primary" type="submit" value="Sign In">Submit</button>
