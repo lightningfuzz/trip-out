@@ -59,7 +59,7 @@ to the Database-->
     <div class="container">
          <div class="span5">
                 <h3>Write a Review!</h3>
-                <form name="logon" action="review.php" method="POST" >
+                <form name="logon" action="../Controllers/UploadController.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="destinationID" value="<?php echo $dest;?>">
                     Title: <input type="text" name="reviewTitle">
                     <input type="range" min="0" max="5" value="0" step="0.5" name="rating" id="backing2">
@@ -67,9 +67,10 @@ to the Database-->
                     Review: <textarea name="review"rows="4" cols="50"></textarea><br>
                     <hr>
                     <p>Upload Media(Optional)</p> 
-                    Media Title: <input type="text" name="mediaTitle"><br>
-                    <input type=file  value="Browse"><br>
+                    Media Title: <input type="text" name="fileTitle"><br>
+                    <input type=file  name="file" value="Browse"><br>
                     <input class="btn btn-primary" type="submit" id="editButton" value="Submit">
+                    
                 </form>
          </div>
     </div>

@@ -6,6 +6,8 @@ require_once"../Models/Destination.php";
 require_once"../DAOs/DestinationDAO.php";
 require_once '../Models/Image.php';
 require_once '../Models/Video.php';
+require_once("../Controllers/ReviewController.php");
+require_once("../Models/Review.php");
 //Starts the session and sets what user is logged in
 $s = Session::getInstance();
     $s->start();
@@ -14,6 +16,28 @@ $s = Session::getInstance();
     }
 //This checks if an file is trying to be uploaded, this won't be needed as much if it wasn't in the display file
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    //checks if it is a review that has been posted SIMILAR CHECK CAN BE DONE FOR CREATE DESTINATION
+    if(isset($_POST['review'])){
+        //creates review model and puts all needed information into it
+        $rev = new Review();
+        $rev->setDestId($_POST['destinationID']);
+        $rev->setComment($_POST['review']);
+        $rev->setTitle($_POST['reviewTitle']);
+        $rev->setUserId($user->getUserID());
+        $rev->setRating($_POST['rating']);
+        //adds the new review
+        try{
+            ReviewController::add($rev);
+         }
+        catch(ReviewException $e){
+            echo $e;
+            exit;
+        }
+        echo "Review posted";
+        if(!isset($_FILES["file"]["type"]))
+            exit;
+    }
+ 
     //Gets the destination and the number of videos and images it has uploaded to it
     $destin = DestinationDAO::getByID($_POST['destinationID']);
     $imageNum= $destin->getNumImages();
@@ -26,6 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
    $extension = end($temp);
    //this checks if the image being uploaded is an image of either gif, jpeg....
    //it also checks that the extension gotten in the line above is a valid one
+   if($_FILES["file"]["type"]!="");
+   {
    if ((($_FILES["file"]["type"] == "image/gif")
    || ($_FILES["file"]["type"] == "image/jpeg")
    || ($_FILES["file"]["type"] == "image/jpg")
@@ -70,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $img->setDestId($_POST['destinationID']);
             $img->setUserId($user->getUserID());
             $img->setRelUrl($path);
-            $img->setTitle($_POST['fileTitle']);
+            $img->setTitle($_POST["fileTitle"]);
             $img->setDescription("test descr");
             //tries to add image to the database
             try{
@@ -128,11 +154,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
      }
    else
      {
-     echo "Invalid file";
+     echo " No file uploaded file";
      }
+   }
 }
 //when coming from another page, it sends the destination that needs to be uploaded
-elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $dest=$_GET['destid'];
-}
 ?>

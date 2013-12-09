@@ -11,6 +11,7 @@ require_once"../Models/Destination.php";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $dest=$_GET['destid'];
 }
+//checks if user is logged in, if they aren't this exits
 $s = Session::getInstance();
     $s->start();
     if(AccountController::isLogin()){
@@ -38,7 +39,10 @@ $s = Session::getInstance();
          <div class="span5">
                 <h3>Upload pictures or videos</h3>
                 <p>
+                <!--This form sends the file that is chosen to UploadController along with the title that a user inputs, and the 
+                destinationID to upload the image or video to-->
                 <form action="../Controllers/UploadController.php" method="post" enctype="multipart/form-data">
+                <!-- php code echos the a destinationID which to UploadController knows what destination to upload to-->
                 <input type="hidden" name="destinationID" value="<?php echo $dest;?>">
                 Title: <input type="text" name="fileTitle">
                 <input type="file" name="file" id="file"><br>

@@ -9,7 +9,6 @@
     $reviews = ReviewController::getDestinationReviews($destin);
     //Assigning type numbers into real category names
     
-
     $s = Session::getInstance();
     $s->start();
     
@@ -113,7 +112,7 @@ Stars:Khine-->
                 <div id ='tooper'>
 		<div id = 'photo' class='top'>
                     <div id="mainphoto">
-                        <a href="<?php echo $destin->getImageUrl()?>" title="Arriving on the ferry">
+                        <a href="<?php echo $destin->getImageUrl()?>" class="fancybox"title="get image title">
                             <img src="<?php echo $destin->getImageUrl()?>" alt="" class="img-thumbnail" width ="300px">
                     </a>
                     </div>
@@ -189,11 +188,6 @@ Stars:Khine-->
             </div>
             <!-- END CONTAINER -->
 	</body>
-        <script type="text/javascript">
-	$(document).ready(function() {
-                $("a[href$='.jpg']").attr('rel', 'gallery').fancybox();
-	});
-        </script>
          <script type="text/javascript">
 	$(document).ready(function() {
 		$(".fancybox").fancybox({
