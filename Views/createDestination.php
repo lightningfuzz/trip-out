@@ -11,7 +11,9 @@
     
     //redirect to signIn page if user is not logged in
     if(!AccountController::isLogin()){
-        header("Location: signIn.php");
+        //$value = "Please sign in to create a destination.";
+        echo '<script>var loggedOn = false; </script>';
+        //header("Location: signIn.php");
     }
     if(AccountController::isLogin()){
         $user = AccountController::getLoggedinUser();
@@ -93,136 +95,137 @@
          
         <h2 align="center">Create a Destination</h2>
         <div align="center">
-             <div style="border:2px solid; border-radius:25px; display: block;
-               text-align: center; float: center; width: 55%; height: 50%">
-        <p><br>Name of Destination</p>
-        <!-- all must be in a form -->
-        <form class="create_dest_form" method="POST" action="createDestination.php">
-            <input class="input-medium" name ="destName" type="text" placeholder="Name" required>
-            <br>
-            <select name="destType" class="input-small">
-                <option value="">-Category-</option>
-                <option value="1">Attractions</option>
-                <option value="2">Restaurants</option>
-                <option value="3">Hotels</option>   
-                <option value="4">Events</option>
-                <!-- need to add option for shopping -->
-            </select> 
-            <!--<input type="submit" value="search!" /> <br><br> -->
-            <p><br>Address</p>
-            <input class="input-large" type="text" placeholder="Address" name="destAddress" required>
-            <p></p>
-            <input class="input-large" name="destCity" type="text" placeholder="City" required>
-            <p></p>
-            <input class="input-mini" name="destZip" type="number" placeholder="Zip" required pattern="\d{5}" required>
-            <p></p>
-            <!-- from http://chrishacia.com/2012/10/html-select-box-country-list-with-iso-codes-as-values/ -->
-            <select name="destState" required> 
-                <option> - Select Province/State - </option>
-                <option value="Alabama">Alabama</option> 
-                <option value="Alaska">Alaska</option> 
-                <option value="Arizona">Arizona</option> 
-                <option value="Arkansas">Arkansas</option> 
-                <option value="California">California</option> 
-                <option value="Colorado">Colorado</option> 
-                <option value="Connecticut">Connecticut</option> 
-                <option value="Delaware">Delaware</option> 
-                <option value="Washington DC">District Of Columbia</option> 
-                <option value="Florida">Florida</option> 
-                <option value="Georgia">Georgia</option> 
-                <option value="Hawaii">Hawaii</option> 
-                <option value="Idaho">Idaho</option> 
-                <option value="Illinois">Illinois</option> 
-                <option value="Indiana">Indiana</option> 
-                <option value="Iowa">Iowa</option> 
-                <option value="Kansas">Kansas</option> 
-                <option value="Kentucky">Kentucky</option> 
-                <option value="Louisiana">Louisiana</option> 
-                <option value="Maine">Maine</option> 
-                <option value="Maryland">Maryland</option> 
-                <option value="Massachusettes">Massachusetts</option> 
-                <option value="Michigan">Michigan</option> 
-                <option value="Minnesota">Minnesota</option> 
-                <option value="Mississippi">Mississippi</option> 
-                <option value="Missouri">Missouri</option> 
-                <option value="Montana">Montana</option> 
-                <option value="Nebraska">Nebraska</option> 
-                <option value="Nevada">Nevada</option> 
-                <option value="New Hampshire">New Hampshire</option> 
-                <option value="New Jersey">New Jersey</option> 
-                <option value="New Mexico">New Mexico</option> 
-                <option value="New York">New York</option> 
-                <option value="North Carolina">North Carolina</option> 
-                <option value="North Dakota">North Dakota</option> 
-                <option value="Ohio">Ohio</option> 
-                <option value="Oklahoma">Oklahoma</option> 
-                <option value="Oregon">Oregon</option> 
-                <option value="Pennsylvania">Pennsylvania</option> 
-                <option value="Rhode Island">Rhode Island</option> 
-                <option value="South Carolina">South Carolina</option> 
-                <option value="South Dakota">South Dakota</option> 
-                <option value="Tennessee">Tennessee</option> 
-                <option value="Texas">Texas</option> 
-                <option value="Utah">Utah</option> 
-                <option value="Vermont">Vermont</option> 
-                <option value="Virginia">Virginia</option> 
-                <option value="Washington">Washington</option> 
-                <option value="West Virginia">West Virginia</option> 
-                <option value="Wisconsin">Wisconsin</option> 
-                <option value="Wyoming">Wyoming</option>
-                <option> ---------------- </option>
-                <option valfue="Alberta">Alberta</option>
-                <option value="British Columbia">British Columbia</option>
-                <option value="Manitoba">Manitoba</option>
-                <option value="New Brunswick">New Brunswick</option>
-                <option value="Newfoundland">Newfoundland and Labrador</option>
-                <option value="Nova Scotia">Nova Scotia</option>
-                <option value="Northwest Territories">Northwest Territories</option>
-                <option value="Nunavut">Nunavut</option>
-                <option value="Ontario">Ontario</option>
-                <option value="Prince Edward Island">Prince Edward Island</option>
-                <option value="Quebec">Quebec</option>
-                <option value="Saskatchewan">Saskatchewan</option>
-                <option value="Yukon">Yukon</option>
-            </select>
-            <p><br>Additional Info</p>
-            <input type="tel" class="input-large" placeholder="Phone Num" name="destPhone"> 
-            <p></p>
-            <input class="input-large" name="destWebsite" type="url" placeholder="website" pattern="https?://.+">
-            <p></p>
-            <p>Description</p>
-            <textarea class="input-xxlarge" name="destDescription" style="resize: none; width: 40%;" required></textarea>
-            <br>
-            <!--
-             <a href = "destinationDetail.php" class="btn btn-primary">
-                            Submit!
-            </a> -->
-            <input class ="btn btn-primary" type="submit"/>
-        </form>
-        <br/><br/>
-        
-        <!-- file uploader stuff -->
-        
-        <div id="uploader">
-            <input id="fileupload" type="file" name="files[]" data-url="#" multiple>
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-            <script src="../jqueryFileUploader/js/vendor/jquery.ui.widget.js"></script>
-            <script src="./jqueryFileUploader/js/jquery.iframe-transport.js"></script>
-            <script src="./jqueryFileUploader/js/jquery.fileupload.js"></script>
-            <script>
-            $(function () {
-                $('#fileupload').fileupload({
-                    dataType: 'json',
-                    done: function (e, data) {
-                        $.each(data.result.files, function (index, file) {
-                            $('<p/>').text(file.name).appendTo(document.body);
+            <div style="border:2px solid; border-radius:25px; display: block;
+               text-align: center; float: center; width: 55%;">
+            <p><br>Name of Destination</p>
+            <!-- all must be in a form -->
+            <form class="create_dest_form" method="POST" role="form" action="createDestination.php">
+                <div class="form-group">
+                <input class="input-medium" name ="destName" type="text" placeholder="Name" required>
+                </div>
+                <select name="destType" class="input-small">
+                    <option value="">-Category-</option>
+                    <option value="1">Attractions</option>
+                    <option value="2">Restaurants</option>
+                    <option value="3">Hotels</option>   
+                    <option value="4">Events</option>
+                    <!-- need to add option for shopping -->
+                </select> 
+                <!--<input type="submit" value="search!" /> <br><br> -->
+                <p><br>Address</p>
+                <input class="input-large" type="text" placeholder="Address" name="destAddress" required>
+                <p></p>
+                <input class="input-large" name="destCity" type="text" placeholder="City" required>
+                <p></p>
+                <input class="input-mini" name="destZip" type="number" placeholder="Zip" required pattern="\d{5}" required>
+                <p></p>
+                <!-- from http://chrishacia.com/2012/10/html-select-box-country-list-with-iso-codes-as-values/ -->
+                <select name="destState" required> 
+                    <option> - Select Province/State - </option>
+                    <option value="Alabama">Alabama</option> 
+                    <option value="Alaska">Alaska</option> 
+                    <option value="Arizona">Arizona</option> 
+                    <option value="Arkansas">Arkansas</option> 
+                    <option value="California">California</option> 
+                    <option value="Colorado">Colorado</option> 
+                    <option value="Connecticut">Connecticut</option> 
+                    <option value="Delaware">Delaware</option> 
+                    <option value="Washington DC">District Of Columbia</option> 
+                    <option value="Florida">Florida</option> 
+                    <option value="Georgia">Georgia</option> 
+                    <option value="Hawaii">Hawaii</option> 
+                    <option value="Idaho">Idaho</option> 
+                    <option value="Illinois">Illinois</option> 
+                    <option value="Indiana">Indiana</option> 
+                    <option value="Iowa">Iowa</option> 
+                    <option value="Kansas">Kansas</option> 
+                    <option value="Kentucky">Kentucky</option> 
+                    <option value="Louisiana">Louisiana</option> 
+                    <option value="Maine">Maine</option> 
+                    <option value="Maryland">Maryland</option> 
+                    <option value="Massachusettes">Massachusetts</option> 
+                    <option value="Michigan">Michigan</option> 
+                    <option value="Minnesota">Minnesota</option> 
+                    <option value="Mississippi">Mississippi</option> 
+                    <option value="Missouri">Missouri</option> 
+                    <option value="Montana">Montana</option> 
+                    <option value="Nebraska">Nebraska</option> 
+                    <option value="Nevada">Nevada</option> 
+                    <option value="New Hampshire">New Hampshire</option> 
+                    <option value="New Jersey">New Jersey</option> 
+                    <option value="New Mexico">New Mexico</option> 
+                    <option value="New York">New York</option> 
+                    <option value="North Carolina">North Carolina</option> 
+                    <option value="North Dakota">North Dakota</option> 
+                    <option value="Ohio">Ohio</option> 
+                    <option value="Oklahoma">Oklahoma</option> 
+                    <option value="Oregon">Oregon</option> 
+                    <option value="Pennsylvania">Pennsylvania</option> 
+                    <option value="Rhode Island">Rhode Island</option> 
+                    <option value="South Carolina">South Carolina</option> 
+                    <option value="South Dakota">South Dakota</option> 
+                    <option value="Tennessee">Tennessee</option> 
+                    <option value="Texas">Texas</option> 
+                    <option value="Utah">Utah</option> 
+                    <option value="Vermont">Vermont</option> 
+                    <option value="Virginia">Virginia</option> 
+                    <option value="Washington">Washington</option> 
+                    <option value="West Virginia">West Virginia</option> 
+                    <option value="Wisconsin">Wisconsin</option> 
+                    <option value="Wyoming">Wyoming</option>
+                    <option> ---------------- </option>
+                    <option valfue="Alberta">Alberta</option>
+                    <option value="British Columbia">British Columbia</option>
+                    <option value="Manitoba">Manitoba</option>
+                    <option value="New Brunswick">New Brunswick</option>
+                    <option value="Newfoundland">Newfoundland and Labrador</option>
+                    <option value="Nova Scotia">Nova Scotia</option>
+                    <option value="Northwest Territories">Northwest Territories</option>
+                    <option value="Nunavut">Nunavut</option>
+                    <option value="Ontario">Ontario</option>
+                    <option value="Prince Edward Island">Prince Edward Island</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="Saskatchewan">Saskatchewan</option>
+                    <option value="Yukon">Yukon</option>
+                </select>
+                <p><br>Additional Info</p>
+                <input type="tel" class="input-large" placeholder="Phone Num" name="destPhone"> 
+                <p></p>
+                <input class="input-large" name="destWebsite" type="url" placeholder="website" pattern="https?://.+">
+                <p></p>
+                <p>Description</p>
+                <textarea class="input-xxlarge" name="destDescription" style="resize: none; width: 40%;" required></textarea>
+                <br>
+                <!--
+                 <a href = "destinationDetail.php" class="btn btn-primary">
+                                Submit!
+                </a> -->
+                <input class ="btn btn-primary" type="submit"/>
+            </form>
+            <br/><br/>
+            <!-- file uploader stuff -->
+            <div id="uploader">
+                <input id="fileupload" style ="margin: 0 auto;"type="file" name="files[]" data-url="#" multiple>
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                <script src="../jqueryFileUploader/js/vendor/jquery.ui.widget.js"></script>
+                <script src="./jqueryFileUploader/js/jquery.iframe-transport.js"></script>
+                <script src="./jqueryFileUploader/js/jquery.fileupload.js"></script>
+                <script>
+                    $(function () {
+                        $('#fileupload').fileupload({
+                            dataType: 'json',
+                            done: function (e, data) {
+                                $.each(data.result.files, function (index, file) {
+                                    $('<p/>').text(file.name).appendTo(document.body);
+                                });
+                            }
                         });
-                    }
-                });
-                
-            });
-            </script>
+                    });
+                </script>
+            </div>
         </div>
+        <!-- hidden link to redirect user to signIn.php if not logged in -->
+        <a type="submit" id ="hidden_link"  type = "hidden" name ="signIn" class="fancybox fancybox.iframe" href="signIn.php?loggedin=false&message=createDestination" id ="signInButton"></a>;
 
         <!-- BEGIN FOOTER-->
           <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
@@ -231,23 +234,28 @@
              </div>
           </nav>
         <!-- END FOOTER -->
-      </div>
     </div>
     <!-- END CONTAINTER -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
             <!-- Add fancyBox -->
             <link rel="stylesheet" href="../fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
             <script type="text/javascript" src="../fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-             <script type="text/javascript">
+            <script type="text/javascript">
                  $(document).ready(function() {
                      $(".fancybox").fancybox({
                          "width":500,
                          "height":200,
                          "afterClose":function(){
-                             parent.location.reload(true);
+                            if(loggedOn == false){
+                                window.history.go(-1);
+                            }else 
+                                parent.location.reload(true);
                          }
                      });
-             });
+                     if(loggedOn == false){
+                        $("#hidden_link").trigger('click');
+                     }
+                });
         </script>
     </body>
 </html>

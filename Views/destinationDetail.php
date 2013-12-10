@@ -120,7 +120,7 @@ Stars:Khine-->
                         <?php  if(AccountController::isLogin()):?>
                         <a class="btn btn-primary fancybox fancybox.iframe" href="uploadMedia.php?destid=<?php echo $destin->getDestId()?>">Upload Picture/Video</a>
                         <?php  else:?>
-                        <a class="btn btn-primary fancybox fancybox.iframe" href="signIn.php">Upload Picture/Video</a>
+                        <a class="btn btn-primary fancybox fancybox.iframe" href="signIn.php?loggedin=false&message=upload">Upload Picture/Video</a>
                         <?php endif; ?>
                         <a class="btn btn-info" href = "mediaViewer.php?destinationId=<?php echo $destin->getDestId();?>" > More Pictures/Videos</a>
                         <!--<a class="btn btn-info" href="mediaViewer.php">More Pictures/Videos</a>-->
@@ -146,8 +146,8 @@ Stars:Khine-->
                     <h3>Reviews</h3>
                     <?php  if(AccountController::isLogin()):?>
                     <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/review.php?destid=<?php echo $destin->getDestId() ?>" title="Write a review">Write a review!</a>
-                    <?php  else:?>
-                    <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/signIn.php?destid=<?php echo $destin->getDestId() ?>" title="Sign In">Write a review!</a>
+                    <?php  else:?>                                                                          
+                    <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/signIn.php?loggedin=false&message=review"  title="Sign In">Write a review!</a>
                     <?php endif; ?>
                     <p><?php $numRev=$destin->getNumReviews();
                             if($numRev==0)

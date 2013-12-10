@@ -48,7 +48,9 @@
                 </form>;
             <?php endif ?>
         </nav>
-        <h3>About Us</h3><hr>
+        <div class ="overview">
+        <h2>About Us</h2>
+        <hr>
         San Francisco State University<br>
         Computer Science <br>
         CSC 640: Software Engineering, Fall 2013<br>
@@ -61,6 +63,7 @@
         Aye Khine<br>
         Deon Shum<br>
         Rob Pennock
+        </div>
         <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
             <div class ="footer">
                 SFSU-FAU-FULDA joint SW Engineering Project Fall 2013 | <a name ="privacyPolicy" class="fancybox fancybox.iframe" href ="privacyPolicy.html">Privacy Policy</a>

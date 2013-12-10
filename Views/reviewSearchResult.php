@@ -9,7 +9,12 @@ $s = Session::getInstance();
 $s->start();
 if(AccountController::isLogin()){
     $user = AccountController::getLoggedinUser();
+}else{
+    setcookie('error', "");
+    setcookie('error?', "false");
+    
 }
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"&& array_key_exists('logout', $_POST)) {
     AccountController::logout();
@@ -269,11 +274,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& array_key_exists('logout', $_POST)) {
                 <div class ="box_buttons"> <!-- 3rd div within "review_destination" div -->                     
                   <!-- "Write a Review" button link to a popup window -->
                   <?php  if(AccountController::isLogin()):?>
-                  <a class ="btn btn-primary fancybox fancybox.iframe" href="../Views/review.php?destid=
-                             <?php echo $dest->getDestId() ?>" title="Write a review">Write a Review</a>   
-                  <?php  else:?>
-                  <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/signIn.php?destid=<?php echo $dest->getDestId() ?>" title="Sign In">Write a review!</a>
-                  <?php endif; ?>
+                    <a class ="btn btn-primary fancybox fancybox.iframe" href="../Views/review.php?destid=
+                    <?php echo $dest->getDestId() ?>" title="Write a review">Write a Review</a>   
+                  <?php  else: ?>
+                   
+                    <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/signIn.php?loggedin=false&message=review" title="Sign In">Write a review!</a>
+
+                    <!--<a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/signIn.php?destid=<?php echo $dest->getDestId() ?>" title="Sign In">Write a review!</a>
+                    -->
+                    <?php endif; ?>
                 </div> <!-- End of "box_buttons" 3rd div within "review_destination" div -->
              </div>    
             

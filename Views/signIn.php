@@ -15,6 +15,7 @@
         "top.location = 'signIn.php';".
         "</script>"; 
     }
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['InputUsername'];
         $password = $_POST['InputPassword'];
@@ -58,26 +59,22 @@
     <body>
         <div class ="container">
                 <div class="span5">
-                    <h3>Sign In</h3>
-                    <?php 
-                        if(array_key_exists('error', $_COOKIE)){
-                            echo "error: " . $_COOKIE['error'];
-                            setcookie ("error", "", time() - 3600);
+                    
+                   <?php 
+                        
+                        if(array_key_exists('loggedin', $_GET) && array_key_exists('message', $_GET)){
+                            if($_GET['message'] == 'review'){
+                                echo '<font color= "red" >' . 'Please sign in to write a review.' .  '</font>';
+                            }elseif($_GET['message'] == 'createDestination'){
+                                echo '<font color= "red" >' . 'Please sign in to create a destination.' .  '</font>';
+                            }elseif($_GET['message'] == 'upload'){
+                                echo '<font color= "red" >' . 'Please sign in to upload media.' .  '</font>';
+                            }
+                            
                         }
                     ?>
-                    <!-- old sign in code
-                    <p>
-                    <form name="logon" id="logon" action="signIn.php" method="POST" >
-                        Username: <input type="text" name="InputUsername" id="InputUsername" required><br>
-                        Password: <input type="password" name="InputPassword" id="InputPassword" required><br>
-                        <div class="btn-group">
-                        <div class ="row">
-                            <input id="submit_sign_in" class="btn btn-primary" type="submit" value="Sign In">
-                            Haven't Tripped Out? <a href ="/signUp.php" id="signUpLink">Sign Up Now</a>
-                        </div>
-                        </div>
-                    </form>
-                       end old sign up code -->
+                    <h3>Sign In</h3>
+                 
                     </p>
                     <form role="form" name="logon" id="logon" action="signIn.php" method="POST" >
                     <div class="form-group">
@@ -104,6 +101,14 @@
                 pathname = pathname.replace("signIn.php", "signUp.php");
                 parent.window.location.href = pathname;
             })
+            
+    
+                //event.preventDefault();
+                //var pathname = 'test';
+                //window.history.go(-1);
+                 //pathname = pathname.replace("signIn.php", "signUp.php");
+                //parent.window.location.href = pathname;
+            
         </script>
     </body>
 </html>

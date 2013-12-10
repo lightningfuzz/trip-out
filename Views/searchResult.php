@@ -9,7 +9,7 @@
     if(AccountController::isLogin()){
         $user = AccountController::getLoggedinUser();
     }
-
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists('logout', $_POST)) {
         AccountController::logout();
     }
@@ -298,14 +298,16 @@ Levels of <div> explanations for this page:
 
                     <!-- "Write a Review" button -->
                     <div class ="search_buttons"> <!-- 3rd div within "destination" div -->                     
-                         
                          <!-- "Write a Review" button link to a popup window -->
                          <?php  if(AccountController::isLogin()):?>
                          <a class ="btn btn-primary fancybox fancybox.iframe" href="../Views/review.php?destid=
                              <?php echo $dest->getDestId() ?>" title="Write a review">Write a Review</a>
                          <?php  else:?>
-                         <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/signIn.php?destid=<?php echo $dest->getDestId() ?>" title="Sign In">Write a review!</a>
-                         <?php endif; ?>
+                            <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/signIn.php?loggedin=false&message=review" title="Sign In">Write a Review</a>
+                            <!--
+                            <a class="btn btn-mini btn-primary fancybox fancybox.iframe" href="../Views/signIn.php?destid=<?php echo $dest->getDestId() ?>" title="Sign In">Write a review!</a>
+                            -->
+                        <?php endif; ?>
                          <br/><br/>
                          <!-- "Book Now" button link to a popup alert box -->                         
                         
@@ -325,7 +327,7 @@ Levels of <div> explanations for this page:
 
                 <!-- Can't find the destination? Create a new Destination -->
 
-                <form action="createDestination.php" method="get" class="form-inline">
+                <form action="createDestination.php?" method="get" class="form-inline">
                     <div class ="newDest"> <!-- a div within "content" div -->
                        <p>
                            Can't find your destination? Create a new one!
