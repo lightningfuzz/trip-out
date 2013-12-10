@@ -1,6 +1,14 @@
 <?php
     require_once("../Controllers/AccountController.php");
     require_once("../Models/RegisteredUser.php");
+    require_once '../Controllers/SearchController.php';
+    require_once '../Session/Session.php';
+
+    $s = Session::getInstance();
+    $s->start();
+    if(AccountController::isLogin()){
+        echo '<script>var loggedOn = true;</script>';
+    }
     function do_alert($msg) 
     {   echo
         "<script type=\"text/javascript\">".
@@ -15,7 +23,6 @@
         $userName = $_POST['InputUsername'];
         $blank = "";
        
-
         //****fallback for safari support*****//
         //make sure fields are filled out
         if((strcmp( $userName , $blank )=== 0)||(strcmp( $userEmail , $blank )=== 0) || (strcmp( $pass1 , $blank )=== 0) || (strcmp( $pass2 , $blank )=== 0)){
@@ -102,17 +109,10 @@
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
-                <?php if (AccountController::isLogin()): ?>
-                    <form class = "navbar-form navbar-right" style ="color:white;" action ="../index.php" method="post">
-                        Hello, <?php echo $user->getUserName(); ?> | 
-                        <input class = "btn btn-default" type="submit" name = "logout" value ="logout"></input>
-                    </form>
-                 <?php else: ?>
+
                     <form class="navbar-form navbar-right">
-                        <a type="submit" class="btn btn-default" href="signIn.php" id ="signInButton">Sign In</a>;
-                        <a type="submit" class="btn btn-default" href="signUp.php" id ="registerButton">Register</a>;
+                        <a type="submit" class="btn btn-default fancybox fancybox.iframe"  href="signIn.php" id ="signInButton">Sign In</a>;
                     </form>;
-                <?php endif ?>
             </nav>
         <div align="center" style="margin: 0 auto;border:2px solid; border-radius:25px; display: block;
         text-align: center; float: center; width: 30%; height: 65%">
@@ -168,7 +168,13 @@
                         parent.location.reload(true);
                     }
                 });
-	});
+                
+                if(loggedOn == true){
+                    var pathname = window.location.pathname;
+                    pathname = pathname.replace("Views/signUp.php", "index.php");
+                    parent.window.location.href = pathname;
+                }
+            });
         </script>
     </body>            
 </html>
