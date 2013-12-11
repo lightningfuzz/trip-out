@@ -264,7 +264,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& array_key_exists('logout', $_POST)) {
                     <!-- Getting address and phone information from the database -->
                     <?php echo $dest->getAddress(); 
                          echo '<br/>'; 
-                         echo $dest->getCity() . 
+                         echo $dest->getCity() . ', ' .
                               $dest->getState() . ' - ' . $dest->getZipCode(); 
                          echo '<br/>';
                          echo $dest->getPhoneNumber();

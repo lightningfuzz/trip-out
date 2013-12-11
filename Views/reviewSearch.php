@@ -50,7 +50,7 @@
         </nav>
         <div class ='overview'>
             <h2> Write a Review </h2> 
-            <p> Review a Destination (e.g., Attractions, Restaurants, Hotels, Events, All) you visited... </p>
+            <p> Review a Destination (e.g., All, Attractions, Restaurants, Hotels, Shopping, Events) you visited... </p>
         </div>
         <div class="panel panel-default" style="width:75%;margin-left:auto;margin-right:auto;">
             <div class="panel-heading">What would you like to review?</div>
