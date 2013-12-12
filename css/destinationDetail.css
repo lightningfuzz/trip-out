@@ -6,16 +6,12 @@
         Purpose of the stylesheet follows.
 */
 root { 
-    //display: block;
 }
 div{
 }
 .top{
-    //color:blue;
 }
 #info{
-    //float:right;
-    //color:blue;
     display:inline-block;
     //position:absolute;
     margin-left:10px;
@@ -23,7 +19,6 @@ div{
 }
 #photo{
     float:left;
-    //float:left;
 }
 #destReviews{
     display:block;

@@ -14,6 +14,7 @@ $s = Session::getInstance();
     if(AccountController::isLogin()){
         $user = AccountController::getLoggedinUser();
     }
+    else
 //This checks if an file is trying to be uploaded, this won't be needed as much if it wasn't in the display file
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //checks if it is a review that has been posted SIMILAR CHECK CAN BE DONE FOR CREATE DESTINATION
@@ -158,5 +159,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
      }
    }
 }
-//when coming from another page, it sends the destination that needs to be uploaded
 ?>

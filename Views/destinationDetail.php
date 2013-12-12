@@ -141,9 +141,13 @@ Stars:Khine-->
                 <div id ='tooper'>
 		<div id = 'photo' class='top'>
                     <div id="mainphoto">
-                        <a href="<?php echo $destin->getImageUrl()?>" class="fancybox"title="get image title">
-                            <img src="<?php echo $destin->getImageUrl()?>" alt="" class="img-thumbnail" width ="300px">
-                    </a>
+                        <?php if(!$destin->getImageUrl()==""): ?>
+                            <a href="<?php echo $destin->getImageUrl()?>" class="fancybox"title="get image title">
+                                <img src="<?php echo $destin->getImageUrl()?>" alt="" class="img-thumbnail" width ="300px">
+                            </a>
+                        <?php  else:?>
+                            <img src="http://placehold.it/300x150">
+                        <?php endif ?> 
                     </div>
                     <div id="media">
                         <?php  if(AccountController::isLogin()):?>
