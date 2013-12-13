@@ -209,6 +209,18 @@ class DestinationDAO {
 
         return true;
     }
+    
+    public static function updateImageUrl(Destination $dest){
+
+        $db = dbConnect::getInstance();
+        //query
+        $q = "UPDATE destination SET image_url = '" . $dest->getImageUrl()
+                . "' WHERE dest_id = " . $dest->getDestId() . "";
+
+        if(!$db->query($q)) return false;
+
+        return true;
+    }
 }
 
 ?>

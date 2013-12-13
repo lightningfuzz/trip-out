@@ -138,6 +138,10 @@ class DestinationController{
         
         return $dest;
     }
+    
+    public static function updateImageUrl($dest){
+        DestinationDAO::updateImageUrl($dest);
+    }
 }
 
 ?>
