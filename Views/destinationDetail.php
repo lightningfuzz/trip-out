@@ -175,7 +175,7 @@ Stars:Khine-->
                 <br>
                 </div>
                 <p></p>
-                <div id="Bottom">
+                <div id="Bottom" style="clear:both;">
                     <div id ='destReviews' style="width:50%;display:inline-block;">
                         <h3>Reviews</h3>
                         <?php  if(AccountController::isLogin()):?>
@@ -230,7 +230,7 @@ Stars:Khine-->
 	$(document).ready(function() {
 		$(".fancybox").fancybox({
                     "width":500,
-                    "height":200,
+                    "heigh":200,
                     "afterClose":function(){
                         parent.location.reload(true);
                     }

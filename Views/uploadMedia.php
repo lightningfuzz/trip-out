@@ -37,6 +37,9 @@ $s = Session::getInstance();
     <div class="container">
      <div class="row">
          <div class="span5">
+             <?php if(isset($_GET['failed'])):?>
+                <p style="color:red;">File upload failed</p>
+            <?php endif; ?>
                 <h3>Upload pictures or videos</h3>
                 <p>
                 <!--This form sends the file that is chosen to UploadController along with the title that a user inputs, and the 

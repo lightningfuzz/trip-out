@@ -14,7 +14,6 @@ $s = Session::getInstance();
     if(AccountController::isLogin()){
         $user = AccountController::getLoggedinUser();
     }
-    else
 //This checks if an file is trying to be uploaded, this won't be needed as much if it wasn't in the display file
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //checks if it is a review that has been posted SIMILAR CHECK CAN BE DONE FOR CREATE DESTINATION
@@ -40,6 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
  
     //Gets the destination and the number of videos and images it has uploaded to it
+   if(!isset($_FILES["file"]["size"]))
+   {
+       echo "File too big, please try again with smaller file.";
+       header('Location: ' . $_SERVER['HTTP_REFERER']);
+       exit;
+   }
     $destin = DestinationDAO::getByID($_POST['destinationID']);
     $imageNum= $destin->getNumImages();
     $videoNum= $destin->getNumVideos();
@@ -50,16 +55,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
    $temp = explode(".", $_FILES["file"]["name"]);
    $extension = end($temp);
    //this checks if the image being uploaded is an image of either gif, jpeg....
+   //
+   //(strcasecmp($_FILES["file"]["type"],"image/pjpeg")==0)
    //it also checks that the extension gotten in the line above is a valid one
+   
+       
    if($_FILES["file"]["type"]!="");
    {
-   if ((($_FILES["file"]["type"] == "image/gif")
-   || ($_FILES["file"]["type"] == "image/jpeg")
-   || ($_FILES["file"]["type"] == "image/jpg")
-   || ($_FILES["file"]["type"] == "image/pjpeg")
-   || ($_FILES["file"]["type"] == "image/x-png")
-   || ($_FILES["file"]["type"] == "image/png"))
-   && in_array($extension, $allowedImgExts))
+   if (((strcasecmp($_FILES["file"]["type"],"image/gif")==0)
+   || (strcasecmp($_FILES["file"]["type"],"image/jpeg")==0)
+   || (strcasecmp($_FILES["file"]["type"],"image/jpg")==0)
+   || (strcasecmp($_FILES["file"]["type"],"image/pjpeg")==0)
+   || (strcasecmp($_FILES["file"]["type"],"image/x-png")==0)
+   || (strcasecmp($_FILES["file"]["type"],"image/png")==0))
+   && in_array($extension, $allowedImgExts)
+   && $_FILES["file"]["size"]<5242880)
      {
        //checks if there was any error with the posting of the file
      if ($_FILES["file"]["error"] > 0)
@@ -113,9 +123,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
      //this whole if block almost the same as the image block except the file types are different
      //to upload videos, which also means the video functions are used instead of the image
      //a a directory is made in videos instead of images, the video model is used
-     else if((($_FILES["file"]["type"] == "video/mov")
-        || ($_FILES["file"]["type"] == "video/mp4"))
-        && in_array($extension, $allowedVidExts))
+     else if(((strcasecmp($_FILES["file"]["type"],"video/mov")==0)
+        || (strcasecmp($_FILES["file"]["type"],"video/wmv")==0)     
+        || (strcasecmp($_FILES["file"]["type"],"video/mp4")==0))
+        && in_array($extension, $allowedVidExts)
+        && $_FILES["file"]["size"]<5242880)
      {
      if ($_FILES["file"]["error"] > 0)
        {
@@ -155,7 +167,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
      }
    else
      {
-     echo " No file uploaded file";
+     if(isset($_POST['review']))
+        echo " No file uploaded";
+     elseif($_FILES["file"]["size"]>5242880)
+       echo "File too big";
+     else
+        echo "Invalid File";
+     header('Location: ' . $_SERVER['HTTP_REFERER']."&failed=yes");
+     exit;
      }
    }
 }
