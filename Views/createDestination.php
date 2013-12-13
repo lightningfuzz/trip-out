@@ -40,10 +40,34 @@
             $result = DestinationController::create($destin);
          }
         catch(DestinationException $e){
+            echo "Error creating destination";
+            do_alert($_POST['destName']);
             echo $e;
             exit;
         }
         $destinationId=$result->getDestId();
+        
+        if($_FILES['file']['name']){
+            $temp = explode(".", $_FILES["file"]["name"]);
+            $extention = end($temp);
+            $image=($_FILES["file"]["name"]);
+
+
+            $path="../media/images/KeyImages/".$destinationId. "." .$extention;
+            //$path="../KeyImages/afile.jpg";
+
+            $something = move_uploaded_file($_FILES["file"]["tmp_name"], $path);
+
+            if(!$something){
+                echo ($_FILES["file"]["tmp_name"]);
+                exit;
+            }
+
+            $result->setImageUrl($path);
+
+            DestinationController::updateImageUrl($result);
+        }
+        
         header('Location: destinationDetail.php?destinationId=' . $destinationId);
         exit;
     }?>
@@ -99,7 +123,7 @@
                text-align: center; float: center; width: 55%;">
             <p><br>Name of Destination</p>
             <!-- all must be in a form -->
-            <form class="create_dest_form" method="POST" role="form" action="createDestination.php">
+            <form class="create_dest_form" method="POST" role="form" action="createDestination.php" enctype="multipart/form-data">
                 <div class="form-group">
                 <input class="input-medium" name ="destName" type="text" placeholder="Name" required>
                 </div>
@@ -200,32 +224,17 @@
                  <a href = "destinationDetail.php" class="btn btn-primary">
                                 Submit!
                 </a> -->
+                <br>
+                <p>Key Image</p>
+                <input type="file" name="file" id="imagefile" align="center"><br>
+                
                 <input class ="btn btn-primary" type="submit"/>
             </form>
             <br/><br/>
-            <!-- file uploader stuff -->
-            <div id="uploader">
-                <input id="fileupload" style ="margin: 0 auto;"type="file" name="files[]" data-url="#" multiple>
-                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-                <script src="../jqueryFileUploader/js/vendor/jquery.ui.widget.js"></script>
-                <script src="./jqueryFileUploader/js/jquery.iframe-transport.js"></script>
-                <script src="./jqueryFileUploader/js/jquery.fileupload.js"></script>
-                <script>
-                    $(function () {
-                        $('#fileupload').fileupload({
-                            dataType: 'json',
-                            done: function (e, data) {
-                                $.each(data.result.files, function (index, file) {
-                                    $('<p/>').text(file.name).appendTo(document.body);
-                                });
-                            }
-                        });
-                    });
-                </script>
-            </div>
+          
         </div>
         <!-- hidden link to redirect user to signIn.php if not logged in -->
-        <a type="submit" id ="hidden_link"  type = "hidden" name ="signIn" class="fancybox fancybox.iframe" href="signIn.php?loggedin=false&message=createDestination" id ="signInButton"></a>;
+        <a type="submit" id ="hidden_link"  type = "hidden" name ="signIn" class="fancybox fancybox.iframe" href="signIn.php?loggedin=false&message=createDestination" id ="signInButton"></a>
 
         <!-- BEGIN FOOTER-->
           <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">

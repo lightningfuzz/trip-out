@@ -50,10 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $videoNum= $destin->getNumVideos();
     //THese two variables hold what kind of images will be allowed when uploaded
    $allowedImgExts = array("gif", "jpeg", "jpg", "png");
-   $allowedVidExts = array("mov","mp4");
+   $allowedVidExts = array("mov","mp4", "quicktime");
    //this gets the file type(the parts after the ".") and then sets it to a variable
    $temp = explode(".", $_FILES["file"]["name"]);
-   $extension = end($temp);
+   $extension = strtolower(end($temp));
    //this checks if the image being uploaded is an image of either gif, jpeg....
    //
    //(strcasecmp($_FILES["file"]["type"],"image/pjpeg")==0)
@@ -124,10 +124,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
      //to upload videos, which also means the video functions are used instead of the image
      //a a directory is made in videos instead of images, the video model is used
      else if(((strcasecmp($_FILES["file"]["type"],"video/mov")==0)
-        || (strcasecmp($_FILES["file"]["type"],"video/wmv")==0)     
+        || (strcasecmp($_FILES["file"]["type"],"video/wmv")==0)  
+        || (strcasecmp($_FILES["file"]["type"],"video/quicktime")==0)
         || (strcasecmp($_FILES["file"]["type"],"video/mp4")==0))
-        && in_array($extension, $allowedVidExts)
-        && $_FILES["file"]["size"]<5242880)
+        && in_array($extension, $allowedVidExts))
+//        && $_FILES["file"]["size"]<50242880)
      {
      if ($_FILES["file"]["error"] > 0)
        {
@@ -169,10 +170,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
      {
      if(isset($_POST['review']))
         echo " No file uploaded";
-     elseif($_FILES["file"]["size"]>5242880)
+     elseif($_FILES["file"]["size"]>50242880)
        echo "File too big";
      else
-        echo "Invalid File";
+        echo ($_FILES["file"]["type"]);// "Invalid File";
      header('Location: ' . $_SERVER['HTTP_REFERER']."&failed=yes");
      exit;
      }
