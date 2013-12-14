@@ -135,7 +135,7 @@
                     <?php endif ?>
                     <td>
                         <a href="videoViewer.php?url=<?php echo $videos[$videoIndex]->getRelUrl()?>" class="fancybox fancybox.iframe">
-                            <img src="<?php echo $videos[$videoIndex]->getRelUrl();?>" alt="" class="img-thumbnail" height="140px" width ="140px">
+                            <video src="<?php echo $videos[$videoIndex]->getRelUrl();?>" alt="" class="img-thumbnail" height="140px" width ="140px">
                         </a>
                     </td>  
                     <?php if($j%5 == 0): ?>
