@@ -14,10 +14,20 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <div class ="videoPlayer">
-        <video name="media" width="640" height="480" controls>
+        <div class ="videoPlayer" name ="">
+        <video name="media" width="" height="" style="margin: 0 auto;" controls>
             <source src= "<?php echo $url; ?>?1" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </body>
+        <!-- Add jQuery library -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('video').height('fit');
+            $('video').width('fit');
+
+        });
+    </script>
+
 </html>

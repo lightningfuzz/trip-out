@@ -27,8 +27,8 @@
         <link rel ="stylesheet" type ="text/css" href ="../css/index.css">
         <link rel ="stylesheet" type ="text/css" href ="../css/bootstrap-responsive.css">
         <script src="../js/bootstrap.js"></script>
-        <script src="../js/script.js"></script>
         <script src="../js/jquery.js"></script>
+        <script src="../js/script.js"></script>
         
         <!--FANCY BOX FILES-->
         <!-- Add jQuery library -->
@@ -82,14 +82,14 @@
                     <a class="btn btn-default" href = "destinationDetail.php?destinationId=<?php echo $destin->getDestId();?>" > Back to Destination</a>
                 </div>
                 <div class ="col-md-3">
-                    <a href ="">All</a> | 
-                    <a href ="">Images</a> | 
-                    <a href ="">Videos</a>
+                    <a href ="" id ="allLink" >All</a> | 
+                    <a href ="" id ="imagesLink">Images</a> | 
+                    <a href ="" id ="videosLink">Videos</a>
                 </div>
             </div>
             <hr>
+            <div class ="images" id ="images">
             <table align="center" cellpadding="10px">
-                <div class ="images">
                     <tr>
                         <td colspan ="4"><?php echo $destin->getName(); ?> - images</td>
                         <!--<td colspan="1"style="text-align:right;">Showing 1-10 of 200</td>-->
@@ -117,11 +117,15 @@
                             $imageIndex++;
                         endfor ?>
 
+                    </tr>
+                </table>
+            </div>
+            <div class ="videos" id ="videos">
+                <table align="center" cellpadding="10px">
                     <tr>
-                </div>
                     <td colspan ="4"><?php echo $destin->getName(); ?> - videos</td>
                     <!--<td colspan="1"style="text-align:right;">Showing 1-10 of 200</td>-->
-                </tr>
+                    </tr>
                 <?php
                     $numVideos = $destin->getNumVideos();
                     $videoIndex = 0;
@@ -145,6 +149,7 @@
                         $videoIndex++;
                     endfor ?>
             </table>
+            </div>
             <!-- BEGIN FOOTER -->
             <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
                 <div class ="footer">
