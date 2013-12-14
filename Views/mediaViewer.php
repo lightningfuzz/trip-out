@@ -3,6 +3,7 @@
     require_once '../Controllers/AccountController.php';
     require_once("../DAOs/DestinationDAO.php");
     require_once("../DAOs/ImageDAO.php");
+    require_once("../DAOs/VideoDAO.php");
 
     $s = Session::getInstance();
     $s->start();
@@ -16,6 +17,8 @@
     
     $destin = DestinationDAO::getByID($_GET['destinationId']);
     $images = ImageDAO::getByDestId($destin->getDestId());
+    $videos = VideoDAO::getByDestId($destin->getDestId());
+
 ?>
 <html>
     <head>
@@ -86,31 +89,60 @@
             </div>
             <hr>
             <table align="center" cellpadding="10px">
-                <tr>
-                    <td colspan ="4"><?php echo $destin->getName(); ?> - images</td>
+                <div class ="images">
+                    <tr>
+                        <td colspan ="4"><?php echo $destin->getName(); ?> - images</td>
+                        <!--<td colspan="1"style="text-align:right;">Showing 1-10 of 200</td>-->
+                    </tr>
+                    <?php
+                        $numImages = $destin->getNumImages();
+                        $imageIndex = 0;
+                        $rowImages = 0;
+                        $numRows = ceil($numImages/5);
+
+                        for($j=1; $j<$numImages; $j++):
+                    ?>
+                        <?php if ($j == 1 || $j%6 == 0): ?>
+                            <tr>
+                        <?php endif ?>
+                        <td>
+                            <a href="<?php echo $images[$imageIndex]->getRelUrl();?>">
+                                <img src="<?php echo $images[$imageIndex]->getRelUrl();?>" alt="" class="img-thumbnail" height="140px" width ="140px">
+                            </a>
+                        </td>  
+                        <?php if($j%5 == 0): ?>
+                            </tr>
+                        <?php endif ?>
+                        <?php 
+                            $imageIndex++;
+                        endfor ?>
+
+                    <tr>
+                </div>
+                    <td colspan ="4"><?php echo $destin->getName(); ?> - videos</td>
                     <!--<td colspan="1"style="text-align:right;">Showing 1-10 of 200</td>-->
                 </tr>
                 <?php
-                    $numImages = $destin->getNumImages();
-                    $imageIndex = 0;
-                    $rowImages = 0;
+                    $numVideos = $destin->getNumVideos();
+                    $videoIndex = 0;
+                    $rowVideos = 0;
                     $numRows = ceil($numImages/5);
                   
-                    for($j=1; $j<$numImages; $j++):
+                    for($j=1; $j<$numVideos; $j++):
                 ?>
                     <?php if ($j == 1 || $j%6 == 0): ?>
                         <tr>
                     <?php endif ?>
                     <td>
-                        <a href="<?php echo $images[$imageIndex]->getRelUrl();?>">
-                            <img src="<?php echo $images[$imageIndex]->getRelUrl();?>" alt="" class="img-thumbnail" height="140px" width ="140px">
+                        <a href="videoViewer.php?url=<?php echo $videos[$videoIndex]->getRelUrl()?>" class="fancybox fancybox.iframe">
+                            <img src="<?php echo $videos[$videoIndex]->getRelUrl();?>" alt="" class="img-thumbnail" height="140px" width ="140px">
                         </a>
                     </td>  
                     <?php if($j%5 == 0): ?>
                         </tr>
                     <?php endif ?>
                     <?php 
-                        $imageIndex++;
+                        $videoIndex++;
                     endfor ?>
             </table>
             <!-- BEGIN FOOTER -->

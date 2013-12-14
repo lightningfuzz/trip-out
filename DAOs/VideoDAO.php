@@ -63,6 +63,28 @@ class VideoDAO {
         return $videos;
     }
     
+    public static function getByUrl($url) {
+        $db = dbConnect::getInstance();
+        //query
+        $q = "SELECT * FROM video WHERE rel_url =" . $url;
+
+       if (!$result = $db->query($q))
+            return null;
+
+        $videos = array();
+        while ($arr = mysqli_fetch_array($result)) {
+            $video = new Image();
+            $video->setUserId($arr["user_id"]);
+            $video->setDestId($arr["dest_id"]);
+            $video->setRelUrl($arr["rel_url"]);
+            $video->setTitle($arr["title"]);
+            $video->setDescription($arr["description"]);
+            $video->setUploadTime($arr["upload_time"]);
+            $videos[] = $video;
+        }
+
+        return $videos;
+    }
      public static function delete(Video $vid) {
 
         $db = dbConnect::getInstance();
