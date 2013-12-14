@@ -28,7 +28,7 @@ to the Database-->
             ReviewController::add($rev);
          }
         catch(ReviewException $e){
-            echo $e;
+            echo $e . $e->getMessage();
             exit;
         }
         echo "Review posted";

@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             ReviewController::add($rev);
          }
         catch(ReviewException $e){
-            echo $e;
+            echo $e . $e->getMessage();
             exit;
         }
         echo "Review posted";
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 MediaController::addImage($img);
             }
             catch(ReviewException $e){
-                echo $e;
+                echo $e . $e->getMessage();
                 exit;
             }
         }

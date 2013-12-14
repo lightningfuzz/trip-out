@@ -22,7 +22,7 @@ class ReviewController {
     public static function add(Review $rev) {
         
         if (ReviewDAO::getByUserIdAndDestId($rev->getUserId(), $rev->getDestId()))
-            throw new ReviewException("Review already exists <br>"); //review exists
+            throw new ReviewException("User cannot review a destination more than once. <br>"); //review exists
         
         if (!$rev->getRating())
             throw new ReviewException("Missing rating <br>");
