@@ -17,7 +17,7 @@ and open the template in the editor.
     <body>
         <div class ="videoPlayer">
         <video name="media" width="640" height="480" controls>
-            <source src= "<?php echo $url; ?>" type="video/quicktime">
+            <source src= "<?php echo $url; ?>" type="video/mp4;">
             Your browser does not support the video tag.
         </video>
     </body>
