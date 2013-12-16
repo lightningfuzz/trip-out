@@ -18,6 +18,10 @@
     $destin = DestinationDAO::getByID($_GET['destinationId']);
     $images = ImageDAO::getByDestId($destin->getDestId());
     $videos = VideoDAO::getByDestId($destin->getDestId());
+    $numImages = $destin->getNumImages();
+    $numVideos = $destin->getNumVideos();
+
+
 
 ?>
 <html>
@@ -89,18 +93,22 @@
             </div>
             <hr>
             <div class ="images" id ="images">
-            <table align="center" cellpadding="10px">
+            <table cellpadding="10px" align="center">
                     <tr>
-                        <td colspan ="4"><?php echo $destin->getName(); ?> - images</td>
+                    <td colspan ="4"><strong><?php echo $destin->getName(); ?> - images</strong></td>
                         <!--<td colspan="1"style="text-align:right;">Showing 1-10 of 200</td>-->
                     </tr>
+                    <?php if ($numImages == 0): ?>
+                        <tr>
+                            <td colspan ="4">There are currently no uploaded images</td>
+                        </tr>
+                    <?php endif ?>
                     <?php
-                        $numImages = $destin->getNumImages();
                         $imageIndex = 0;
                         $rowImages = 0;
                         $numRows = ceil($numImages/5);
 
-                        for($j=1; $j<$numImages; $j++):
+                        for($j=1; $j<=$numImages; $j++):
                     ?>
                         <?php if ($j == 1 || $j%6 == 0): ?>
                             <tr>
@@ -121,18 +129,20 @@
                 </table>
             </div>
             <div class ="videos" id ="videos">
-                <table align="center" cellpadding="10px">
+                <table cellpadding="10px" align="center">
                     <tr>
-                    <td colspan ="4"><?php echo $destin->getName(); ?> - videos</td>
-                    <!--<td colspan="1"style="text-align:right;">Showing 1-10 of 200</td>-->
+                    <td colspan ="4"><strong><?php echo $destin->getName(); ?> - videos<strong></td>
                     </tr>
+                    <?php if ($numVideos == 0): ?>
+                        <tr>
+                            <td colspan ="4">There are currently no uploaded videos</td>
+                        </tr>
+                    <?php endif ?>
                 <?php
-                    $numVideos = $destin->getNumVideos();
                     $videoIndex = 0;
                     $rowVideos = 0;
                     $numRows = ceil($numImages/5);
-                  
-                    for($j=1; $j<$numVideos; $j++):
+                    for($j=1; $j<=$numVideos; $j++):
                 ?>
                     <?php if ($j == 1 || $j%6 == 0): ?>
                         <tr>
@@ -163,14 +173,14 @@
     <!--js for fancy box-->
     <script type="text/javascript">
 	$(document).ready(function() {
-                $("a[href$='.jpg']").attr('rel', 'gallery').fancybox();
-                $(".fancybox").fancybox({
-                      "width":500,
-                      "height":200,
-                      "afterClose":function(){ //refresh the page with username after signing in
-                          parent.location.reload(true);
-                      }
-                  });
+            $("a[href$='.jpg']").attr('rel', 'gallery').fancybox();
+            $(".fancybox").fancybox({
+                "width":500,
+                "height":200,
+                "afterClose":function(){ //refresh the page with username after signing in
+                    parent.location.reload(true);
+                }
+            });
 	});
     </script>
 </html>

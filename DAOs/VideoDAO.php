@@ -13,6 +13,7 @@
 require_once("../dbConnect.php");
 require_once '../Models/Video.php';
 
+
 class VideoDAO {
 
     /**
@@ -66,14 +67,14 @@ class VideoDAO {
     public static function getByUrl($url) {
         $db = dbConnect::getInstance();
         //query
-        $q = "SELECT * FROM video WHERE rel_url =" . $url;
+        $q = "SELECT * FROM video WHERE rel_url ='" . $url . "'";
 
        if (!$result = $db->query($q))
             return null;
 
         $videos = array();
         while ($arr = mysqli_fetch_array($result)) {
-            $video = new Image();
+            $video = new Video();
             $video->setUserId($arr["user_id"]);
             $video->setDestId($arr["dest_id"]);
             $video->setRelUrl($arr["rel_url"]);
@@ -83,7 +84,7 @@ class VideoDAO {
             $videos[] = $video;
         }
 
-        return $videos;
+        return $videos[0];
     }
      public static function delete(Video $vid) {
 
