@@ -169,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
    else
      {
      if(isset($_POST['review']))
-        echo "Review Posted without media";
+        echo "Review posted without media";
      elseif($_FILES["file"]["size"]>50242880)
        echo "File too big";
      else
