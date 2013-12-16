@@ -36,7 +36,7 @@ class DestinationDAO {
                 . $dest->getType() . "', '" . $dest->getName() . "', '"
                 . $dest->getAddress() . "', '" . $dest->getAvgRating() . "', '"
                 . $dest->getNumImages() . "', '" . $dest->getNumVideos() . "', '"
-                . $dest->getDescription() . "', '" . $dest->getImageUrl() . "', '"
+                . filter_var($dest->getDescription(), FILTER_SANITIZE_STRING) . "', '" . $dest->getImageUrl() . "', '"
                 . $dest->getNumReviews() . "', '".$dest->getCity() . "', '" 
                 . $dest->getState() . "', '" . $dest->getZipCode() . "', '"
                 . $dest->getWebsite() . "', '" . $dest->getPhoneNumber() . "')";

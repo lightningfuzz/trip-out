@@ -25,8 +25,8 @@ class ReviewDAO {
                 . "num_yes_helpful, num_no_helpful, comment, time, title) VALUES ('"
                 . $rev->getUserId() . "', '" . $rev->getDestId() . "', '"
                 . $rev->getRating() . "', '" . $rev->getNumYesHelpful() . "', '"
-                . $rev->getNumNoHelpful() . "', '" . $rev->getComment() . "', '"
-                . $rev->getTime() . "', '" . $rev->getTitle() . "')";
+                . $rev->getNumNoHelpful() . "', '" . filter_var($rev->getComment(), FILTER_SANITIZE_STRING) . "', '"
+                . $rev->getTime() . "', '" . filter_var($rev->getTitle(), FILTER_SANITIZE_STRING) . "')";
 
         if (!$db->query($q))
             return null;
