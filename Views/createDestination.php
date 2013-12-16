@@ -131,8 +131,9 @@
                     <option value="">-Category-</option>
                     <option value="1">Attractions</option>
                     <option value="2">Restaurants</option>
-                    <option value="3">Hotels</option>   
-                    <option value="4">Events</option>
+                    <option value="3">Hotels</option>  
+                    <option value="4">Shopping</option>
+                    <option value="5">Events</option>
                     <!-- need to add option for shopping -->
                 </select> 
                 <!--<input type="submit" value="search!" /> <br><br> -->
