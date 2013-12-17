@@ -38,7 +38,7 @@ $s = Session::getInstance();
      <div class="row">
          <div class="span5">
              <?php if(isset($_GET['failed'])):?>
-                <p style="color:red;">File upload failed</p>
+                <p></p>
             <?php endif; ?>
                 <h3>Upload pictures or videos</h3>
                 <p>
