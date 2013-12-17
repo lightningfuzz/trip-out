@@ -59,7 +59,7 @@ to the Database-->
     <div class="container">
          <div class="span5">
              <?php if(isset($_GET['failed'])):?>
-                <p style="color:red;">File upload failed, but review has been posted</p>
+                <p>Review has been posted without media</p>
             <?php exit; endif;?>
                 <h3>Write a Review!</h3>
                 <form name="logon" action="../Controllers/UploadController.php" method="POST" enctype="multipart/form-data">
