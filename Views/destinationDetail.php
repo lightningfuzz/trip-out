@@ -142,7 +142,7 @@ Stars:Khine-->
 		<div id = 'photo' class='top'>
                     <div id="mainphoto">
                         <?php if(!$destin->getImageUrl()==""): ?>
-                            <a href="<?php echo $destin->getImageUrl()?>" class="fancybox"title="get image title">
+                            <a href="<?php echo $destin->getImageUrl()?>" class="fancybox">
                                 <img src="<?php echo $destin->getImageUrl()?>" alt="" class="img-thumbnail" width ="300px">
                             </a>
                         <?php  else:?>
